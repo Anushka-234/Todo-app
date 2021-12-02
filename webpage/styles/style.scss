@@ -40,5 +40,67 @@
                 line-height: 1.5;
             }
         }
+
+        &_left h1 {
+            font-size: 4 rem;
+            color: $dark-brown;
+
+            @include mobile {
+                font-size: 2rem;
+            }
+        }
+        &_left h3 {
+            font-size: 4 rem;
+            color: $dark-brown;
+
+            @include mobile {
+                font-size: 2rem;
+            }
+        }
+        &_left p {
+            font-size: 2 rem;
+            font-weight: 400;
+            color: $dark-brown;
+            margin-top: 1rem;
+            @include mobile {
+                font-size: 2rem;
+            }
+        }
+        &_btn {
+            font-size: 1 rem;
+            background-color: bisque;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            color: $dark-brown;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        &_btn a {
+            position: relative;
+            text-decoration: none;
+            z-index: 2;
+            color: $dark-brown;
+        }
+
+        &_btn:hover {
+            background-color: beige;
+            color: $dark-brown;
+        }
+
+        &_right {
+            text-align: center;
+        }
+
+        &_img {
+            height: 500px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+        }
     }
 }
