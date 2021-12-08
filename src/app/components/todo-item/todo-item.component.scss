@@ -1,0 +1,38 @@
+.strike{
+	text-decoration: line-through;
+}
+
+i{
+	margin-left: 230px;
+	padding-top: 3px;
+}
+
+.form-check{
+	display: flex;
+}
+
+.form-check-label{
+	margin-left: 5px;
+}
+
+.todo{
+	background: #f4f4f4;
+	margin: 5px;
+	padding: 10px 15px;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+
+.todo h6{
+	display: flex;
+	color : #249c44;
+	line-height: 1.5;
+	font-weight: 0.1;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.todo p{
+	color : #5b5b5c;
+}
