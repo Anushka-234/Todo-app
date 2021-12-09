@@ -1,14 +1,17 @@
-h4{
-	text-align: center;
- }
+$light-beige: #f2d4aa;
 
-.add{
-	width: 500px;
-	align-items: center;
-	margin-left: 400px;
+h2{
+  text-align: center;
 }
 
-.add-list{
-	width: 450px;
-	margin-left: 10px;
+.add {
+  width: 500px;
+  align-items: center;
+  margin-left: 400px;
+  background-color: $light-beige;
+}
+
+.add-list {
+  width: 450px;
+  margin-left: 400px;
 }

@@ -1,0 +1,32 @@
+* {
+  border-radius: 5px;
+}
+
+h2 {
+  padding: 10px;
+  margin: 5px;
+}
+
+.form-group {
+  padding: 10px;
+  font-size: 18px;
+
+  .form-label {
+    padding: 5px;
+  }
+
+  .form-control {
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+button {
+  background-color: rgb(224, 180, 113);
+  border: none;
+  padding: 10px 13px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+}

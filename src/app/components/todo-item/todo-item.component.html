@@ -1,11 +1,12 @@
 <div class="todo">
-    <h6><strong [ngClass]="{'strike':!todo.active}">{{todo.title}}</strong><i class="fa fa-trash fa-2x" (click)="onClick(todo)" [ngStyle]="{'color':'red'}" aria-hidden="true"></i></h6>
-    <p>{{todo.day}}</p>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="form-check--flexCheckDefault" (click)="onCheckboxClick(todo)" [checked]="!todo.active">
-      <label class="form-check-label" for="flexCheckDefault" >
-        Done
-      </label>
-    </div>
-    <!--<button class="btn btn-danger mb-4" (click)="onClick(todo)">Delete</button>-->
-    </div>
+  <h2>
+    <strong [ngClass]="{ strike: !todo.active }">{{ todo.title }}</strong><i class="fa fa-trash fa"
+      (click)="onClick(todo)" [ngStyle]="{ color: 'brown' }" aria-hidden="true"></i>
+  </h2>
+  <p>{{ todo.day }}</p>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="flexCheckDefault" (click)="onCheckboxClick(todo)"
+      [checked]="!todo.active" />
+    <label class="form-check-label" for="flexCheckDefault"> Done </label>
+  </div>
+</div>
