@@ -1,4 +1,4 @@
-<div class="todo">
+<div class="todo-item">
   <h2>
     <strong [ngClass]="{ strike: !todo.active }">{{ todo.title }}</strong><i class="fa fa-trash fa"
       (click)="onClick(todo)" [ngStyle]="{ color: 'brown' }" aria-hidden="true"></i>

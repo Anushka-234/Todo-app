@@ -1,0 +1,96 @@
+@import "variables";
+@import "mixins";
+
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+%align-items{
+  padding: 10px;
+  margin: 3px;
+}
+
+.todos {
+  width: 500px;
+  align-items: center;
+  margin-left: 400px;
+  @include background;
+  
+
+  &-list {
+    width: 450px;
+    margin-left: 400px;
+
+    h2 {
+      text-align: center;
+      @extend %align-items;
+    }
+  }
+}
+
+.todo-item {
+  margin: 5px;
+  @extend %align-items;
+  @include background;
+
+  h2 {
+    display: flex;
+    color: brown;
+    line-height: 1.5;
+    font-weight: 0.2;
+    align-items: center;
+    justify-content: space-between;
+    @extend %align-items;
+
+    .strike {
+      text-decoration: line-through;
+    }
+
+    i {
+      margin-top: 4px;
+    }
+  }
+
+  p {
+    color: $dark-beige;
+    font-size: 18px;
+    font-weight: 300;
+    @extend %align-items;
+  }
+  .form-check-input {
+    @extend %align-items;
+    margin-left: 5px;
+  }
+}
+
+.add-todo {
+  h2 {
+    @extend %align-items;
+  }
+
+  .form-group {
+    @extend %align-items;
+
+    .form-control {
+      height: 25px;
+      border: none;
+      border-radius: 5px;
+      @extend %align-items;
+      font-size: 18px;
+    }
+  }
+
+  button {
+    background-color: $button;
+    border: none;
+    font-size: 16px;
+    padding: 10px 13px;
+    cursor: pointer;
+    border-radius: 5px;
+    @extend %align-items;
+  }
+}
