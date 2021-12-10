@@ -1,15 +1,27 @@
 <div class="my-3 add-todo">
-    <h2>Add a Todo</h2>
-    <form (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" [(ngModel)]="title" name="title" class="form-control" id="form-title">
+  <h2>Add a Todo</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        [(ngModel)]="title"
+        name="title"
+        class="form-control"
+        id="form-title"
+      />
     </div>
-      <div class="form-group">
-        <label for="desc" class="form-label">Day & Time</label>
-        <input type="text" [(ngModel)]="day" name="day" class="form-control" id="form-day">
-      </div>
-      <button type="submit" class="btn btn-primary mt-2">Add To Do</button>
-    </form>
-    <br>
+    <div class="form-group">
+      <label for="desc" class="form-label">Day & Time</label>
+      <input
+        type="text"
+        [(ngModel)]="day"
+        name="day"
+        class="form-control"
+        id="form-day"
+      />
     </div>
+    <button type="submit" class="btn btn-primary mt-2">Add To Do</button>
+  </form>
+  <br />
+</div>
