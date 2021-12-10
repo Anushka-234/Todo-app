@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todoapp';
+
+  user ={
+    username : "Anushka",
+    city : "Lalitpur",
+    age : 22
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../../todo';
+import { Todo } from '../shared/todo';
 
 @Component({
   selector: 'app-todos',
@@ -27,12 +27,13 @@ export class TodosComponent implements OnInit {
     localStorage.setItem('todos', JSON.stringify(this.todos));
     console.log(todo);
   }
-  AddTodo(todo: Todo) {
+  AddTodo(todo: Todo): Todo{
     this.todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(this.todos));
     console.log(todo);
+    return todo;
   }
-  toggleTodo(todo: Todo) {
+  toggleTodo(todo: Todo){
     const index = this.todos.indexOf(todo);
     this.todos[index].active = !this.todos[index].active;
     localStorage.setItem('todos', JSON.stringify(this.todos));
