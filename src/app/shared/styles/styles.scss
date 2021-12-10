@@ -49,6 +49,11 @@
 
     i {
       margin-top: 4px;
+
+      &:hover {
+        transform: translate(10%);
+        cursor: pointer;
+      }
     }
   }
 
@@ -69,19 +74,14 @@
     @extend %align-items;
   }
 
-  .form-group {
+  &--form {
     @extend %align-items;
-
-    .form-control {
-      height: 25px;
-      border: none;
-      border-radius: 5px;
-      @extend %align-items;
-      font-size: 18px;
-    }
+    margin-left: 15px;
+    border-radius: 10px;
   }
 
   button {
+    display: block;
     background-color: $button;
     border: none;
     font-size: 16px;
@@ -89,5 +89,18 @@
     cursor: pointer;
     border-radius: 5px;
     @extend %align-items;
+
+    &:hover {
+      letter-spacing: 2px;
+    }
   }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
