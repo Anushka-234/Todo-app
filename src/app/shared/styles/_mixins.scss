@@ -1,6 +1,6 @@
-@import 'variables';
+@import "variables";
 
-@mixin background(){
-    border-radius: 10px;
-    background: $light-beige;
+@mixin background() {
+  border-radius: 10px;
+  background: $light-beige;
 }
