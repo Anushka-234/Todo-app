@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-md-6 todos">
+    <div class="col-md-4 text-center todos">
         <app-add-todo (todoAdd)="AddTodo($event)"></app-add-todo>
     </div>
-    <div class="col-md-6 todos-list">
+    <div class="col-md-4 todos-list">
         <h2>Your Todos</h2>
         <div *ngIf="this.todos.length===0; else elseBlock">No Todos to display</div>
         <ng-template #elseBlock>
@@ -12,5 +12,9 @@
             </div>
         </ng-template>
     </div>
-    <button class="btn-about" routerLink="/about">About Us</button>
+    <div class="row">
+        <div class="text-center">
+            <button class="btn btn-primary " routerLink="/about">About Us</button>
+        </div>
+    </div>
 </div>
