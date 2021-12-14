@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../shared/todo';
 
@@ -5,6 +6,14 @@ import { Todo } from '../../shared/todo';
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
+  animations : [
+    trigger('fade',[
+      state('void',style({ opacity:0})),
+      transition('void <=> *',[
+        animate(2000)
+      ])
+    ])
+  ]
 })
 export class TodosComponent implements OnInit {
   localItem: any;
@@ -40,3 +49,7 @@ export class TodosComponent implements OnInit {
     console.log(todo);
   }
 }
+function trasition(): import("@angular/animations").AnimationMetadata {
+  throw new Error('Function not implemented.');
+}
+
