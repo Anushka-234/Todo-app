@@ -96,6 +96,40 @@
   }
 }
 
+.about-us {
+  height: 400px;
+
+  &_desc {
+    h3 {
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+    background-color: $light-beige;
+    padding: 10px;
+    line-height: 1.2;
+    margin: 5px;
+
+    .btn {
+      cursor: pointer;
+    }
+  }
+
+  &_image {
+    width: 300px;
+  }
+}
+
+.btn-about {
+  padding: 15px 17px;
+  border: none;
+  background-color: $light-beige;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  cursor: pointer;
+}
+
 html,
 body {
   height: 100%;
