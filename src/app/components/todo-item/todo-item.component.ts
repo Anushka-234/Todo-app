@@ -1,29 +1,26 @@
-import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-import { Todo } from 'src/app/todo';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Todo } from '../../shared/todo';
 
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.scss']
+  styleUrls: ['./todo-item.component.scss'],
 })
 export class TodoItemComponent implements OnInit {
-
-  @Input() todo : Todo;
+  @Input() todo: Todo;
   @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
   @Output() todoCheckbox: EventEmitter<Todo> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  onClick(todo:Todo){
+  onClick(todo: Todo) {
     this.todoDelete.emit(todo);
-    console.log("onclick has been triggered.")
+    console.log('onclick has been triggered.');
   }
 
-  onCheckboxClick(todo:Todo){
-   this.todoCheckbox.emit(todo);
+  onCheckboxClick(todo: Todo) {
+    this.todoCheckbox.emit(todo);
   }
-
 }
