@@ -4,4 +4,5 @@ export class Todo {
 	day : string
 	// active : boolean
 	priority:string
+	time:string;
 }

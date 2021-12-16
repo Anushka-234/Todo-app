@@ -15,6 +15,13 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { HttpClientModule } from '@angular/common/http';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+registerLocaleData(en);
 
 
 @NgModule({
@@ -36,9 +43,11 @@ import {MatRadioModule} from '@angular/material/radio';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSlideToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule,
+    NzTimePickerModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

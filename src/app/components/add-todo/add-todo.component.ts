@@ -7,6 +7,9 @@ import { Todo } from '../../shared/todo';
   styleUrls: ['./add-todo.component.scss'],
 })
 export class AddTodoComponent implements OnInit {
+  time: string;
+  defaultOpenValue = new Date(0, 0, 0, 0, 0, 0);
+
   title: string;
   day: string;
   priority:string;
@@ -21,7 +24,8 @@ export class AddTodoComponent implements OnInit {
       sno: 8,
       title: this.title,
       day: this.day,
-      priority:this.priority
+      priority:this.priority,
+      time:this.time
     };
     console.log(todo)
     this.todoAdd.emit(todo);
@@ -29,5 +33,6 @@ export class AddTodoComponent implements OnInit {
     this.title = '';
     this.day = '';
     this.priority = '';
+    this.time = '';
   }
 }
