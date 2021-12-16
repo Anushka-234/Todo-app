@@ -4,7 +4,8 @@
     <div class="row ">
       <mat-form-field appearance="standard">
         <mat-label>Add Title</mat-label>
-        <input matInput [(ngModel)]="title" name="title" required>
+        <input appValidation matInput [(ngModel)]="title" name="title" required>
+        <mat-hint align="end">Please Enter Text Only</mat-hint>
       </mat-form-field>
     </div>
     <div class="row ">

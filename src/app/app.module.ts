@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ValidationDirective } from './shared/directives/validation.directive';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     TodosComponent,
     TodoItemComponent,
     AddTodoComponent,
-    HighlightPipe
+    HighlightPipe,
+    ValidationDirective
   ],
   imports: [
     BrowserModule,
