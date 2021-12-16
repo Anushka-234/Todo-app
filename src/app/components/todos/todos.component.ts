@@ -63,11 +63,16 @@ export class TodosComponent implements OnInit {
     console.log(todo);
     return todo;
   }
-  toggleTodo(todo: Todo){
-    const index = this.todos.indexOf(todo);
-    this.todos[index].active = !this.todos[index].active;
-    localStorage.setItem('todos', JSON.stringify(this.todos));
-    console.log(todo);
+  // toggleTodo(todo: Todo){
+  //   const index = this.todos.indexOf(todo);
+  //   this.todos[index].active = !this.todos[index].active;
+  //   localStorage.setItem('todos', JSON.stringify(this.todos));
+  //   console.log(todo);
+  // }
+
+  onToggleTodo(todo: Todo){
+    todo.priority = "done"
+    localStorage.setItem("todos",JSON.stringify(this.todos))
   }
 }
 function trasition(): import("@angular/animations").AnimationMetadata {

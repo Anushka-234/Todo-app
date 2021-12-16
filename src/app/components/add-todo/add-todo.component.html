@@ -15,6 +15,18 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
+    <div class="row priority mt-3">
+      <!-- <mat-slide-toggle [(ngModel)]="priority" name="priority">High Priority</mat-slide-toggle>{{priority}} -->
+      <div class="col-md-4">
+        <mat-label>Choose a priority</mat-label>
+      </div>
+      <div class="col-md-4">
+        <mat-radio-group aria-label="Select an option" name="priority" [(ngModel)]="priority">
+          <mat-radio-button value="low-priority">Low Priority</mat-radio-button>&nbsp;&nbsp;
+          <mat-radio-button value="high-priority">High Priority</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
     <button type="submit" class="btn btn-primary mt-2">Add To Do</button>
   </form>
   <br />
