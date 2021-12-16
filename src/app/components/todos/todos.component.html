@@ -2,7 +2,7 @@
     <div class="col-md-4 text-center todos">
         <app-add-todo (todoAdd)="AddTodo($event)"></app-add-todo>
     </div>
-    <div class="col-md-4 todos-list">
+    <div class="col-md-4 todos-list" [@listAnimation]=todos.length>
         <h2>Your Todos</h2>
         <div *ngIf="this.todos.length===0; else elseBlock">No Todos to display</div>
         <ng-template #elseBlock>
