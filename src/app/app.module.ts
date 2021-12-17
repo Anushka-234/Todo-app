@@ -21,6 +21,8 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { HttpClientModule } from '@angular/common/http';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import {MatButtonModule} from '@angular/material/button';
 registerLocaleData(en);
 
 
@@ -30,7 +32,8 @@ registerLocaleData(en);
     TodosComponent,
     TodoItemComponent,
     AddTodoComponent,
-    HighlightPipe
+    HighlightPipe,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ registerLocaleData(en);
     MatSlideToggleModule,
     MatRadioModule,
     HttpClientModule,
-    NzTimePickerModule
+    NzTimePickerModule,
+    MatButtonModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

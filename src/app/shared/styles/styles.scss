@@ -136,6 +136,25 @@
   cursor: pointer;
 }
 
+.contactform {
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 10px;
+
+  .form-control {
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
+    font-size: inherit;
+  }
+}
+
 html,
 body {
   height: 100%;
