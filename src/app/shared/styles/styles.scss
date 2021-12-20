@@ -33,6 +33,10 @@
   @extend %align-items;
   @include background;
 
+  .priority {
+    border-left: 5px solid green;
+  }
+
   h2 {
     display: flex;
     color: brown;
@@ -77,6 +81,10 @@
     @extend %align-items;
     margin-left: 15px;
     border-radius: 10px;
+
+    .priority {
+      color: rgb(105, 101, 101);
+    }
   }
 
   button {

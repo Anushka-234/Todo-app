@@ -7,9 +7,12 @@ import { Todo } from '../../shared/todo';
   styleUrls: ['./add-todo.component.scss'],
 })
 export class AddTodoComponent implements OnInit {
+  time: string;
+  defaultOpenValue = new Date(0, 0, 0, 0, 0, 0);
+
   title: string;
   day: string;
-  active: boolean = false;
+  priority:string;
   @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
 
   constructor() {}
@@ -21,12 +24,15 @@ export class AddTodoComponent implements OnInit {
       sno: 8,
       title: this.title,
       day: this.day,
-      active: true,
+      priority:this.priority,
+      time:this.time
     };
+    console.log(todo)
     this.todoAdd.emit(todo);
 
     this.title = '';
     this.day = '';
-    this.active = false;
+    this.priority = '';
+    this.time = '';
   }
 }
