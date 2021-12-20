@@ -30,7 +30,8 @@ registerLocaleData(en);
     TodosComponent,
     TodoItemComponent,
     AddTodoComponent,
-    HighlightPipe
+    HighlightPipe,
+    ValidationDirective
   ],
   imports: [
     BrowserModule,
