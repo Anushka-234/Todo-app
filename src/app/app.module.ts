@@ -23,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import {MatButtonModule} from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 registerLocaleData(en);
 
 
@@ -35,7 +37,8 @@ registerLocaleData(en);
     AddTodoComponent,
     HighlightPipe,
     ContactFormComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
