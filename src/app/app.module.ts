@@ -34,7 +34,8 @@ registerLocaleData(en);
     TodoItemComponent,
     AddTodoComponent,
     HighlightPipe,
-    ContactFormComponent
+    ContactFormComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
