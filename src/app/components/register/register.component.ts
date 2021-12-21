@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { forbiddenNameValidator } from 'src/app/shared/validators/username.validator';
 import { passwordValidator } from 'src/app/shared/validators/password.validator';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Register } from 'src/app/shared/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +13,10 @@ import { passwordValidator } from 'src/app/shared/validators/password.validator'
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent{
+  user : Register;
+  users:Register[] = [];
+
+  constructor(private fb:FormBuilder, private service : AuthService, private router : Router) { }
 
   get username() {
     return this.registerForm.get('username');
@@ -40,7 +48,25 @@ export class RegisterComponent{
     return this.registerForm.controls;
   }
 
-  constructor(private fb:FormBuilder) { }
+  signup(){
+    this.user = this.registerForm.value;
+    this.service.registerUser(this.user).subscribe(user => {
+      this.users.push(user);
+    alert('signup successful');
+    this.registerForm.reset();
+    this.router.navigate(['login'])
+  }, err => {
+    alert("something went wrong")
+  })
+    console.log(this.user)
+  }
+
+  getUsers(){
+    this.service.getUsers().subscribe(data => this.users = data)
+  }
+
+
+
 
 
 

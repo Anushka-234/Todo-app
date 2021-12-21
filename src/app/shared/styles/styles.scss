@@ -155,7 +155,7 @@
   }
 }
 
-.register-form {
+.auth-form {
   padding: 10px;
   margin: 5px;
   .form-control {
@@ -163,6 +163,28 @@
     margin: 10px 0;
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
+  }
+}
+
+.navbar {
+  display: flex-end;
+  background-color: $light-beige;
+  height: 70px;
+  .logo {
+    font-weight: 900;
+    color: $dark-beige;
+    padding: 10px;
+  }
+  .nav-items {
+    display: flex;
+    li.navlink {
+      list-style: none;
+      padding: 5px;
+      color: $dark-beige;
+      a {
+        cursor: pointer;
+      }
+    }
   }
 }
 
