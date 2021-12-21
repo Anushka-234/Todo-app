@@ -1,5 +1,5 @@
 export class Todo {
-	sno : number
+	id? : number
 	title : string
 	day : string
 	// active : boolean
