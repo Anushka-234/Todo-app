@@ -4,9 +4,10 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TodosComponent } from './components/todos/todos.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  {path:'',component: TodosComponent},
+  {path:'',component: TodosComponent, canActivate:[AuthGuard]},
   {path:'contact', component:ContactFormComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},

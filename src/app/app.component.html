@@ -1,12 +1,17 @@
 <nav>
-    <div class="container" class="navbar">
-        <a class="logo">Todo-App</a>
-        <ul class="nav-items">
-            <li class="nav-link"><a routerLink="/">Home</a></li>
-            <li class="nav-link"><a routerLink="/register">Register</a></li>
-            <li class="nav-link"><a routerLink="/login">Login</a></li>
-            <li class="nav-link"><a routerLink="/contact">Contact-Us</a></li>
-        </ul>
-    </div>
+  <div class="container" class="navbar">
+    <a class="logo">Todo-App</a>
+    <ul class="nav-items">
+      <li class="nav-link"><a routerLink="/">Home</a></li>
+      <li class="nav-link"><a routerLink="/register">Register</a></li>
+      <li class="nav-link"><a routerLink="/login">Login</a></li>
+      <li class="nav-link"><a routerLink="/contact">Contact-Us</a></li>
+      <li class="nav-link">
+        <button mat-raised-button color="accent" (click)="logout()">
+          LogOut
+        </button>
+      </li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>

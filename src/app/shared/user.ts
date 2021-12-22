@@ -1,15 +1,17 @@
 export interface Register{
     username : string;
-    password : any;
-    confirmpassword : any;
+    password : string;
+    confirmpassword : string;
     address : {
-        postal : any;
+        postal : string;
         city : string;
         state : string;
     }
+    token:string;
 }
 
 export interface Login {
     username : string;
-    password : any;
+    password : string;
+    token:string;
 }
