@@ -46,11 +46,7 @@ export class AddTodoComponent implements OnInit {
       };
       console.log(todo);
       this.todoAdd.emit(todo);
-
-      this.title = '';
-      this.day = '';
-      this.priority = '';
-      this.time = '';
+      this.addtodoForm.reset();
     } else {
       this.validateAllFormFields(this.addtodoForm);
       console.log('Invalid Form');

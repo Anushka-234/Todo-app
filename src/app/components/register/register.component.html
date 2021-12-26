@@ -1,59 +1,181 @@
 <div class="container">
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <form class="register-form" [formGroup]="registerForm">
-                <div class="form-group">
-                    <label for="username">UserName</label>
-                    <input type="text"
-                        [class.is-invalid]="registerForm.get('username')!.invalid && registerForm.get('username')!.touched"
-                        id="username" name="username" formControlName="username" class="form-control">
-                    <!-- <div [class.d-none]="registerForm.get('username')!.valid || registerForm.get('username')!.untouched"
-                        class="alert alert-danger">Username is required</div> -->
-                    <!-- <div *ngIf="registerForm.get('username').hasError['required']" class="alert alert-danger">Username
-                        is
-                        required</div> -->
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="signup()">
+        <div class="form-group">
+          <label for="username">UserName</label>
+          <input
+            type="text"
+            [class.is-invalid]="
+              registerForm.get('username')!.invalid &&
+              registerForm.get('username')!.touched
+            "
+            id="username"
+            name="username"
+            formControlName="username"
+            class="form-control"
+          />
 
-                    <div *ngIf="f['username'].invalid && f['username'].touched">
-                        <small class="text-danger"
-                            *ngIf="f['username'].errors && f['username'].errors['required']">Username is
-                            required</small>
-                        <small class="text-danger"
-                            *ngIf="f['username'].errors && f['username'].errors['forbiddenName']">
-                            '{{f['username'].errors['forbiddenName'].value}}'
-                            username
-                            not allowed</small>
-                    </div>
-                </div>
-                <div formGroupName="address">
-                    <div class="form-group">
-                        <label for="City">City</label>
-                        <input type="text" id="username" name="city" formControlName="city" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="Postal">Postal</label>
-                        <input type="text" id="postal" name="postal" formControlName="postal" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="state">State</label>
-                        <input type="text" id="state" name="state" formControlName="state" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="text" id="password" name="password" formControlName="password" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="confirmpassword">Confirm Password</label>
-                    <input type="text" id="confirmpassword"
-                        [class.is-invalid]="registerForm.get('confirmpassword')!.errors" name="confirmpassword"
-                        formControlName="confirmpassword" class="form-control">
-                    <!-- <div class="text-danger">
-                        Passwords
-                        do not match</div> -->
-                </div>
-                <button class="mt-3" mat-raised-button color="accent">Submit</button>
-            </form>
-            {{registerForm.value | json }}
+          <div
+            *ngIf="
+              registerformcontrol['username'].invalid &&
+              registerformcontrol['username'].touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="
+                registerformcontrol['username'].errors &&
+                registerformcontrol['username'].errors['required']
+              "
+              >Username is required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+                registerformcontrol['username'].errors &&
+                registerformcontrol['username'].errors['forbiddenName']
+              "
+            >
+              '{{
+                registerformcontrol["username"].errors["forbiddenName"].value
+              }}' username not allowed</small
+            >
+          </div>
         </div>
+        <div formGroupName="address">
+          <div class="form-group">
+            <label for="City">City</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              formControlName="city"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Postal">Postal</label>
+            <input
+              type="text"
+              name="postal"
+              id="postal"
+              formControlName="postal"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="state">State</label>
+            <input
+              type="text"
+              name="state"
+              id="state"
+              formControlName="state"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+            class="form-control"
+            [class.is-invalid]="
+              registerForm.get('password')!.invalid &&
+              registerForm.get('password')!.touched
+            "
+          />
+          <div
+            *ngIf="
+              registerformcontrol['password'].invalid &&
+              registerformcontrol['password'].touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="
+                registerformcontrol['password'].errors &&
+                registerformcontrol['password'].errors['required']
+              "
+              >password is required</small
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmpassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmpassword"
+            [class.is-invalid]="
+              registerForm.get('confirmpassword')!.invalid &&
+              registerForm.get('confirmpassword')!.touched
+            "
+            name="confirmpassword"
+            formControlName="confirmpassword"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              registerformcontrol['confirmpassword'].invalid &&
+              registerformcontrol['confirmpassword'].touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="
+                registerformcontrol['confirmpassword'].errors &&
+                registerformcontrol['confirmpassword'].errors['required']
+              "
+              >confirmpassword is required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+                registerformcontrol['confirmpassword'].errors &&
+                registerformcontrol['confirmpassword'].errors['mustMatch']
+              "
+              >Passwords do not match</small
+            >
+          </div>
+          <div
+            *ngIf="submitted && registerformcontrol['confirmpassword'].errors"
+            class="alert alert-danger"
+          >
+            <div
+              *ngIf="registerformcontrol['confirmpassword'].errors['required']"
+            >
+              Confirm Password is required
+            </div>
+            <div
+              *ngIf="registerformcontrol['confirmpassword'].errors['mismatch']"
+            >
+              Password do not match
+            </div>
+          </div>
+        </div>
+        <button class="mt-3" mat-raised-button color="accent">Submit</button>
+        <p class="mt-3">
+          Already registered ?&nbsp;<a routerLink="/login">Login</a>
+        </p>
+      </form>
+      <button
+        class="mt-3"
+        mat-raised-button
+        color="accent"
+        (click)="getUsers()"
+      >
+        List Users
+      </button>
     </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-4" *ngFor="let user of users">
+    <p>{{ user.username }}</p>
+    <p>{{ user.password }}</p>
+    <p>{{ user.token }}</p>
+  </div>
 </div>

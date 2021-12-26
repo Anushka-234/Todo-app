@@ -1,45 +1,77 @@
 <div class="my-3 add-todo">
   <h2>Add a Todo</h2>
-  <form (ngSubmit)="onSubmit()" class="add-todo--form" [formGroup]="addtodoForm" novalidate>
-    <div class="row ">
-      <mat-form-field appearance="standard"
-        [class.is-invalid]="addtodoForm.get('title')!.invalid && addtodoForm.get('title')!.touched">
+  <form
+    (ngSubmit)="onSubmit()"
+    class="add-todo--form"
+    [formGroup]="addtodoForm"
+    novalidate
+  >
+    <div class="row">
+      <mat-form-field
+        appearance="standard"
+        [class.is-invalid]="
+          addtodoForm.get('title')!.invalid && addtodoForm.get('title')!.touched
+        "
+      >
         <mat-label>Add Title</mat-label>
-        <input matInput name="title" formControlName="title">
+        <input matInput name="title" formControlName="title" />
         <div *ngIf="f['title'].invalid && f['title'].touched">
-          <small class="text-danger" *ngIf="f['title'].errors && f['title'].errors['required']">Title is
-            required</small>
+          <small
+            class="text-danger"
+            *ngIf="f['title'].errors && f['title'].errors['required']"
+            >Title is required</small
+          >
         </div>
-
       </mat-form-field>
     </div>
-    <div class="row ">
-      <mat-form-field appearance="standard"
-        [class.is-invalid]="addtodoForm.get('day')!.invalid && addtodoForm.get('day')!.touched">
+    <div class="row">
+      <mat-form-field
+        appearance="standard"
+        [class.is-invalid]="
+          addtodoForm.get('day')!.invalid && addtodoForm.get('day')!.touched
+        "
+      >
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="day" formControlName="day" name="day">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="day"
+          name="day"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <div *ngIf="f['day'].invalid && f['day'].touched">
-          <small class="text-danger" *ngIf="f['day'].errors && f['day'].errors['required']">Date is
-            required</small>
+          <small
+            class="text-danger"
+            *ngIf="f['day'].errors && f['day'].errors['required']"
+            >Date is required</small
+          >
         </div>
       </mat-form-field>
     </div>
     <div class="row priority mt-3">
-      <!-- <mat-slide-toggle [(ngModel)]="priority" name="priority">High Priority</mat-slide-toggle>{{priority}} -->
       <div class="col-md-3">
         <mat-label>Choose a priority</mat-label>
       </div>
       <div class="col-md-6">
-        <mat-radio-group aria-label="Select an option" name="priority" formControlName="priority">
-          <mat-radio-button value="low-priority">Low Priority</mat-radio-button>&nbsp;&nbsp;
-          <mat-radio-button value="high-priority">High Priority</mat-radio-button>
+        <mat-radio-group
+          aria-label="Select an option"
+          name="priority"
+          formControlName="priority"
+        >
+          <mat-radio-button value="low-priority">Low Priority</mat-radio-button
+          >&nbsp;&nbsp;
+          <mat-radio-button value="high-priority"
+            >High Priority</mat-radio-button
+          >
         </mat-radio-group>
       </div>
       <div class="row mt-3">
-        <nz-time-picker formControlName="time" name="time" [nzDefaultOpenValue]="defaultOpenValue"></nz-time-picker>
-        {{time}}
+        <nz-time-picker
+          formControlName="time"
+          name="time"
+          [nzDefaultOpenValue]="defaultOpenValue"
+        ></nz-time-picker>
       </div>
     </div>
     <button type="submit" class="btn btn-primary mt-2">Add To Do</button>

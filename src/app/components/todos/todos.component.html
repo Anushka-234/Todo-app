@@ -1,21 +1,16 @@
-<div class="row">
-    <div class="col-md-4 text-center todos">
-        <app-add-todo (todoAdd)="AddTodo($event)"></app-add-todo>
+<div class="row mt-5">
+  <div class="col-md-4 text-center todos">
+    <app-add-todo (todoAdd)="AddTodo($event)"></app-add-todo>
+  </div>
+  <div class="col-md-4 todos-list" [@listAnimation]="todos.length">
+    <h2>Your Todos</h2>
+    <div *ngFor="let todo of todos">
+      <app-todo-item
+        [todo]="todo"
+        (todoDelete)="deleteTodo($event)"
+        (toggleTodo)="onToggleTodo(todo)"
+      >
+      </app-todo-item>
     </div>
-    <div class="col-md-4 todos-list" [@listAnimation]=todos.length>
-        <h2>Your Todos</h2>
-        <!-- <div *ngIf="this.todos.length===0; else elseBlock">No Todos to display</div>
-        <ng-template #elseBlock> -->
-        <div *ngFor="let todo of todos">
-            <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)" (toggleTodo)="onToggleTodo(todo)">
-            </app-todo-item>
-        </div>
-        <!-- </ng-template>
-    </div> -->
-        <div class="row">
-            <div class="text-center">
-                <button class="btn btn-primary" routerLink="/contact">Contact-Us</button>
-                <button class="btn btn-primary " routerLink="/about">About Us</button>
-            </div>
-        </div>
-    </div>
+  </div>
+</div>

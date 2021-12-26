@@ -1,8 +1,7 @@
 import { ValidationDirective } from './validation.directive';
 
-describe('ValidationDirective', () => {
+describe('ValidationDirective', () => 
   it('should create an instance', () => {
-    const directive = new ValidationDirective();
+    const directive = ValidationDirective;
     expect(directive).toBeTruthy();
-  });
-});
+  }));
