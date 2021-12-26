@@ -109,7 +109,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/app/shared/sstyles/styles.scss",
+              "src/app/shared/styles/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],

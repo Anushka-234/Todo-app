@@ -46,7 +46,7 @@ export class RegisterComponent {
     { Validators: PasswordMatch('password','confirmpassword')}
   );
 
-  get form() {
+  get registerformcontrol() {
     return this.registerForm.controls;
   }
 

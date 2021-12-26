@@ -16,23 +16,30 @@
             class="form-control"
           />
 
-          <div *ngIf="form['username'].invalid && form['username'].touched">
+          <div
+            *ngIf="
+              registerformcontrol['username'].invalid &&
+              registerformcontrol['username'].touched
+            "
+          >
             <small
               class="text-danger"
               *ngIf="
-                form['username'].errors && form['username'].errors['required']
+                registerformcontrol['username'].errors &&
+                registerformcontrol['username'].errors['required']
               "
               >Username is required</small
             >
             <small
               class="text-danger"
               *ngIf="
-                form['username'].errors &&
-                form['username'].errors['forbiddenName']
+                registerformcontrol['username'].errors &&
+                registerformcontrol['username'].errors['forbiddenName']
               "
             >
-              '{{ form["username"].errors["forbiddenName"].value }}' username
-              not allowed</small
+              '{{
+                registerformcontrol["username"].errors["forbiddenName"].value
+              }}' username not allowed</small
             >
           </div>
         </div>
@@ -81,11 +88,17 @@
               registerForm.get('password')!.touched
             "
           />
-          <div *ngIf="form['password'].invalid && form['password'].touched">
+          <div
+            *ngIf="
+              registerformcontrol['password'].invalid &&
+              registerformcontrol['password'].touched
+            "
+          >
             <small
               class="text-danger"
               *ngIf="
-                form['password'].errors && form['password'].errors['required']
+                registerformcontrol['password'].errors &&
+                registerformcontrol['password'].errors['required']
               "
               >password is required</small
             >
@@ -106,34 +119,39 @@
           />
           <div
             *ngIf="
-              form['confirmpassword'].invalid && form['confirmpassword'].touched
+              registerformcontrol['confirmpassword'].invalid &&
+              registerformcontrol['confirmpassword'].touched
             "
           >
             <small
               class="text-danger"
               *ngIf="
-                form['confirmpassword'].errors &&
-                form['confirmpassword'].errors['required']
+                registerformcontrol['confirmpassword'].errors &&
+                registerformcontrol['confirmpassword'].errors['required']
               "
               >confirmpassword is required</small
             >
             <small
               class="text-danger"
               *ngIf="
-                form['confirmpassword'].errors &&
-                form['confirmpassword'].errors['mustMatch']
+                registerformcontrol['confirmpassword'].errors &&
+                registerformcontrol['confirmpassword'].errors['mustMatch']
               "
               >Passwords do not match</small
             >
           </div>
           <div
-            *ngIf="submitted && form['confirmpassword'].errors"
+            *ngIf="submitted && registerformcontrol['confirmpassword'].errors"
             class="alert alert-danger"
           >
-            <div *ngIf="form['confirmpassword'].errors['required']">
+            <div
+              *ngIf="registerformcontrol['confirmpassword'].errors['required']"
+            >
               Confirm Password is required
             </div>
-            <div *ngIf="form['confirmpassword'].errors['mismatch']">
+            <div
+              *ngIf="registerformcontrol['confirmpassword'].errors['mismatch']"
+            >
               Password do not match
             </div>
           </div>
