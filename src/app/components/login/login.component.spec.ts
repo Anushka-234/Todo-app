@@ -23,4 +23,22 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form invalid when empty', () => {
+    expect(component.loginForm.valid).toBeFalsy();
+  });
+
+  it('username field validity', () => {
+    let username = component.loginForm.controls['username'];
+    expect(username.valid).toBeFalsy();
+
+  });
+
+  it('password field validity', () => {
+    let password = component.loginForm.controls['password'];
+    expect(password.valid).toBeFalsy();
+
+  });
+
+
 });
