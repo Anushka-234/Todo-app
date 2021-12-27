@@ -111,6 +111,9 @@ export class TodosComponent implements OnInit {
     todo.priority = 'done';
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
+  logout() {
+    this.auth.logout();
+  }
 }
 function trasition(): import('@angular/animations').AnimationMetadata {
   throw new Error('Function not implemented.');

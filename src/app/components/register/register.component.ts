@@ -37,6 +37,7 @@ export class RegisterComponent {
       username: ['', [Validators.required, forbiddenNameValidator]],
       password: ['',Validators.required], 
       confirmpassword: ['',[Validators.required, PasswordMatch]],
+      email:['',[Validators.required, Validators.pattern]],
       address: this.fb.group({
         city: [''],
         state: [''],
