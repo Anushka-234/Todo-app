@@ -3,6 +3,8 @@
 
 .login_card {
   @include card_body;
+  width: 780px;
+  height: 560px;
 }
 
 .container_login {
@@ -35,7 +37,10 @@
 
     .password-icon {
       position: absolute;
+      cursor: pointer;
+      margin-left: 360px;
       padding: 10px;
+      font-size: 18px;
     }
 
     .form-control {
@@ -61,6 +66,7 @@
       .create_account {
         color: $red;
         padding: 3px;
+        cursor: pointer;
       }
     }
   }

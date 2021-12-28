@@ -79,6 +79,11 @@
           <div class="form-group form__group">
             <label class="field_label" htmlFor="password">Password</label><br />
             <i class="material-icons left-icon">key</i>
+            <fa-icon
+              [icon]="!showpassword ? faEyeSlash : faEye"
+              class="password-icon"
+              (click)="showhidePassword()"
+            ></fa-icon>
             <input
               type="password"
               id="password"
@@ -91,12 +96,6 @@
                 loginForm.get('password')!.touched
               "
             />
-            <fa-icon
-              [icon]="!showpassword ? faEyeSlash : faEye"
-              class="password-icon"
-              (click)="showhidePassword()"
-            ></fa-icon>
-
             <div *ngIf="form['password'].invalid && form['password'].touched">
               <small
                 class="text-danger"
