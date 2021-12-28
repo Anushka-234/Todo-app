@@ -4,3 +4,96 @@
   border-radius: 10px;
   background: $light-beige;
 }
+
+@mixin card_body() {
+  width: 768px;
+  height: 560px;
+  position: absolute;
+  left: 336px;
+  top: 232px;
+  padding-left: 24px;
+  box-shadow: 0px 16px 16px #e4e3e3, 0px 24px 32px #eceaea;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+}
+
+@mixin side_form() {
+  width: 768px;
+  flex: 0.7;
+}
+
+@mixin button() {
+  background-color: $red;
+  width: 90%;
+  border-radius: 8px;
+  border: none;
+  padding: 15px 32px;
+  color: #fff;
+  font-size: 16px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 4px 2px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+@mixin fontstyles() {
+  font-family: Roboto;
+  font-style: normal;
+}
+
+@mixin side_image() {
+  flex: 0.3;
+  width: 350px;
+  margin-top: 180px;
+}
+
+@mixin form_header() {
+  color: $red;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.2em;
+}
+
+@mixin form_header_info {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@mixin form_header_text {
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 22px;
+  color: #828282;
+}
+
+@mixin form_group {
+  width: 100%;
+  margin-bottom: 3px;
+  padding: 12px;
+}
+
+@mixin form_control {
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+@mixin field_label {
+  font-weight: 500;
+  line-height: 22px;
+  font-size: 16px;
+  padding: 5px;
+}
+
+@mixin form_query {
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 5px;
+}
