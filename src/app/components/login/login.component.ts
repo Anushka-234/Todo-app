@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Register } from '../../shared/user';
+import { Login } from '../../shared/user';
 import {  faEnvelope,
   faLock,
   faTimes,
@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   showpassword = false;
 
-
   faEnvelope = faEnvelope;
   faLock = faLock;
   faTimes = faTimes;
@@ -40,7 +39,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginForm = this.fb.group({
-    username: ['', Validators.required],
+    email: ['', [Validators.required,Validators.pattern]],
     password: ['', Validators.required],
   });
 
@@ -54,8 +53,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           const user = data.find((a: any) => {
             return (
-              a.username === this.loginForm.value.username &&
-              a.password === this.loginForm.value.password
+              a.email === this.loginForm.value.email
             );
           });
           if (user) {
@@ -83,6 +81,8 @@ export class LoginComponent implements OnInit {
       }
     
   }
+
+ 
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach((field) => {
       const control = formGroup.get(field);
@@ -95,6 +95,10 @@ export class LoginComponent implements OnInit {
   }
   token() {
     console.log(this.auth.gettoken());
+  }
+
+  submitButton():void{
+    console.log("submitted");
   }
 
   showhidePassword(){

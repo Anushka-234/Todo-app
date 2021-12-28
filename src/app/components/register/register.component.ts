@@ -39,7 +39,7 @@ export class RegisterComponent {
       username: ['', [Validators.required, forbiddenNameValidator]],
       gender:['',Validators.required],
       phone:['',Validators.required],
-      email:['',Validators.required],
+      email:['',[Validators.required, Validators.pattern]],
       dob:['']
     },
     { Validators: PasswordMatch('password','confirmpassword')}
@@ -83,5 +83,9 @@ export class RegisterComponent {
 
   getUsers() {
     this.service.getUsers().subscribe((data) => (this.users = data));
+  }
+
+  submitButton(){
+    console.log("submitted")
   }
 }

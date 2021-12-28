@@ -35,12 +35,19 @@
       padding: 10px;
     }
 
-    .password-icon {
-      position: absolute;
-      cursor: pointer;
-      margin-left: 360px;
-      padding: 10px;
-      font-size: 18px;
+    .right-icon {
+      @include icon-button;
+      color: $text-color;
+    }
+
+    .right-icon-success {
+      @include icon-button;
+      color: green;
+    }
+
+    .right-icon-invalid {
+      @include icon-button;
+      color: red;
     }
 
     .form-control {
@@ -54,7 +61,7 @@
     .forgot_password {
       text-align: right;
       width: 90%;
-      padding: 3px;
+      padding: 4px;
       color: $red;
     }
     .login_btn {

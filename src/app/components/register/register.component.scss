@@ -33,7 +33,7 @@
     .left-icon {
       position: absolute;
       padding: 10px;
-      color: #828282;
+      color: $text-color;
     }
 
     .password-icon {
@@ -43,7 +43,7 @@
 
     .form-control {
       @include form_control;
-      color: #828282;
+      color: $text-color;
     }
 
     .gender-option {
@@ -72,6 +72,10 @@
       width: 90%;
       padding: 3px;
       color: $red;
+    }
+    .phone-field {
+      width: 100%;
+      padding-left: 16px;
     }
     .signup_btn {
       @include button;
