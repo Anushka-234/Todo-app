@@ -26,6 +26,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 registerLocaleData(en);
 
 
@@ -55,7 +56,8 @@ registerLocaleData(en);
     HttpClientModule,
     NzTimePickerModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

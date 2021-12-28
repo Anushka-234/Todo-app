@@ -28,7 +28,12 @@
       @include form_group;
     }
 
-    .icon {
+    .left-icon {
+      position: absolute;
+      padding: 10px;
+    }
+
+    .password-icon {
       position: absolute;
       padding: 10px;
     }
@@ -40,6 +45,7 @@
     .field_label {
       @include field_label;
     }
+
     .forgot_password {
       text-align: right;
       width: 90%;

@@ -39,7 +39,7 @@
 
           <div class="form-group form__group">
             <label class="field_label" htmlFor="username">Username</label><br />
-            <i class="material-icons icon">email</i>
+            <fa-icon [icon]="faEnvelope" class="left-icon"></fa-icon>
             <input
               [class.is-invalid]="
                 loginForm.get('username')!.invalid &&
@@ -54,6 +54,16 @@
               formControlName="username"
               placeholder="Your Username"
             />
+            <fa-icon
+              [icon]="faTimes"
+              class="right-icon"
+              *ngIf="submitted && loginForm.invalid"
+            ></fa-icon>
+            <fa-icon
+              [icon]="faCheck"
+              class="right-icon right-icon-sucess"
+              *ngIf="loginForm.invalid && form['username'].valid"
+            ></fa-icon>
 
             <div *ngIf="form['username'].invalid && form['username'].touched">
               <small
@@ -68,7 +78,7 @@
 
           <div class="form-group form__group">
             <label class="field_label" htmlFor="password">Password</label><br />
-            <i class="material-icons icon">key</i>
+            <i class="material-icons left-icon">key</i>
             <input
               type="password"
               id="password"
@@ -81,6 +91,12 @@
                 loginForm.get('password')!.touched
               "
             />
+            <fa-icon
+              [icon]="!showpassword ? faEyeSlash : faEye"
+              class="password-icon"
+              (click)="showhidePassword()"
+            ></fa-icon>
+
             <div *ngIf="form['password'].invalid && form['password'].touched">
               <small
                 class="text-danger"
