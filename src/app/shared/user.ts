@@ -2,11 +2,9 @@ export interface Register{
     username : string;
     password : string;
     confirmpassword : string;
-    address : {
-        postal : string;
-        city : string;
-        state : string;
-    }
+    gender:string;
+    dob:string;
+    phone:string;
     token:string;
 }
 

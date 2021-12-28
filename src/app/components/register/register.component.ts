@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { forbiddenNameValidator } from 'src/app/shared/validators/username.validator';
-import { PasswordMatch } from 'src/app/shared/validators/password.validator';
+// import { PasswordMatch } from 'src/app/shared/validators/password.validator';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Register } from 'src/app/shared/user';
@@ -41,8 +41,8 @@ export class RegisterComponent {
       phone:['',Validators.required],
       email:['',[Validators.required, Validators.pattern]],
       dob:['']
-    },
-    { Validators: PasswordMatch('password','confirmpassword')}
+    }
+    // { Validators: PasswordMatch('password','confirmpassword')}
   );
 
   get registerformcontrol() {
@@ -52,7 +52,7 @@ export class RegisterComponent {
   signup() {
     if(this.registerForm.valid){
       this.submitted = true;
-      this.user = this.registerForm.value;
+      const user = this.registerForm.value;
       this.service.postregisterData(this.user).subscribe(
         (user) => {
           this.users.push(user);

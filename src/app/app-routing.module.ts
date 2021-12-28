@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path:'contact', component:ContactFormComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
+  {path:'set-password', component:SetPasswordComponent},
   { path: 'about', loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule) }];
 
 @NgModule({
