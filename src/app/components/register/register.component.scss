@@ -1,0 +1,97 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+
+.signup_card {
+  @include card_body;
+  width: 780px;
+  height: 790px;
+}
+
+.container_signup {
+  @include side_form;
+
+  &-header {
+    @include fontstyles;
+    @include form_header;
+  }
+
+  &-info {
+    @include form_header_info;
+    @include fontstyles;
+  }
+
+  &-text {
+    @include fontstyles;
+    @include form_header_text;
+  }
+
+  &-form {
+    .form__group {
+      @include form_group;
+    }
+
+    .left-icon {
+      position: absolute;
+      padding: 10px;
+      color: $text-color;
+    }
+
+    .password-icon {
+      position: absolute;
+      padding: 10px;
+    }
+
+    .form-control {
+      @include form_control;
+      color: $text-color;
+    }
+
+    .gender-option {
+      display: flex;
+      width: 80%;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 16px;
+
+      .form-check-input {
+        color: $red;
+      }
+    }
+
+    .form-select {
+      margin-top: 15px;
+    }
+
+    .field_label {
+      @include field_label;
+    }
+
+    .forgot_password {
+      text-align: right;
+      width: 90%;
+      padding: 3px;
+      color: $red;
+    }
+    .phone-field {
+      width: 100%;
+      padding-left: 16px;
+    }
+    .signup_btn {
+      @include button;
+    }
+    .registered_user {
+      @include form_query;
+
+      ._login {
+        color: $red;
+        padding: 3px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.container_signup_image {
+  @include side_image;
+}

@@ -3,6 +3,8 @@
 
 .login_card {
   @include card_body;
+  width: 780px;
+  height: 560px;
 }
 
 .container_login {
@@ -33,9 +35,19 @@
       padding: 10px;
     }
 
-    .password-icon {
-      position: absolute;
-      padding: 10px;
+    .right-icon {
+      @include icon-button;
+      color: $text-color;
+    }
+
+    .right-icon-success {
+      @include icon-button;
+      color: green;
+    }
+
+    .right-icon-invalid {
+      @include icon-button;
+      color: red;
     }
 
     .form-control {
@@ -49,7 +61,7 @@
     .forgot_password {
       text-align: right;
       width: 90%;
-      padding: 3px;
+      padding: 4px;
       color: $red;
     }
     .login_btn {
@@ -61,6 +73,7 @@
       .create_account {
         color: $red;
         padding: 3px;
+        cursor: pointer;
       }
     }
   }

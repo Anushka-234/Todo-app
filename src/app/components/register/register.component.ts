@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Register } from 'src/app/shared/user';
 import { Router } from '@angular/router';
+import {faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,7 @@ export class RegisterComponent {
   user: Register;
   users: Register[] = [];
   submitted = false;
+  faUser = faUser;
 
   constructor(
     private fb: FormBuilder,
@@ -35,13 +37,10 @@ export class RegisterComponent {
   registerForm = this.fb.group(
     {
       username: ['', [Validators.required, forbiddenNameValidator]],
-      password: ['',Validators.required], 
-      confirmpassword: ['',[Validators.required, PasswordMatch]],
-      address: this.fb.group({
-        city: [''],
-        state: [''],
-        postal: [''],
-      }),
+      gender:['',Validators.required],
+      phone:['',Validators.required],
+      email:['',[Validators.required, Validators.pattern]],
+      dob:['']
     },
     { Validators: PasswordMatch('password','confirmpassword')}
   );
@@ -84,5 +83,9 @@ export class RegisterComponent {
 
   getUsers() {
     this.service.getUsers().subscribe((data) => (this.users = data));
+  }
+
+  submitButton(){
+    console.log("submitted")
   }
 }

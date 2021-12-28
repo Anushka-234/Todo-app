@@ -12,66 +12,45 @@
           [formGroup]="loginForm"
           (ngSubmit)="login()"
         >
-          <!-- <div class="form-group">
-            <label for="username">UserName</label>
-            <input
-              type="text"
-              [class.is-invalid]="
-                loginForm.get('username')!.invalid &&
-                loginForm.get('username')!.touched
-              "
-              id="username"
-              name="username"
-              formControlName="username"
-              class="form-control"
-            />
-
-            <div *ngIf="form['username'].invalid && form['username'].touched">
-              <small
-                class="text-danger"
-                *ngIf="
-                  form['username'].errors && form['username'].errors['required']
-                "
-                >Username is required</small
-              >
-            </div>
-          </div> -->
-
           <div class="form-group form__group">
-            <label class="field_label" htmlFor="username">Username</label><br />
+            <label class="field_label" htmlFor="email">Email</label><br />
             <fa-icon [icon]="faEnvelope" class="left-icon"></fa-icon>
-            <input
-              [class.is-invalid]="
-                loginForm.get('username')!.invalid &&
-                loginForm.get('username')!.touched
-              "
-              class="form-control"
-              type="username"
-              name="username"
-              id="username"
-              autoComplete="off"
-              required
-              formControlName="username"
-              placeholder="Your Username"
-            />
             <fa-icon
               [icon]="faTimes"
-              class="right-icon"
-              *ngIf="submitted && loginForm.invalid"
+              class="right-icon-invalid"
+              *ngIf="form['email'].invalid && form['email'].touched"
             ></fa-icon>
             <fa-icon
               [icon]="faCheck"
-              class="right-icon right-icon-sucess"
-              *ngIf="loginForm.invalid && form['username'].valid"
+              class="right-icon-success"
+              *ngIf="loginForm.invalid && form['email'].valid"
             ></fa-icon>
+            <input
+              [class.is-invalid]="
+                loginForm.get('email')!.invalid &&
+                loginForm.get('email')!.touched
+              "
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              autoComplete="off"
+              required
+              formControlName="email"
+              pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+              placeholder="example@example.com"
+            />
 
-            <div *ngIf="form['username'].invalid && form['username'].touched">
+            <div *ngIf="form['email'].invalid && form['email'].touched">
               <small
                 class="text-danger"
-                *ngIf="
-                  form['username'].errors && form['username'].errors['required']
-                "
-                >Username is required</small
+                *ngIf="form['email'].errors && form['email'].errors['required']"
+                >Email is required</small
+              >
+              <small
+                class="text-danger"
+                *ngIf="form['email'].errors && form['email'].errors['pattern']"
+                >Invalid Pattern</small
               >
             </div>
           </div>
@@ -79,24 +58,23 @@
           <div class="form-group form__group">
             <label class="field_label" htmlFor="password">Password</label><br />
             <i class="material-icons left-icon">key</i>
+            <fa-icon
+              [icon]="!showpassword ? faEyeSlash : faEye"
+              class="right-icon"
+              (click)="showhidePassword()"
+            ></fa-icon>
             <input
+              [class.is-invalid]="
+                loginForm.get('password')!.invalid &&
+                loginForm.get('password')!.touched
+              "
               type="password"
               id="password"
               name="password"
               formControlName="password"
               class="form-control"
               placeholder="Your Password"
-              [class.is-invalid]="
-                loginForm.get('password')!.invalid &&
-                loginForm.get('password')!.touched
-              "
             />
-            <fa-icon
-              [icon]="!showpassword ? faEyeSlash : faEye"
-              class="password-icon"
-              (click)="showhidePassword()"
-            ></fa-icon>
-
             <div *ngIf="form['password'].invalid && form['password'].touched">
               <small
                 class="text-danger"
@@ -112,7 +90,14 @@
               ><br />
             </div>
           </div>
-          <button class="login_btn">Login</button>
+          <!-- <button class="login_btn">Login</button> -->
+          <app-button
+            width="410px"
+            text="Login"
+            (btnClick)="submitButton()"
+            [disabled]="loginForm.invalid"
+          ></app-button>
+
           <div class="new_user">
             <span> Not Registered yet?</span
             ><span class="create_account" routerLink="/register"
