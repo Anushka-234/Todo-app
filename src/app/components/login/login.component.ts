@@ -3,6 +3,13 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Register } from '../../shared/user';
+import {  faEnvelope,
+  faLock,
+  faTimes,
+  faEye,
+  faEyeSlash,
+  faCheck,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +20,16 @@ export class LoginComponent implements OnInit {
   user = '1';
   authResponse: any;
   submitted: boolean = false;
+  showpassword = false;
+
+
+  faEnvelope = faEnvelope;
+  faLock = faLock;
+  faTimes = faTimes;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
+  faCheck = faCheck;
+
 
   constructor(
     private fb: FormBuilder,
@@ -78,5 +95,14 @@ export class LoginComponent implements OnInit {
   }
   token() {
     console.log(this.auth.gettoken());
+  }
+
+  showhidePassword(){
+    this.showpassword = !this.showpassword;
+    if(this.showpassword){
+      document.querySelector('#password')?.setAttribute('type','text');
+    }else{
+      document.querySelector('#password')?.setAttribute('type','password');
+    }
   }
 }

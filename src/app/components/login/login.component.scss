@@ -1,0 +1,71 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+
+.login_card {
+  @include card_body;
+}
+
+.container_login {
+  @include side_form;
+
+  &-header {
+    @include fontstyles;
+    @include form_header;
+  }
+
+  &-info {
+    @include form_header_info;
+    @include fontstyles;
+  }
+
+  &-text {
+    @include fontstyles;
+    @include form_header_text;
+  }
+
+  &-form {
+    .form__group {
+      @include form_group;
+    }
+
+    .left-icon {
+      position: absolute;
+      padding: 10px;
+    }
+
+    .password-icon {
+      position: absolute;
+      padding: 10px;
+    }
+
+    .form-control {
+      @include form_control;
+    }
+
+    .field_label {
+      @include field_label;
+    }
+
+    .forgot_password {
+      text-align: right;
+      width: 90%;
+      padding: 3px;
+      color: $red;
+    }
+    .login_btn {
+      @include button;
+    }
+    .new_user {
+      @include form_query;
+
+      .create_account {
+        color: $red;
+        padding: 3px;
+      }
+    }
+  }
+}
+
+.container_login_image {
+  @include side_image;
+}
