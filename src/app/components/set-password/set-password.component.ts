@@ -24,7 +24,7 @@ export class SetPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
   setpasswordForm = this.fb.group({
-    password: ['',[Validators.required, Validators.minLength(8)]],
+    password: ['',[Validators.required, Validators.minLength(8), Validators.pattern]],
     confirmpassword: ['', Validators.required],
   },
   { validators: PasswordMatch('password','confirmpassword')});
