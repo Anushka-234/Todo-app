@@ -29,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from './components/button/button.component';
+import { SetPasswordComponent } from './components/set-password/set-password.component';
 registerLocaleData(en);
 
 
@@ -42,7 +43,8 @@ registerLocaleData(en);
     ContactFormComponent,
     RegisterComponent,
     LoginComponent,
-    ButtonComponent
+    ButtonComponent,
+    SetPasswordComponent
   ],
   imports: [
     BrowserModule,

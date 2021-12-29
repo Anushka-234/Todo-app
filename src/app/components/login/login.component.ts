@@ -67,6 +67,8 @@ export class LoginComponent implements OnInit {
         });
   }
 
+
+
  
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach((field) => {
@@ -78,6 +80,7 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
   token() {
     console.log(this.auth.gettoken());
   }

@@ -24,6 +24,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
+
   it('should validate correct email format',()=>{
     const email = component.loginForm.get('email');
     email?.setValue('admin@admin.com');
