@@ -65,9 +65,6 @@
       color: $red;
       cursor: pointer;
     }
-    .login_btn {
-      @include button;
-    }
     .new_user {
       @include form_query;
 
