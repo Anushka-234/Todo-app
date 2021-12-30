@@ -170,9 +170,14 @@
                   >
                     Phone is required
                   </div>
-                  <!-- <div *ngIf="registerformcontrol['phone'].errors['phoneLength']">
-                Please enter a valid phone numeber
-              </div> -->
+                  <div
+                    *ngIf="
+                      registerformcontrol['phone'].errors &&
+                      registerformcontrol['phone'].errors['pattern']
+                    "
+                  >
+                    lease enter a valid phone number.
+                  </div>
                 </div>
               </div>
             </div>
@@ -221,7 +226,10 @@
               </div>
             </div>
           </div>
-
+          <app-set-password
+            *ngIf="registerForm.valid && !passwordsubmit"
+            (passwordSet)="setPassword($event)"
+          ></app-set-password>
           <app-button
             width="410px"
             text="Sign Up"

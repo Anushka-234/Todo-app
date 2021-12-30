@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Register } from 'src/app/shared/user';
 import { Router } from '@angular/router';
-import {faUser } from '@fortawesome/free-solid-svg-icons';
+import {faLeaf, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +23,9 @@ export class RegisterComponent {
   users: Register[] = [];
   submitted = false;
   faUser = faUser;
+  arr = [];
+  password:any;
+  passwordsubmit:boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +41,7 @@ export class RegisterComponent {
     {
       username: ['', [Validators.required, forbiddenNameValidator]],
       gender:['',Validators.required],
-      phone:['',Validators.required],
+      phone:['',[Validators.required,Validators.pattern("[0-9 ]{10}")]],
       email:['',[Validators.required, Validators.pattern]],
       dob:['']
     }
@@ -52,10 +55,21 @@ export class RegisterComponent {
   signup() {
     if(this.registerForm.valid){
       this.submitted = true;
-      const user = this.registerForm.value;
-      this.service.postregisterData(this.user).subscribe(
+      const user = {
+        username : this.registerForm.value.username,
+        gender:this.registerForm.value.gender,
+        dob: this.registerForm.value.dob,
+        phone : this.registerForm.value.phone,
+        email: this.registerForm.value.email,
+        password : this.password.password,
+        confirmpassword: this.password.confirmpassword,
+        token:this.registerForm.value.token
+
+      }
+      this.service.postregisterData(user).subscribe(
         (user) => {
           this.users.push(user);
+          console.log(this.users)
           alert('signup successful');
           this.registerForm.reset();
           this.router.navigate(['login']);
@@ -64,7 +78,6 @@ export class RegisterComponent {
           alert('something went wrong');
         }
       );
-      console.log(this.user);
     }else{
       this.validateAllFormFields(this.registerForm);
       alert("Please fill all the fields")
@@ -86,6 +99,11 @@ export class RegisterComponent {
   }
 
   submitButton(){
-    console.log("submitted")
+    const test = this.registerForm.value;
+  }
+
+  setPassword(password:any){
+   this.password = password;
+   this.passwordsubmit = password.passwordsubmit
   }
 }

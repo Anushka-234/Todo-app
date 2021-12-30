@@ -1,7 +1,7 @@
 export interface Register{
     username : string;
-    password : string;
-    confirmpassword : string;
+    password : any;
+    confirmpassword : any;
     gender:string;
     dob:string;
     phone:string;
