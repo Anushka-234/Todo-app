@@ -69,8 +69,7 @@ export class LoginComponent implements OnInit {
   //       });
   // }
 
-
-  login() {
+  login(): void {
     if(this.loginForm.valid){this.submitted = true;
       this.auth.getUsers().subscribe(
         (data) => {
@@ -78,7 +77,6 @@ export class LoginComponent implements OnInit {
             return (
               a.email === this.loginForm.value.email &&
               a.password === this.loginForm.value.password
-
             );
           });
           if (user) {
