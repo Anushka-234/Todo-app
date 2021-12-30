@@ -42,7 +42,7 @@
 
 @mixin side_image() {
   flex: 0.3;
-  width: 350px;
+  width: 100%;
   margin-top: 180px;
 }
 
@@ -98,7 +98,7 @@
 @mixin icon-button {
   position: absolute;
   cursor: pointer;
-  margin-left: 340px;
+  margin-left: 360px;
   padding: 10px;
   font-size: 18px;
 }

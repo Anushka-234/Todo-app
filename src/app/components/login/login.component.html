@@ -26,6 +26,10 @@
               *ngIf="loginForm.invalid && form['email'].valid"
             ></fa-icon>
             <input
+              [class.is-invalid]="
+                loginForm.get('email')!.invalid &&
+                loginForm.get('email')!.touched
+              "
               class="form-control"
               type="email"
               name="email"
@@ -60,6 +64,10 @@
               (click)="showhidePassword()"
             ></fa-icon>
             <input
+              [class.is-invalid]="
+                loginForm.get('password')!.invalid &&
+                loginForm.get('password')!.touched
+              "
               type="password"
               id="password"
               name="password"

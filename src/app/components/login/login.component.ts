@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
 
 
 
+
   // login() {
   //   this.auth
   //     .login(
@@ -95,14 +96,9 @@ export class LoginComponent implements OnInit {
             }
           }
         },
-        (err) => {
-          alert('something went wrong');
-        }
-      );}else{
-        this.validateAllFormFields(this.loginForm);
-        alert("Invalid Form")
-      }
-    
+        (error) => {
+          alert("Sorry we have no information about you!");
+        });
   }
 
 
