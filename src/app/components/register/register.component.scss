@@ -77,9 +77,6 @@
       width: 100%;
       padding-left: 16px;
     }
-    .signup_btn {
-      @include button;
-    }
     .registered_user {
       @include form_query;
 

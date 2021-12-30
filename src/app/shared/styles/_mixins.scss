@@ -22,7 +22,6 @@
 
 @mixin button() {
   background-color: $red;
-  width: 95%;
   border-radius: 8px;
   border: none;
   padding: 15px 32px;
@@ -74,8 +73,8 @@
 }
 
 @mixin form_control {
-  width: 90%;
-  padding: 10px;
+  width: 85%;
+  padding: 12px;
   text-align: center;
   font-size: 15px;
   font-weight: 500;
@@ -98,15 +97,7 @@
 @mixin icon-button {
   position: absolute;
   cursor: pointer;
-  margin-left: 360px;
-  padding: 10px;
-  font-size: 18px;
-}
-
-@mixin icon-button-password {
-  position: absolute;
-  cursor: pointer;
-  margin-left: 300px;
+  margin-left: 340px;
   padding: 10px;
   font-size: 18px;
 }
