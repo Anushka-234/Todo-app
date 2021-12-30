@@ -48,24 +48,59 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login() {
-    this.auth
-      .login(
-        this.loginForm.controls['email'].value,
-        this.loginForm.controls['password'].value
-      )
-      .subscribe(
-        (response) => {
-          this.authResponse = response;
-          if (response.token) {
-            localStorage.setItem('token', response.token);
-            this.router.navigate(['']);
+
+
+
+  // login() {
+  //   this.auth
+  //     .login(
+  //       this.loginForm.controls['email'].value,
+  //       this.loginForm.controls['password'].value
+  //     )
+  //     .subscribe(
+  //       (response) => {
+  //         this.authResponse = response;
+  //         if (response.token) {
+  //           localStorage.setItem('token', response.token);
+  //           this.router.navigate(['']);
+  //         }
+  //       },
+  //       (error) => {
+  //         alert("Sorry we have no information about you!");
+  //       });
+  // }
+
+  login(): void {
+    if(this.loginForm.valid){this.submitted = true;
+      this.auth.getUsers().subscribe(
+        (data) => {
+          const user = data.find((a: any) => {
+            return (
+              a.email === this.loginForm.value.email &&
+              a.password === this.loginForm.value.password
+            );
+          });
+          if (user) {
+            alert('login successful');
+            this.authResponse = user;
+            localStorage.setItem('SessionUser', this.user);
+            console.log(user);
+            if (user.token) {
+              localStorage.setItem('token', user.token);
+              this.loginForm.reset();
+              this.router.navigate(['/']);
+            } else {
+              console.log('user not found ');
+              alert('user not found');
+              this.router.navigate(['/register']);
+            }
           }
         },
         (error) => {
           alert("Sorry we have no information about you!");
         });
   }
+
 
 
 

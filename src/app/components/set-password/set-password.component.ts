@@ -1,14 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, fas} from '@fortawesome/free-solid-svg-icons';
 import { PasswordMatch } from 'src/app/shared/validators/password.validator';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-set-password',
   templateUrl: './set-password.component.html',
-  styleUrls: ['./set-password.component.scss']
+  styleUrls: ['./set-password.component.scss'],
+  animations : [
+    trigger('dialog', [
+      transition('void => *', [
+        style({ transform: 'scale3d(.3, .3, .3)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
+      ])
+    ])
+  ]
 })
 export class SetPasswordComponent implements OnInit {
 
@@ -16,6 +28,8 @@ export class SetPasswordComponent implements OnInit {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   showconfirmpassword = false;
+  passwordsubmit = false;
+  @Output() passwordSet = new EventEmitter();
 
   constructor( private fb: FormBuilder,
     private auth: AuthService,
@@ -38,9 +52,15 @@ export class SetPasswordComponent implements OnInit {
   }
 
   setPassword(){
-    const user = this.setpasswordForm.value;
-    this.auth.postregisterData
-    console.log(user)
+    this.passwordsubmit = true;
+    const password = {
+      passwordsubmit: this.passwordsubmit,
+      password : this.setpasswordForm.value.password,
+      confirmpassword: this.setpasswordForm.value.confirmpassword,
+    }
+    this.passwordSet.emit(password);
+    console.log(password)
+
   }
 
   showhidePassword(){
