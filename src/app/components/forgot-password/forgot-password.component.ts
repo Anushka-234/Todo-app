@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCheck, faEnvelope, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SendmailComponent } from './sendmail/sendmail.component';
 
 @Component({
   selector: 'app-forgot-password',
@@ -16,7 +18,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router,
+    public dialogRef: MatDialog) { }
 
   forgotpasswordForm = this.fb.group({
     email: ['', [Validators.required,Validators.pattern]]
@@ -26,8 +29,13 @@ export class ForgotPasswordComponent implements OnInit {
     return this.forgotpasswordForm.controls;
   }
 
-  submitButton(){
-    console.log(this.forgotpasswordForm.value);
+
+  openDialog(){
+    this.dialogRef.open(SendmailComponent, {
+      width:'395px',
+      height:'340px',
+      panelClass: 'custom-modalbox'
+    });
   }
 
   submit(){

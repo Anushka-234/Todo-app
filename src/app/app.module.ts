@@ -31,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from './components/button/button.component';
 import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { SendmailComponent } from './components/forgot-password/sendmail/sendmail.component';
+import {MatDialogModule} from '@angular/material/dialog';
 registerLocaleData(en);
 
 
@@ -46,7 +48,8 @@ registerLocaleData(en);
     LoginComponent,
     ButtonComponent,
     SetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SendmailComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ registerLocaleData(en);
     MatButtonModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
