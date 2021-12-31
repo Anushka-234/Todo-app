@@ -60,8 +60,9 @@
     }
 
     .form-select {
-      margin-top: 12px;
+      margin-top: 16px;
       margin-right: 10px;
+      margin-left: -4px;
     }
     .field_label_phone {
       @include field_label;
