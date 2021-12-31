@@ -5,6 +5,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SetPasswordComponent } from './components/set-password/set-password.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'set-password', component:SetPasswordComponent},
   {path:'forgot-password', component:ForgotPasswordComponent},
+  {path:'signup', component:SignupComponent},
   { path: 'about', loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule) }];
 
 @NgModule({

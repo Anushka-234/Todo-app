@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { faEye, faEyeSlash, fas} from '@fortawesome/free-solid-svg-icons';
 import { PasswordMatch } from 'src/app/shared/validators/password.validator';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Register } from 'src/app/shared/user';
 
 @Component({
   selector: 'app-set-password',
@@ -23,12 +24,13 @@ import { animate, style, transition, trigger } from '@angular/animations';
   ]
 })
 export class SetPasswordComponent implements OnInit {
-
+  @Input() userdata:Register;
   showpassword = false;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   showconfirmpassword = false;
   passwordsubmit = false;
+  data:any;
   @Output() passwordSet = new EventEmitter();
 
   constructor( private fb: FormBuilder,
@@ -36,6 +38,7 @@ export class SetPasswordComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    
   }
   setpasswordForm = this.fb.group({
     password: ['',[Validators.required, Validators.minLength(8), Validators.pattern]],
@@ -45,6 +48,8 @@ export class SetPasswordComponent implements OnInit {
 
   submitButton(){
     console.log('submitted')
+    console.log('password cobmined',this.userdata)
+    this.router.navigate(['/login'])
   }
 
   get form(){
@@ -59,7 +64,6 @@ export class SetPasswordComponent implements OnInit {
       confirmpassword: this.setpasswordForm.value.confirmpassword,
     }
     this.passwordSet.emit(password);
-    console.log(password)
 
   }
 
