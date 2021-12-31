@@ -31,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from './components/button/button.component';
 import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { SignupComponent } from './components/signup/signup.component';
 registerLocaleData(en);
 
 
@@ -46,7 +47,8 @@ registerLocaleData(en);
     LoginComponent,
     ButtonComponent,
     SetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -26,12 +26,17 @@ export class RegisterComponent {
   arr = [];
   password:any;
   passwordsubmit:boolean;
+  registereduser: Register;
+  showsetpassword:boolean;
+  userdata:Register;
+  tesla:string= "hello world"
 
   constructor(
     private fb: FormBuilder,
     private service: AuthService,
     private router: Router
   ) {}
+
 
   get username() {
     return this.registerForm.get('username');
@@ -52,47 +57,51 @@ export class RegisterComponent {
     return this.registerForm.controls;
   }
 
-  signup() {
-    if(this.registerForm.valid){
-      this.submitted = true;
-      const user = {
-        username : this.registerForm.value.username,
-        gender:this.registerForm.value.gender,
-        dob: this.registerForm.value.dob,
-        phone : this.registerForm.value.phone,
-        email: this.registerForm.value.email,
-        password : this.password.password,
-        confirmpassword: this.password.confirmpassword,
-        token:this.registerForm.value.token
+ 
 
-      }
-      this.service.postregisterData(user).subscribe(
-        (user) => {
-          this.users.push(user);
-          console.log(this.users)
-          alert('signup successful');
-          this.registerForm.reset();
-          this.router.navigate(['login']);
-        },
-        (err) => {
-          alert('something went wrong');
-        }
-      );
-    }else{
-      this.validateAllFormFields(this.registerForm);
-      alert("Please fill all the fields")
-    }
-    }
-    validateAllFormFields(formGroup: FormGroup) {
-      Object.keys(formGroup.controls).forEach((field) => {
-        const control = formGroup.get(field);
-        if (control instanceof FormControl) {
-          control.markAsTouched({ onlySelf: true });
-        } else if (control instanceof FormGroup) {
-          this.validateAllFormFields(control);
-        }
-      });
-    }
+  // register() {
+  //   if(this.registerForm.valid){
+  //     this.submitted = true;
+  //     const user = {
+  //       username : this.registereduser.username,
+  //       gender:this.registereduser.gender,
+  //       dob: this.registereduser.dob,
+  //       phone : this.registereduser.phone,
+  //       email: this.registereduser.email,
+  //       password : this.password.password,
+  //       confirmpassword: this.password.confirmpassword,
+  //       token:this.registereduser.token,
+  //       showsetpassword:this.registereduser.showsetpassword
+
+  //     }
+  //     console.log(user.password)
+  //     this.service.postregisterData(user).subscribe(
+  //       (user) => {
+  //         this.users.push(user);
+  //         console.log(this.users)
+  //         alert('signup successful');
+  //         this.registerForm.reset();
+  //         this.router.navigate(['login']);
+  //       },
+  //       (err) => {
+  //         alert('something went wrong');
+  //       }
+  //     );
+  //   }else{
+  //     this.validateAllFormFields(this.registerForm);
+  //     alert("Please fill all the fields")
+  //   }
+  //   }
+  //   validateAllFormFields(formGroup: FormGroup) {
+  //     Object.keys(formGroup.controls).forEach((field) => {
+  //       const control = formGroup.get(field);
+  //       if (control instanceof FormControl) {
+  //         control.markAsTouched({ onlySelf: true });
+  //       } else if (control instanceof FormGroup) {
+  //         this.validateAllFormFields(control);
+  //       }
+  //     });
+  //   }
 
   getUsers() {
     this.service.getUsers().subscribe((data) => (this.users = data));
@@ -105,5 +114,28 @@ export class RegisterComponent {
   setPassword(password:any){
    this.password = password;
    this.passwordsubmit = password.passwordsubmit
+   
   }
+
+  registerUser(newuser:Register){
+    this.registereduser = newuser;
+    this.userdata = this.registereduser;
+    this.showsetpassword = newuser.showsetpassword
+  }
+
+  // register(){
+  //   this.userdata = {
+  //     username : this.registereduser.username,
+  //     gender:this.registereduser.gender,
+  //     dob: this.registereduser.dob,
+  //     phone : this.registereduser.phone,
+  //     email: this.registereduser.email,
+  //     password : this.password.password,
+  //     confirmpassword: this.password.confirmpassword,
+  //     token:this.registereduser.token,
+  //     showsetpassword:this.registereduser.showsetpassword
+  //   }
+  //   console.log(this.userdata)
+  // }
+
 }

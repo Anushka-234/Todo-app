@@ -1,13 +1,13 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
 
-.password_card {
+.signup_card {
   @include card_body;
-  width: 768px;
-  height: 628px;
+  width: 780px;
+  height: 790px;
 }
 
-.container_password {
+.container_signup {
   @include side_form;
 
   &-header {
@@ -33,25 +33,12 @@
     .left-icon {
       position: absolute;
       padding: 10px;
-    }
-
-    .right-icon {
-      @include icon-button;
       color: $text-color;
     }
 
-    .right-icon-success {
-      @include icon-button;
-      color: green;
-    }
-
-    .right-icon-invalid {
-      @include icon-button;
-      color: red;
-    }
-
     .password-icon {
-      @include icon-button-password;
+      position: absolute;
+      padding: 10px;
     }
 
     .form-control {
@@ -73,36 +60,32 @@
     }
 
     .form-select {
-      margin-top: 15px;
+      margin-top: 12px;
+      margin-right: 10px;
+    }
+    .field_label_phone {
+      @include field_label;
+      padding-left: 12px;
     }
 
     .field_label {
       @include field_label;
     }
 
-    .error-message {
+    .forgot_password {
+      text-align: right;
+      width: 90%;
+      padding: 3px;
       color: $red;
-      padding: 4px;
-      font-size: 13px;
-      line-height: 21px;
-      i {
-        padding: 3px;
-      }
     }
-    .error-message-pattern {
-      color: green;
-      padding: 4px;
-      font-size: 13px;
-      line-height: 21px;
-      i {
-        padding: 3px;
-      }
+    .phone-field {
+      width: 100%;
+      padding-left: 16px;
     }
-
-    .new_user {
+    .registered_user {
       @include form_query;
 
-      .create_account {
+      ._login {
         color: $red;
         padding: 3px;
         cursor: pointer;
@@ -111,6 +94,6 @@
   }
 }
 
-.container_password_image {
+.container_signup_image {
   @include side_image;
 }
