@@ -4,6 +4,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TodosComponent } from './components/todos/todos.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'set-password', component:SetPasswordComponent},
   {path:'forgot-password', component:ForgotPasswordComponent},
   {path:'signup', component:SignupComponent},
+  {path:'resetpassword', component:ResetpasswordComponent},
   { path: 'about', loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule) }];
 
 @NgModule({
