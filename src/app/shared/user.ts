@@ -6,6 +6,8 @@ export interface Register{
     dob:string;
     phone:string;
     token:string;
+    showsetpassword:boolean;
+    email:string;
 }
 
 export interface Login {
