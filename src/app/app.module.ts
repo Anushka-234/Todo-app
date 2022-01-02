@@ -35,6 +35,7 @@ import { SendmailComponent } from './components/forgot-password/sendmail/sendmai
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { SignupComponent } from './components/signup/signup.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 registerLocaleData(en);
 
 
@@ -51,10 +52,9 @@ registerLocaleData(en);
     ButtonComponent,
     SetPasswordComponent,
     ForgotPasswordComponent,
-
     SendmailComponent,
-
-    SignupComponent
+    SignupComponent,
+     ResetpasswordComponent
   ],
   imports: [
     BrowserModule,

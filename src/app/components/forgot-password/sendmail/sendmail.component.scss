@@ -1,6 +1,10 @@
 ::ng-deep .custom-modalbox {
   mat-dialog-container {
     padding: 0;
+    top: 346px;
+    bottom: 346px;
+    left: 420px;
+    right: 600px;
     box-shadow: 0px 4px 16px rgba(184, 184, 184, 0.25);
     border-radius: 20px;
   }
