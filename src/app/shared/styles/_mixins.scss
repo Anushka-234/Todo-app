@@ -69,7 +69,7 @@
 @mixin form_group {
   width: 100%;
   margin-bottom: 3px;
-  padding: 10px;
+  padding: 10px 0px;
 }
 
 @mixin form_control {
@@ -97,7 +97,7 @@
 @mixin icon-button {
   position: absolute;
   cursor: pointer;
-  margin-left: 340px;
+  margin-left: 370px;
   padding: 10px;
   font-size: 18px;
 }

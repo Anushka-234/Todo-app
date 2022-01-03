@@ -124,6 +124,23 @@
               onfocus="(this.type='date')"
               placeholder="Select your Date of Birth"
             />
+            <div
+              *ngIf="
+                signupformcontrol['dob'].invalid &&
+                signupformcontrol['dob'].touched
+              "
+              class="error-message"
+            >
+              <div
+                *ngIf="
+                  signupformcontrol['dob'].errors &&
+                  signupformcontrol['dob'].errors['required']
+                "
+              >
+                <i class="fas fa-exclamation-circle"></i>Date of Birth is
+                required
+              </div>
+            </div>
           </div>
           <div class="row phone-field">
             <label class="field_label_phone" htmlFor="phone">Phone</label>
@@ -176,7 +193,7 @@
                       signupformcontrol['phone'].errors['pattern']
                     "
                   >
-                    lease enter a valid phone number.
+                    Please enter a valid phone number.
                   </div>
                 </div>
               </div>

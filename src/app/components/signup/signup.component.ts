@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
       gender:['',Validators.required],
       phone:['',[Validators.required,Validators.pattern("[0-9 ]{10}")]],
       email:['',[Validators.required, Validators.pattern]],
-      dob:['']
+      dob:['',Validators.required]
     }
     // { Validators: PasswordMatch('password','confirmpassword')}
   );
