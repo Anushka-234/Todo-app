@@ -1,3 +1,13 @@
-<button class="btn" (click)="onClick()" [disabled]="disabled">
+<button
+  class="btn"
+  (click)="onClick()"
+  [disabled]="disabled"
+  [ngStyle]="{
+    width: width,
+    background: background,
+    color: color,
+    border: border
+  }"
+>
   {{ text }}
 </button>

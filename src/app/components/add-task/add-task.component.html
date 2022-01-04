@@ -1,0 +1,89 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col container_header">
+      <p>Create task</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="addtask" class="add_task_form">
+        <div class="row">
+          <div class="col">
+            <div class="form-groupform__group">
+              <label class="field_label">Task name</label><br />
+              <input
+                class="field form-control"
+                type="text"
+                name="task"
+                id="task"
+                autoComplete="off"
+                required
+                formControlName="task"
+                placeholder="Enter task name"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row task_features">
+          <div class="col">
+            <p class="field_label">Choose list</p>
+            <select
+              class="form-select"
+              formControlName="list"
+              aria-label="Default select example"
+            >
+              <option value="personal">Personal</option>
+              <option value="work">Work</option>
+              <option value="college-work">College Works</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <p class="field_label">Choose Priority</p>
+            <select
+              class="form-select"
+              formControlName="priority"
+              aria-label="Default select example"
+            >
+              <option value="high">High</option>
+              <option value="Medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div class="col">
+            <label class="field_label">Set date and time</label>
+            <input
+              class="field form-control"
+              type="text"
+              name="date"
+              id="date"
+              autoComplete="off"
+              required
+              formControlName="date"
+              onfocus="(this.type='date')"
+              placeholder="Choose date and time"
+            />
+          </div>
+        </div>
+
+        <div class="buttons">
+          <app-button
+            text="Cancel"
+            width="144px"
+            background="#fff"
+            color="#BE263B"
+            border="1px solid #BE263B"
+            (btnClick)="closeAddTask()"
+          ></app-button>
+          <app-button
+            text="Add Task"
+            width="144px"
+            (btnClick)="addTask()"
+          ></app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

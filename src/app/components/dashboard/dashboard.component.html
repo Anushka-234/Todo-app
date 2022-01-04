@@ -1,0 +1,89 @@
+<div class="main">
+  <div class="main_container">
+    <header class="main_header">
+      <nav class="container">
+        <div class="logo">TODO APP</div>
+        <div class="nav-items">
+          <div class="profile-icon">AB</div>
+          <div class="logout"><i class="fas fa-sign-out-alt"></i>Logout</div>
+        </div>
+      </nav>
+    </header>
+    <div class="container menu_overview">
+      <div class="date">
+        <p class="date_date">{{ current_date | date: "dd MMMM yyyy" }}</p>
+        <p class="date_text">
+          You have to keep up the pace to accomplish your task in time<i
+            class="far fa-clock"
+          ></i>
+        </p>
+      </div>
+      <div class="button">
+        <app-button
+          text="Create new task"
+          width="196px"
+          (btnClick)="openaddTask()"
+        ></app-button>
+      </div>
+    </div>
+    <div class="container main_overview">
+      <p class="header_text">Overview</p>
+      <div class="data-container row row-3">
+        <div class="data col m-3">
+          <img
+            src="../../../assets/images/today.svg"
+            alt=""
+            class="icon_image"
+          />
+          <div class="counts">
+            <p class="data_header">Today's tasks</p>
+            <p class="data_count">5</p>
+          </div>
+        </div>
+        <div class="data col m-3">
+          <img
+            src="../../../assets/images/upcoming.svg"
+            alt=""
+            class="icon_image"
+          />
+          <div class="counts">
+            <p class="data_header">Upcoming tasks</p>
+            <p class="data_count">5</p>
+          </div>
+        </div>
+        <div class="data col m-3">
+          <img
+            src="../../../assets/images/overdue.svg"
+            alt=""
+            class="icon_image"
+          />
+          <div class="counts">
+            <p class="data_header">Overdue tasks</p>
+            <p class="data_count">5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-5 list_tasks">
+          <p>Today's Tasks</p>
+        </div>
+        <div class="col-md-7 list_names">
+          <div class="list_menu">
+            <p>List names</p>
+            <app-button
+              text="Create new list"
+              width="200px"
+              (btnClick)="openaddTask()"
+              background="#fff"
+              color="#BE263B"
+              border="1px solid #BE263B"
+            ></app-button>
+          </div>
+          <div class="list_names_container mt-3">Lists of tasks</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

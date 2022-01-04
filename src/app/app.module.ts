@@ -36,6 +36,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import { SignupComponent } from './components/signup/signup.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
 registerLocaleData(en);
 
 
@@ -54,7 +56,9 @@ registerLocaleData(en);
     ForgotPasswordComponent,
     SendmailComponent,
     SignupComponent,
-     ResetpasswordComponent
+     ResetpasswordComponent,
+     DashboardComponent,
+     AddTaskComponent
   ],
   imports: [
     BrowserModule,
