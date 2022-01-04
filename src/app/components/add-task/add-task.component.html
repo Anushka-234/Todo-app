@@ -2,6 +2,12 @@
   <div class="row">
     <div class="col container_header">
       <p>Create task</p>
+      <mat-icon
+        [ngStyle]="{ color: '#333333;' }"
+        style="cursor: pointer"
+        (click)="closeAddTask()"
+        >close</mat-icon
+      >
     </div>
   </div>
 
@@ -9,63 +15,63 @@
     <div class="col">
       <form [formGroup]="addtask" class="add_task_form">
         <div class="row">
-          <div class="col">
-            <div class="form-groupform__group">
-              <label class="field_label">Task name</label><br />
-              <input
-                class="field form-control"
-                type="text"
-                name="task"
-                id="task"
-                autoComplete="off"
-                required
-                formControlName="task"
-                placeholder="Enter task name"
-              />
-            </div>
-          </div>
+          <label class="field_label">Task name</label><br />
+          <mat-form-field appearance="outline" floatLabel="never">
+            <input
+              matInput
+              name="task"
+              placeholder="Enter task name"
+              formControlName="task"
+            />
+          </mat-form-field>
         </div>
 
         <div class="form-group row task_features">
           <div class="col">
-            <p class="field_label">Choose list</p>
-            <select
-              class="form-select"
-              formControlName="list"
-              aria-label="Default select example"
-            >
-              <option value="personal">Personal</option>
-              <option value="work">Work</option>
-              <option value="college-work">College Works</option>
-            </select>
+            <label class="field_label">Choose priority</label>
+            <p>
+              <mat-form-field appearance="outline" floatLabel="never">
+                <mat-label>Choose list</mat-label>
+                <mat-select formControlName="list">
+                  <mat-option *ngFor="let list of lists" [value]="list.list">
+                    {{ list.list }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
           </div>
 
           <div class="col">
-            <p class="field_label">Choose Priority</p>
-            <select
-              class="form-select"
-              formControlName="priority"
-              aria-label="Default select example"
-            >
-              <option value="high">High</option>
-              <option value="Medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
+            <label class="field_label">Choose priority</label>
+            <p>
+              <mat-form-field appearance="outline" floatLabel="never">
+                <mat-label>Choose priority</mat-label>
+                <mat-select formControlName="priority">
+                  <mat-option value="High">High</mat-option>
+                  <mat-option value="Medium">Medium</mat-option>
+                  <mat-option value="Low">Low</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
           </div>
           <div class="col">
             <label class="field_label">Set date and time</label>
-            <input
-              class="field form-control"
-              type="text"
-              name="date"
-              id="date"
-              autoComplete="off"
-              required
-              formControlName="date"
-              onfocus="(this.type='date')"
-              placeholder="Choose date and time"
-            />
+            <p>
+              <mat-form-field appearance="outline" floatLabel="never">
+                <mat-icon matPrefix>event</mat-icon>
+                <input
+                  matInput
+                  name="date"
+                  type="datetime-local"
+                  placeholder="Choose date and time"
+                  formControlName="date"
+                />
+              </mat-form-field>
+            </p>
           </div>
+          <span class="error-msg" *ngIf="addtask.invalid">
+            <sup>*</sup>Fill all forms to activate submit button.
+          </span>
         </div>
 
         <div class="buttons">
@@ -80,6 +86,7 @@
           <app-button
             text="Add Task"
             width="144px"
+            [disabled]="addtask.invalid"
             (btnClick)="addTask()"
           ></app-button>
         </div>

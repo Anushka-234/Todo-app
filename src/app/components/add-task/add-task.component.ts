@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TaskService } from 'src/app/shared/services/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -8,10 +9,14 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
+  lists:any[]= [];
+  tasks:any[]=[];
 
-  constructor(public dialogRef: MatDialogRef<AddTaskComponent>,private fb:FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<AddTaskComponent>,private fb:FormBuilder, private service:TaskService ) { }
 
   ngOnInit(): void {
+    this.service.getList().subscribe((data) => (this.lists = data));
+    console.log(this.lists);
   }
   
 
@@ -27,13 +32,10 @@ export class AddTaskComponent implements OnInit {
   })
 
   addTask(){
-    if(this.addtask.valid){
-      const task = this.addtask.value;
-      this.dialogRef.close();
-      console.log(task)
-    }else{
-      alert("Invalid form")
-    }
+    const task = this.addtask.value;
+    this.service.addTask(task).subscribe((task) => this.tasks.push(task));
+    this.dialogRef.close()
   }
+  
 
 }

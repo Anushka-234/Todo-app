@@ -37,7 +37,7 @@
           />
           <div class="counts">
             <p class="data_header">Today's tasks</p>
-            <p class="data_count">5</p>
+            <p class="data_count">{{ counttodaytask }}</p>
           </div>
         </div>
         <div class="data col m-3">
@@ -48,7 +48,7 @@
           />
           <div class="counts">
             <p class="data_header">Upcoming tasks</p>
-            <p class="data_count">5</p>
+            <p class="data_count">{{ countupcomingtask }}</p>
           </div>
         </div>
         <div class="data col m-3">
@@ -59,7 +59,7 @@
           />
           <div class="counts">
             <p class="data_header">Overdue tasks</p>
-            <p class="data_count">5</p>
+            <p class="data_count">{{ countoverduetask }}</p>
           </div>
         </div>
       </div>
@@ -68,6 +68,12 @@
       <div class="row">
         <div class="col-md-5 list_tasks">
           <p>Today's Tasks</p>
+          <div class="tasks">
+            <app-task
+              *ngFor="let task of todaysTask"
+              [task]="task.task"
+            ></app-task>
+          </div>
         </div>
         <div class="col-md-7 list_names">
           <div class="list_menu">
@@ -75,13 +81,18 @@
             <app-button
               text="Create new list"
               width="200px"
-              (btnClick)="openaddTask()"
+              (btnClick)="openaddList()"
               background="#fff"
               color="#BE263B"
               border="1px solid #BE263B"
             ></app-button>
           </div>
-          <div class="list_names_container mt-3">Lists of tasks</div>
+          <div class="list_names_container mt-3">
+            <app-listnames
+              *ngFor="let list of lists"
+              [list]="list.list"
+            ></app-listnames>
+          </div>
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@
   justify-content: space-between;
 }
 
-.add_task_form {
+.add_list_form {
   .form__group {
     @include form_group;
   }
@@ -24,31 +24,13 @@
 
   .field_label {
     @include field_label;
-    padding: 6px;
+    padding: 10px;
   }
+}
 
-  .task_features {
-    padding: 10px 0;
-    display: flex;
-    flex-direction: row;
-
-    .form-select {
-      padding: 10px;
-      margin-bottom: 30px;
-    }
-
-    .form-control {
-      padding: 10px;
-      margin-bottom: 30px;
-      text-align: center;
-      margin-top: 14px;
-    }
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: row-reverse;
-  }
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .dropdown-toggle {
