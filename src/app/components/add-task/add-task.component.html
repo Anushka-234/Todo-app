@@ -1,0 +1,96 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col container_header">
+      <p>Create task</p>
+      <mat-icon
+        [ngStyle]="{ color: '#333333;' }"
+        style="cursor: pointer"
+        (click)="closeAddTask()"
+        >close</mat-icon
+      >
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="addtask" class="add_task_form">
+        <div class="row">
+          <label class="field_label">Task name</label><br />
+          <mat-form-field appearance="outline" floatLabel="never">
+            <input
+              matInput
+              name="task"
+              placeholder="Enter task name"
+              formControlName="task"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="form-group row task_features">
+          <div class="col">
+            <label class="field_label">Choose priority</label>
+            <p>
+              <mat-form-field appearance="outline" floatLabel="never">
+                <mat-label>Choose list</mat-label>
+                <mat-select formControlName="list">
+                  <mat-option *ngFor="let list of lists" [value]="list.list">
+                    {{ list.list }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+          </div>
+
+          <div class="col">
+            <label class="field_label">Choose priority</label>
+            <p>
+              <mat-form-field appearance="outline" floatLabel="never">
+                <mat-label>Choose priority</mat-label>
+                <mat-select formControlName="priority">
+                  <mat-option value="High">High</mat-option>
+                  <mat-option value="Medium">Medium</mat-option>
+                  <mat-option value="Low">Low</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+          </div>
+          <div class="col">
+            <label class="field_label">Set date and time</label>
+            <p>
+              <mat-form-field appearance="outline" floatLabel="never">
+                <mat-icon matPrefix>event</mat-icon>
+                <input
+                  matInput
+                  name="date"
+                  type="datetime-local"
+                  placeholder="Choose date and time"
+                  formControlName="date"
+                />
+              </mat-form-field>
+            </p>
+          </div>
+          <span class="error-msg" *ngIf="addtask.invalid">
+            <sup>*</sup>Fill all forms to activate submit button.
+          </span>
+        </div>
+
+        <div class="buttons">
+          <app-button
+            text="Cancel"
+            width="144px"
+            background="#fff"
+            color="#BE263B"
+            border="1px solid #BE263B"
+            (btnClick)="closeAddTask()"
+          ></app-button>
+          <app-button
+            text="Add Task"
+            width="144px"
+            [disabled]="addtask.invalid"
+            (btnClick)="addTask()"
+          ></app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  p {
+    @include fontstyles;
+    font-size: 18px;
+    line-height: 26px;
+    color: #333333;
+  }
+}

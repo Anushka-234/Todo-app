@@ -9,9 +9,10 @@ import { SetPasswordComponent } from './components/set-password/set-password.com
 import { SignupComponent } from './components/signup/signup.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  {path:'',component: TodosComponent, canActivate:[AuthGuard]},
+  {path:'',component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'contact', component:ContactFormComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'forgot-password', component:ForgotPasswordComponent},
   {path:'signup', component:SignupComponent},
   {path:'resetpassword', component:ResetpasswordComponent},
-  { path: 'about', loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule) }];
+{path:'todos',component:TodosComponent}
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

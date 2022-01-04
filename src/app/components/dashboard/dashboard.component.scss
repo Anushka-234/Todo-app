@@ -1,0 +1,145 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+
+* {
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px;
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .logo {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.2em;
+    color: $red;
+  }
+
+  .logout {
+    @include fontstyles;
+    font-size: 20px;
+    line-height: 28px;
+    color: #4f4f4f;
+    cursor: pointer;
+    i {
+      padding: 5px;
+    }
+    &:hover {
+      color: $red;
+    }
+  }
+  .profile-icon {
+    background: rgba(251, 220, 211, 0.25);
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: $red;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+  }
+}
+
+.menu_overview {
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .date {
+    &_date {
+      font-size: 24px;
+      line-height: 32px;
+    }
+    &_text {
+      color: $text-color;
+      font-size: 14px;
+      line-height: 22px;
+
+      i {
+        padding: 3px;
+      }
+    }
+  }
+}
+
+.main_overview {
+  padding: 12px 40px;
+  .header_text {
+    @include fontstyles;
+    font-size: 24px;
+    line-height: 28px;
+    color: #333333;
+  }
+
+  .data {
+    background: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+
+    .icon_image {
+      margin-right: 22px;
+    }
+
+    .data_header {
+      font-size: 20px;
+      line-height: 28px;
+      color: #828282;
+      margin-bottom: 4px;
+    }
+
+    .data_count {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 40px;
+      margin-bottom: 0px;
+      color: #000000;
+    }
+  }
+}
+
+section {
+  padding: 12px 40px;
+  p {
+    @include fontstyles;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #333333;
+  }
+  .list_names {
+    .list_menu {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .list_names_container {
+      border: 1px solid #e3e3e3;
+      border-radius: 10px;
+      padding: 29px;
+    }
+  }
+}

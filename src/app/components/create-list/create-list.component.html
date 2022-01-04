@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col container_header">
+      <p>Create task</p>
+      <mat-icon
+        [ngStyle]="{ color: '#333333;' }"
+        style="cursor: pointer"
+        (click)="closeAddList()"
+        >close</mat-icon
+      >
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="addlist" class="add_list_form">
+        <div class="row">
+          <label class="field_label">List name</label><br />
+          <mat-form-field appearance="outline" floatLabel="never">
+            <input
+              matInput
+              name="list"
+              placeholder="Enter list name"
+              formControlName="list"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="buttons">
+          <app-button
+            text="Cancel"
+            width="144px"
+            background="#fff"
+            color="#BE263B"
+            border="1px solid #BE263B"
+            (btnClick)="closeAddList()"
+          ></app-button>
+          <app-button
+            text="Add List"
+            width="144px"
+            [disabled]="addlist.invalid"
+            (btnClick)="addList()"
+          ></app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

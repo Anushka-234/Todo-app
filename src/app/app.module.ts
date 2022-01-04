@@ -36,6 +36,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import { SignupComponent } from './components/signup/signup.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { CreateListComponent } from './components/create-list/create-list.component';
+import {MatSelectModule} from '@angular/material/select';
+import { ListnamesComponent } from './components/listnames/listnames.component';
+import { TaskComponent } from './components/task/task.component';
 registerLocaleData(en);
 
 
@@ -54,7 +60,12 @@ registerLocaleData(en);
     ForgotPasswordComponent,
     SendmailComponent,
     SignupComponent,
-     ResetpasswordComponent
+     ResetpasswordComponent,
+     DashboardComponent,
+     AddTaskComponent,
+     CreateListComponent,
+     ListnamesComponent,
+     TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +85,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     FontAwesomeModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
