@@ -5,6 +5,7 @@ import { AddTaskComponent } from '../add-task/add-task.component';
 import { CreateListComponent } from '../create-list/create-list.component';
 import { Task } from 'src/app/shared/task';
 import { formatDate } from '@angular/common';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +24,7 @@ export class DashboardComponent implements OnInit {
   today:any = Date.now();
 
 
-  constructor(public matdialog: MatDialog, private service: TaskService) { }
+  constructor(public matdialog: MatDialog, private service: TaskService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.service.getList().subscribe((data) => (this.lists = data));
@@ -109,6 +110,10 @@ export class DashboardComponent implements OnInit {
       console.log(this.todaysTask)
     })
 
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
   
