@@ -68,24 +68,24 @@
     </div>
     <section class="container">
       <div class="row">
-        <div class="col-md-5 list_tasks">
-          <p>Today's Tasks</p>
-          <div class="tasks">
-            <app-task
-              *ngFor="let task of todaysTask"
-              [task]="task.task"
-            ></app-task>
+        <div class="col-md-5">
+          <p class="task_header">
+            Today's Tasks <span class="task_count">{{ counttodaytask }}</span>
+          </p>
+          <div class="list_tasks">
+            <app-task [todaysTask]="todaysTask"></app-task>
           </div>
         </div>
         <div class="col-md-7 list_names">
           <div class="list_menu">
-            <p>List names</p>
+            <p class="list_header">List names</p>
             <app-button
               text="Create new list"
               width="200px"
               (btnClick)="openaddList()"
               background="#fff"
               color="#BE263B"
+              padding="10px 20px"
               border="1px solid #BE263B"
             ></app-button>
           </div>
