@@ -120,15 +120,48 @@ nav {
 }
 
 section {
-  padding: 12px 40px;
-  p {
+  padding: 12px 50px;
+
+  .task_header {
     @include fontstyles;
     font-weight: normal;
     font-size: 24px;
     line-height: 32px;
     color: #333333;
   }
+
+  .task_count {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    border-radius: 16px;
+    background: rgba(251, 220, 211, 0.25);
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 32px;
+    color: $red;
+  }
+
+  .list_tasks {
+    background: #ffffff;
+    border: 1px solid hsl(0, 0%, 89%);
+    border-radius: 10px;
+    margin-right: 10px;
+    width: 471px;
+  }
+
   .list_names {
+    .list_header {
+      @include fontstyles;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 32px;
+      color: #333333;
+    }
+
     .list_menu {
       display: flex;
       justify-content: space-between;
@@ -139,7 +172,6 @@ section {
     .list_names_container {
       border: 1px solid #e3e3e3;
       border-radius: 10px;
-      padding: 29px;
     }
   }
 }
