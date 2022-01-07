@@ -6,6 +6,7 @@ import { faEye, faEyeSlash, fas} from '@fortawesome/free-solid-svg-icons';
 import { PasswordMatch } from 'src/app/shared/validators/password.validator';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Register } from 'src/app/shared/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-set-password',
@@ -35,7 +36,8 @@ export class SetPasswordComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     
@@ -63,6 +65,7 @@ export class SetPasswordComponent implements OnInit {
       password : this.setpasswordForm.value.password,
       confirmpassword: this.setpasswordForm.value.confirmpassword,
     }
+    this.toastr.success('password set', 'success')
     this.passwordSet.emit(password);
 
   }

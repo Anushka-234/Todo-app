@@ -19,7 +19,6 @@
 
   .form_control {
     @include form_control;
-    padding: 20px;
   }
 
   .field_label {
@@ -28,20 +27,11 @@
   }
 
   .task_features {
-    padding: 10px 0;
     display: flex;
     flex-direction: row;
 
-    .form-select {
-      padding: 10px;
-      margin-bottom: 30px;
-    }
-
     .form-control {
-      padding: 10px;
-      margin-bottom: 30px;
       text-align: center;
-      margin-top: 14px;
     }
   }
 
@@ -49,8 +39,18 @@
     display: flex;
     flex-direction: row-reverse;
   }
-}
-
-.dropdown-toggle {
-  border: solid grey 2px;
+  .error-message {
+    color: $red;
+    font-size: 13px;
+    line-height: 21px;
+    i {
+      padding: 2px;
+    }
+  }
+  .errormsg {
+    color: $red;
+    font-size: 13px;
+    line-height: 21px;
+    padding-right: 150px;
+  }
 }

@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { Register } from 'src/app/shared/user';
 import { Router } from '@angular/router';
 import {faLeaf, faUser } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,8 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private service: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr:ToastrService
   ) {}
 
 
@@ -121,6 +123,7 @@ export class RegisterComponent {
     this.registereduser = newuser;
     this.userdata = this.registereduser;
     this.showsetpassword = newuser.showsetpassword
+    this.toastr.success('registered','success')
   }
 
   // register(){

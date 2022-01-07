@@ -23,8 +23,8 @@ export class TaskService {
     return this.http.get<any[]>(this._url);
   }
 
-  addList(task:any): Observable<any> {
-    return this.http.post<any>(this._url, task, httpOptions);
+  addList(list:any): Observable<any> {
+    return this.http.post<any>(this._url, list, httpOptions);
   }
 
   getTasks():Observable<Task[]>{
