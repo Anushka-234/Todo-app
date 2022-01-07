@@ -33,7 +33,7 @@ import { SetPasswordComponent } from './components/set-password/set-password.com
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SendmailComponent } from './components/forgot-password/sendmail/sendmail.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SignupComponent } from './components/signup/signup.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -42,6 +42,7 @@ import { CreateListComponent } from './components/create-list/create-list.compon
 import {MatSelectModule} from '@angular/material/select';
 import { ListnamesComponent } from './components/listnames/listnames.component';
 import { TaskComponent } from './components/task/task.component';
+import { ToastrModule } from 'ngx-toastr';
 registerLocaleData(en);
 
 
@@ -86,7 +87,10 @@ registerLocaleData(en);
     FontAwesomeModule,
     MatIconModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot()
+    
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

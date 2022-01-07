@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { TaskService } from 'src/app/shared/services/task.service';
+
 
 @Component({
   selector: 'app-add-task',
@@ -11,8 +13,11 @@ import { TaskService } from 'src/app/shared/services/task.service';
 export class AddTaskComponent implements OnInit {
   lists:any[]= [];
   tasks:any[]=[];
+  isLoading:boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<AddTaskComponent>,private fb:FormBuilder, private service:TaskService ) { }
+  constructor(public dialogRef: MatDialogRef<AddTaskComponent>,private fb:FormBuilder, 
+    private service:TaskService,
+    private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.service.getList().subscribe((data) => (this.lists = data));
@@ -32,9 +37,15 @@ export class AddTaskComponent implements OnInit {
   })
 
   addTask(){
+    this.isLoading = true;
     const task = this.addtask.value;
     this.service.addTask(task).subscribe((task) => this.tasks.push(task));
+    this.toastr.success('Task added','success')
     this.dialogRef.close()
+  }
+
+  get addtaskcontrol() {
+    return this.addtask.controls;
   }
   
 

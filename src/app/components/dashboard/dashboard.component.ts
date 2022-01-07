@@ -6,6 +6,7 @@ import { CreateListComponent } from '../create-list/create-list.component';
 import { Task } from 'src/app/shared/task';
 import { formatDate } from '@angular/common';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,9 +23,11 @@ export class DashboardComponent implements OnInit {
   countoverduetask:number = 0;
   taskFormatData : any;
   today:any = Date.now();
+  isLoading:boolean = false;
 
 
-  constructor(public matdialog: MatDialog, private service: TaskService, private auth: AuthService) { }
+  constructor(public matdialog: MatDialog, private service: TaskService, private auth: AuthService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.service.getList().subscribe((data) => (this.lists = data));
@@ -33,23 +36,29 @@ export class DashboardComponent implements OnInit {
   }
 
   openaddTask(){
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = "add-task";
     dialogConfig.height = "401px";
     dialogConfig.width = "768px";
     const modalDialog = this.matdialog.open(AddTaskComponent, dialogConfig);
-    const result = modalDialog.afterClosed()
+    // modalDialog.afterClosed().subscribe(result => {
+    //   this.service.addTask(result);
+    // })
+
   }
 
   openaddList(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.id = "add-list";
+    dialogConfig.id = "create-list";
     dialogConfig.height = "304px";
     dialogConfig.width = "768px";
     const modalDialog = this.matdialog.open(CreateListComponent, dialogConfig);
-    const result = modalDialog.afterClosed()
+    modalDialog.afterClosed().subscribe(result => {
+      this.service.addList(result.subscribe((list:any) => this.lists.push(list)));
+    })
 
   }
 
@@ -86,6 +95,7 @@ export class DashboardComponent implements OnInit {
   // }
 
   getTasks(){
+    this.isLoading = true;
     this.service.getTasks().subscribe(res => {
       this.tasks = res;
       for (let task of this.tasks){
@@ -96,25 +106,38 @@ export class DashboardComponent implements OnInit {
         if(this.taskFormatData == this.today){
           console.log(this.counttodaytask)
           this.counttodaytask++;
+          this.isLoading = false;
         }
         if(this.taskFormatData > this.today){
-          this.countupcomingtask++
+          this.countupcomingtask++;
+          this.isLoading = false;
         }
         if(this.taskFormatData < this.today){
-          this.countoverduetask++
+          this.countoverduetask++;
+          this.isLoading = false;
         }
         if(this.taskFormatData == this.today){
           this.todaysTask.push(task);
+          this.isLoading = false;
+        
         }
       }
-      console.log(this.todaysTask)
-    })
+      this.isLoading = false;
+      console.log('todays-task',this.todaysTask)
+    },
+    err=> {
+      this.isLoading = false;
+      console.error('nothing to display');}
+    )
 
   }
 
   logout() {
+    this.toastr.success('logged out successfully','dashboard')
     this.auth.logout();
   }
+
+  
 
   
 

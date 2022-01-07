@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { TaskService } from 'src/app/shared/services/task.service';
 
 @Component({
@@ -11,8 +12,9 @@ export class ListnamesComponent implements OnInit {
   collapsed : boolean = true;
   items:any;
   tasks:any[];
+  isLoading:boolean = false;
 
-  constructor(private service:TaskService) { }
+  constructor(private service:TaskService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.getTasksofList(this.list);
@@ -31,10 +33,15 @@ export class ListnamesComponent implements OnInit {
   }
 
 deleteTask(task:any){
+  this.isLoading = true;
   this.service
   .deleteTask(task)
   .subscribe(
-    () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+    () => {(this.tasks = this.tasks.filter((t) => t.id !== task.id))
+    this.isLoading=false;
+    this.toastr.warning('Task deleted');
+    
+  }
   );
 }
 

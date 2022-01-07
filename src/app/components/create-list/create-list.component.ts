@@ -31,7 +31,7 @@ export class CreateListComponent implements OnInit {
 
   addList(){
     const list = this.addlist.value;
-    this.service.addList(list).subscribe((list) => this.lists.push(list));
+    // this.service.addList(list).subscribe((list) => this.lists.push(list));
     this.dialogRef.close()
   }
 

@@ -39,7 +39,9 @@
           />
           <div class="counts">
             <p class="data_header">Today's tasks</p>
-            <p class="data_count">{{ counttodaytask }}</p>
+            <p class="data_count">
+              {{ counttodaytask }}
+            </p>
           </div>
         </div>
         <div class="data col m-3">
@@ -71,14 +73,27 @@
         <div class="col-md-5">
           <p class="task_header">
             Today's Tasks <span class="task_count">{{ counttodaytask }}</span>
+
+            <span *ngIf="isLoading" class="spinner">
+              <mat-spinner [diameter]="25"></mat-spinner>
+            </span>
           </p>
           <div class="list_tasks">
-            <app-task [todaysTask]="todaysTask"></app-task>
+            <app-task [todaysTask]="todaysTask">
+              <span *ngIf="isLoading" class="spinner">
+                <mat-spinner [diameter]="25"></mat-spinner>
+              </span>
+            </app-task>
           </div>
         </div>
         <div class="col-md-7 list_names">
           <div class="list_menu">
-            <p class="list_header">List names</p>
+            <p class="list_header">
+              List names
+              <span *ngIf="isLoading" class="spinner">
+                <mat-spinner [diameter]="25"></mat-spinner>
+              </span>
+            </p>
             <app-button
               text="Create new list"
               width="200px"

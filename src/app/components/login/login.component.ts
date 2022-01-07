@@ -10,6 +10,7 @@ import {  faEnvelope,
   faEyeSlash,
   faCheck,
 } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +66,10 @@ export class LoginComponent implements OnInit {
           this.authResponse = response;
           if (response.token) {
             localStorage.setItem('token', response.token);
+            this.toastr.success('Login Successful','message')
             this.router.navigate(['']);
+          
+            console.log('success')
           }
         },
         (error) => {

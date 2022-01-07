@@ -62,7 +62,7 @@
           margin-top: 6px;
           padding: 10px;
 
-          cursor: crosshair;
+          cursor: pointer;
           &:hover {
             background-color: $red;
           }
@@ -104,9 +104,9 @@
         width: fit-content;
       }
     }
-    .border_line {
-      width: 100%;
-      border-bottom: 1px solid #e0e0e0;
-    }
+  }
+  .border_line {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
   }
 }

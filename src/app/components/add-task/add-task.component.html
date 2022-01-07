@@ -24,6 +24,21 @@
               formControlName="task"
             />
           </mat-form-field>
+          <div
+            *ngIf="
+              addtaskcontrol['task'].invalid && addtaskcontrol['task'].touched
+            "
+            class="error-message"
+          >
+            <div
+              *ngIf="
+                addtaskcontrol['task'].errors &&
+                addtaskcontrol['task'].errors['required']
+              "
+            >
+              <i class="fas fa-exclamation-circle"></i>Task name is required
+            </div>
+          </div>
         </div>
 
         <div class="form-group row task_features">
@@ -39,6 +54,22 @@
                 </mat-select>
               </mat-form-field>
             </p>
+
+            <div
+              *ngIf="
+                addtaskcontrol['list'].invalid && addtaskcontrol['list'].touched
+              "
+              class="error-message"
+            >
+              <div
+                *ngIf="
+                  addtaskcontrol['list'].errors &&
+                  addtaskcontrol['list'].errors['required']
+                "
+              >
+                <i class="fas fa-exclamation-circle"></i>Please choose a list
+              </div>
+            </div>
           </div>
 
           <div class="col">
@@ -69,9 +100,6 @@
               </mat-form-field>
             </p>
           </div>
-          <span class="error-msg" *ngIf="addtask.invalid">
-            <sup>*</sup>Fill all forms to activate submit button.
-          </span>
         </div>
 
         <div class="buttons">
@@ -89,6 +117,9 @@
             [disabled]="addtask.invalid"
             (btnClick)="addTask()"
           ></app-button>
+          <span class="errormsg" *ngIf="addtask.invalid">
+            <sup>*</sup>Fill all fields to activate submit button.
+          </span>
         </div>
       </form>
     </div>
