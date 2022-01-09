@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <app-signup (register)="registerUser($event)"></app-signup>
+    <app-set-password
+      [userdata]="userdata"
+      *ngIf="showsetpassword"
+      (passwordSet)="setPassword($event)"
+    ></app-set-password>
+  </div>
+</div>

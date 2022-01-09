@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <form #contactform="ngForm" class="contactform">
+                {{contactform.form.valid}}
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input required minlength="3" maxlength="10" type="text" ngModel id="firstName" name="firstName"
+                        class="form-control" #firstName="ngModel">
+                    <!-- <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+                        <div *ngIf="firstName.errors.minlength">FirstName is required</div>
+                    </div> -->
+                    <!-- <div class="alert alert-danger" [class.d-none]="firstName.valid || firstName.untouched">First Name
+                        is required</div> -->
+                    <div *ngIf="firstName.touched && (firstName.invalid || firstName.errors)">
+                        <div class="alert alert-danger" *ngIf="firstName.hasError('required')">FirstName is required
+                        </div>
+                        <div class="alert alert-danger" *ngIf="firstName.hasError('minlength')">FirstName must be more
+                            than 3 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"><label for="comment">Comment</label>
+                    <textarea id="comment" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+                <button [disabled]="contactform.form.invalid" mat-raised-button color="accent">Accent</button>
+            </form>
+        </div>
+    </div>
+</div>

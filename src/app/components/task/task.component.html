@@ -1,0 +1,14 @@
+<div class="task" *ngFor="let task of todaysTask">
+  <div class="task_check">
+    <div class="check" (click)="deleteTask(task)">
+      <span *ngIf="isLoading" class="spinner">
+        <mat-spinner [diameter]="25"></mat-spinner>
+      </span>
+      <div class="task_features">
+        <p class="task_header">{{ task.task }}</p>
+        <p class="task_list">{{ task.list }}</p>
+      </div>
+    </div>
+  </div>
+  <p class="{{ task.priority }}">{{ task.priority }}</p>
+</div>
