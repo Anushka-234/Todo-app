@@ -46,12 +46,19 @@
       grid-template-columns: 5fr 2fr 3fr;
       border-bottom: 1px solid #e3e3e3;
       align-items: center;
+      padding: 20px;
       .task_title {
+        display: flex;
+        flex-direction: row;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
         color: #333333;
-        padding: 12px;
+
+        .text {
+          padding: 6px;
+        }
+
         span {
           display: inline-block;
           border: 1px solid $red;
@@ -108,5 +115,6 @@
   .border_line {
     width: 100%;
     border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 12px;
   }
 }

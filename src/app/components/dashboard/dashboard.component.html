@@ -86,7 +86,7 @@
             </app-task>
           </div>
         </div>
-        <div class="col-md-7 list_names">
+        <div class="col-md-7">
           <div class="list_menu">
             <p class="list_header">
               List names
@@ -94,17 +94,19 @@
                 <mat-spinner [diameter]="25"></mat-spinner>
               </span>
             </p>
-            <app-button
-              text="Create new list"
-              width="200px"
-              (btnClick)="openaddList()"
-              background="#fff"
-              color="#BE263B"
-              padding="10px 20px"
-              border="1px solid #BE263B"
-            ></app-button>
+            <p>
+              <app-button
+                text="Create new list"
+                width="200px"
+                (btnClick)="openaddList()"
+                background="#fff"
+                color="#BE263B"
+                padding="8px 10px"
+                border="1px solid #BE263B"
+              ></app-button>
+            </p>
           </div>
-          <div class="list_names_container mt-3">
+          <div class="list_names_container mt-2">
             <app-listnames
               *ngFor="let list of lists"
               [list]="list.list"

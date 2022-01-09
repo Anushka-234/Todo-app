@@ -73,7 +73,8 @@ export class LoginComponent implements OnInit {
           }
         },
         (error) => {
-          alert("Sorry we have no information about you!");
+          this.toastr.error("Invalid Login","Error")
+         
         });
   }
 
