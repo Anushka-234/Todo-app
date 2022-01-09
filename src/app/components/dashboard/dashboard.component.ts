@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = "add-task";
-    dialogConfig.height = "401px";
+    dialogConfig.height = "450px";
     dialogConfig.width = "768px";
     const modalDialog = this.matdialog.open(AddTaskComponent, dialogConfig);
     // modalDialog.afterClosed().subscribe(result => {
@@ -127,6 +127,7 @@ export class DashboardComponent implements OnInit {
     },
     err=> {
       this.isLoading = false;
+      this.toastr.error("error fetching data",'dashboard')
       console.error('nothing to display');}
     )
 

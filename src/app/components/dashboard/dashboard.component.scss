@@ -129,23 +129,23 @@ section {
     font-size: 24px;
     line-height: 32px;
     color: #333333;
+    padding: 26px;
+
+    .task_count {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      border-radius: 16px;
+      background: rgba(251, 220, 211, 0.25);
+      text-align: center;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 32px;
+      color: $red;
+      margin-left: 16px;
+    }
   }
-
-  .task_count {
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    border-radius: 16px;
-    background: rgba(251, 220, 211, 0.25);
-    text-align: center;
-
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 32px;
-    color: $red;
-  }
-
   .list_tasks {
     background: #ffffff;
     border: 1px solid hsl(0, 0%, 89%);
@@ -156,27 +156,28 @@ section {
     overflow-y: auto;
   }
 
-  .list_names {
-    .list_header {
-      display: flex;
-      @include fontstyles;
-      font-weight: normal;
-      font-size: 24px;
-      line-height: 32px;
-      color: #333333;
-    }
+  .list_header {
+    display: flex;
+    @include fontstyles;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #333333;
+    padding: 22px;
+  }
 
-    .list_menu {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-      align-items: center;
-    }
+  .list_menu {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+  }
 
-    .list_names_container {
-      border: 1px solid #e3e3e3;
-      border-radius: 10px;
-    }
+  .list_names_container {
+    padding-bottom: 15px;
+    border: 1px solid #e3e3e3;
+    border-radius: 10px;
   }
 
   .spinner {

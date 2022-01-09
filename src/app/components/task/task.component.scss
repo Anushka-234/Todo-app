@@ -6,7 +6,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 21px 40px;
 
   border-bottom: 1px solid #e0e0e0;
 
@@ -27,11 +27,10 @@
   .task_check {
     display: flex;
     flex-direction: row;
-
+    padding-bottom: 25px;
     .check {
       width: 24px;
       height: 24px;
-      margin-right: 16px;
       border: 1px solid $red;
       border-radius: 5px;
       cursor: pointer;
@@ -39,17 +38,27 @@
         background-color: #eb5757;
       }
     }
-  }
 
-  .task_header {
-    font-size: 16px;
-    line-height: 24px;
-  }
+    .task_features {
+      padding-left: 40px;
 
-  .task_list {
-    font-size: 14px;
-    line-height: 22px;
-    color: #828282;
+      .task_header {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #333333;
+        margin-bottom: 4px;
+      }
+      .task_list {
+        margin: 0;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 22px;
+        color: #828282;
+      }
+    }
   }
 
   .High {
