@@ -23,7 +23,7 @@ nav {
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.2em;
-    color: $red;
+    color: $primary-color;
   }
 
   .logout {
@@ -36,7 +36,7 @@ nav {
       padding: 5px;
     }
     &:hover {
-      color: $red;
+      color: $primary-color;
     }
   }
   .profile-icon {
@@ -48,7 +48,7 @@ nav {
     font-weight: 500;
     font-size: 18px;
     line-height: 26px;
-    color: $red;
+    color: $primary-color;
     padding: 3px;
     display: flex;
     align-items: center;
@@ -142,7 +142,7 @@ section {
       font-weight: 500;
       font-size: 16px;
       line-height: 32px;
-      color: $red;
+      color: $primary-color;
       margin-left: 16px;
     }
   }
@@ -183,11 +183,11 @@ section {
   .spinner {
     display: inline;
     margin: 2px 12px;
-    color: $red;
+    color: $primary-color;
   }
 
   .spinner ::ng-deep .mat-progress-spinner circle,
   .mat-spinner circle {
-    stroke: $red;
+    stroke: $primary-color;
   }
 }

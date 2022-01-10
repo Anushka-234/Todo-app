@@ -27,7 +27,7 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 22px;
-        color: $red;
+        color: $primary-color;
       }
     }
 
@@ -61,7 +61,7 @@
 
         span {
           display: inline-block;
-          border: 1px solid $red;
+          border: 1px solid $primary-color;
           border-radius: 5px;
           width: 16px;
           height: 16px;
@@ -71,7 +71,7 @@
 
           cursor: pointer;
           &:hover {
-            background-color: $red;
+            background-color: $primary-color;
           }
         }
       }
