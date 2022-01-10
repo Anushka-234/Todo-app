@@ -39,7 +39,7 @@ deleteTask(task:any){
   .subscribe(
     () => {(this.tasks = this.tasks.filter((t) => t.id !== task.id))
     this.isLoading=false;
-    this.toastr.warning('Task deleted');
+    this.toastr.success('Task deleted');
     
   }
   );

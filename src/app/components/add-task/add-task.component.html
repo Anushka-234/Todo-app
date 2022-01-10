@@ -44,17 +44,14 @@
         <div class="form-group row task_features">
           <div class="col">
             <label class="field_label">Choose priority</label>
-            <p>
-              <mat-form-field appearance="outline" floatLabel="never">
-                <mat-label>Choose list</mat-label>
-                <mat-select formControlName="list">
-                  <mat-option *ngFor="let list of lists" [value]="list.list">
-                    {{ list.list }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </p>
-
+            <mat-form-field appearance="outline" floatLabel="never">
+              <mat-label>Choose list</mat-label>
+              <mat-select formControlName="list">
+                <mat-option *ngFor="let list of lists" [value]="list.list">
+                  {{ list.list }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
             <div
               *ngIf="
                 addtaskcontrol['list'].invalid && addtaskcontrol['list'].touched
@@ -74,31 +71,61 @@
 
           <div class="col">
             <label class="field_label">Choose priority</label>
-            <p>
-              <mat-form-field appearance="outline" floatLabel="never">
-                <mat-label>Choose priority</mat-label>
-                <mat-select formControlName="priority">
-                  <mat-option value="High">High</mat-option>
-                  <mat-option value="Medium">Medium</mat-option>
-                  <mat-option value="Low">Low</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </p>
+            <mat-form-field appearance="outline" floatLabel="never">
+              <mat-label>Choose priority</mat-label>
+              <mat-select formControlName="priority">
+                <mat-option value="High">High</mat-option>
+                <mat-option value="Medium">Medium</mat-option>
+                <mat-option value="Low">Low</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div
+              *ngIf="
+                addtaskcontrol['priority'].invalid &&
+                addtaskcontrol['priority'].touched
+              "
+              class="error-message"
+            >
+              <div
+                *ngIf="
+                  addtaskcontrol['priority'].errors &&
+                  addtaskcontrol['priority'].errors['required']
+                "
+              >
+                <i class="fas fa-exclamation-circle"></i>Please choose a
+                priority
+              </div>
+            </div>
           </div>
           <div class="col">
             <label class="field_label">Set date and time</label>
-            <p>
-              <mat-form-field appearance="outline" floatLabel="never">
-                <mat-icon matPrefix>event</mat-icon>
-                <input
-                  matInput
-                  name="date"
-                  type="datetime-local"
-                  placeholder="Choose date and time"
-                  formControlName="date"
-                />
-              </mat-form-field>
-            </p>
+
+            <mat-form-field appearance="outline" floatLabel="never">
+              <mat-icon matPrefix>event</mat-icon>
+              <input
+                matInput
+                name="date"
+                type="datetime-local"
+                placeholder="Choose date and time"
+                formControlName="date"
+              />
+            </mat-form-field>
+
+            <div
+              *ngIf="
+                addtaskcontrol['date'].invalid && addtaskcontrol['date'].touched
+              "
+              class="error-message"
+            >
+              <div
+                *ngIf="
+                  addtaskcontrol['date'].errors &&
+                  addtaskcontrol['date'].errors['required']
+                "
+              >
+                <i class="fas fa-exclamation-circle"></i>Please choose a date
+              </div>
+            </div>
           </div>
         </div>
 

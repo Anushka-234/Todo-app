@@ -23,6 +23,7 @@ export class AddTaskComponent implements OnInit {
     this.service.getList().subscribe((data) => (this.lists = data));
     console.log(this.lists);
   }
+
   
 
   closeAddTask(){
@@ -39,9 +40,10 @@ export class AddTaskComponent implements OnInit {
   addTask(){
     this.isLoading = true;
     const task = this.addtask.value;
+    // this.service.testmethod(task);
     this.service.addTask(task).subscribe((task) => this.tasks.push(task));
     this.toastr.success('Task added','success')
-    this.dialogRef.close()
+    this.dialogRef.close(task);
   }
 
   get addtaskcontrol() {

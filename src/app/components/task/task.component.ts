@@ -22,7 +22,7 @@ export class TaskComponent implements OnInit {
     .subscribe(
       () => {(this.todaysTask = this.todaysTask.filter((t:any) => t.id !== task.id))
       this.isLoading = false
-      this.toastr.warning('Task deleted')
+      this.toastr.success('Task deleted')
       }
     );
   }

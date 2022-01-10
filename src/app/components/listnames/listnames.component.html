@@ -14,7 +14,9 @@
         <p class="text">{{ task.task }}</p>
       </div>
       <div class="{{ task.priority }}">{{ task.priority }}</div>
-      <div class="date_time">{{ task.date | date: "dd MMMM yyyy" }}</div>
+      <div class="date_time">
+        {{ task.date | date: "dd MMMM yyyy, h:mm a" }}
+      </div>
     </div>
   </div>
   <div class="border_line"></div>

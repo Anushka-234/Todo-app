@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Task } from '../task';
 
 const httpOptions = {
@@ -14,10 +14,24 @@ const httpOptions = {
 })
 export class TaskService {
   tasks:any[] = [];
+  private testSubject : Subject<Task>;
   private _url = 'https://61c007e6b25c3a00173f4ffe.mockapi.io/lists';
   private task_url = 'https://61c007e6b25c3a00173f4ffe.mockapi.io/tasks';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.testSubject = new Subject<Task>();
+  }
+
+
+testmethod (task: Task): void {
+    this.testSubject.next(task);
+}
+
+ontestmethod(): Observable<Task> {
+    return this.testSubject;
+}
+
+  
 
   getList(): Observable<any[]> {
     return this.http.get<any[]>(this._url);

@@ -17,6 +17,10 @@
     @include form_group;
   }
 
+  ::ng-deep .mat-form-field-wrapper {
+    margin-bottom: -5px;
+  }
+
   .form_control {
     @include form_control;
   }
@@ -29,6 +33,12 @@
   .task_features {
     display: flex;
     flex-direction: row;
+
+    ::ng-deep .mat-form-field-wrapper {
+      mat-select {
+        margin-bottom: -8px;
+      }
+    }
 
     .form-control {
       text-align: center;
@@ -51,6 +61,7 @@
     color: $red;
     font-size: 13px;
     line-height: 21px;
+    padding-top: 15px;
     padding-right: 150px;
   }
 }

@@ -65,6 +65,16 @@
       color: $red;
       cursor: pointer;
     }
+
+    .error-message {
+      color: $red;
+      padding: 7px;
+      font-size: 13px;
+      line-height: 21px;
+      i {
+        padding: 5px;
+      }
+    }
     .new_user {
       @include form_query;
 

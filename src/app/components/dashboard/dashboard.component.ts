@@ -3,10 +3,11 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { CreateListComponent } from '../create-list/create-list.component';
-import { Task } from 'src/app/shared/task';
+import { List, Task } from 'src/app/shared/task';
 import { formatDate } from '@angular/common';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DashboardComponent implements OnInit {
   current_date = new Date();
-  lists:any[] = [];
+  lists:List[] = [];
   tasks:Task[] =[];
   todaysTask:Task[]=[];
   counttodaytask:number = 0;
@@ -24,12 +25,15 @@ export class DashboardComponent implements OnInit {
   taskFormatData : any;
   today:any = Date.now();
   isLoading:boolean = false;
+  test:Task;
 
 
   constructor(public matdialog: MatDialog, private service: TaskService, private auth: AuthService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    
+  console.log(this.tasks)
     this.service.getList().subscribe((data) => (this.lists = data));
     this.getTasks();
     console.log(this.lists);
@@ -40,11 +44,14 @@ export class DashboardComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = "add-task";
-    dialogConfig.height = "450px";
+    dialogConfig.height = "425px";
     dialogConfig.width = "768px";
     const modalDialog = this.matdialog.open(AddTaskComponent, dialogConfig);
     // modalDialog.afterClosed().subscribe(result => {
-    //   this.service.addTask(result);
+    //   console.log(result)
+    //   this.service.addTask(result).subscribe((task:Task) => 
+    //     this.tasks.push(task))
+      
     // })
 
   }
@@ -57,22 +64,12 @@ export class DashboardComponent implements OnInit {
     dialogConfig.width = "768px";
     const modalDialog = this.matdialog.open(CreateListComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
-      this.service.addList(result.subscribe((list:any) => this.lists.push(list)));
+      console.log(result);
+      this.service.addList(result).subscribe((list:List) => this.lists.push(list));
     })
 
   }
 
-  // getTodaysTask(){
-  //   let todaysDate = new Date().toDateString();
-  //   console.log(todaysDate)
-  //   return this.tasks.filter((task: Task) => {
-  //     let taskDate = new Date(task.date).toDateString();
-  //     console.log(taskDate)
-  //     if (todaysDate == taskDate) {
-  //       return task;
-  //     }
-  //   });
-  // }
 
  
 
@@ -94,10 +91,77 @@ export class DashboardComponent implements OnInit {
 
   // }
 
+
+  
+
+  // getTasks(){
+  //   this.isLoading = true;
+  //   this.service.ontestmethod().subscribe((data)=> {
+  //     this.service.addTask(data).subscribe((data) => 
+  //     {
+  //       this.tasks.push(data);
+  //       this.service.getTasks().subscribe(res => {
+  //         this.tasks = res;
+  //         for (let task of this.tasks){
+  //           this.taskFormatData = formatDate(task.date, 'YYYY-MM-dd', 'en');
+  //           this.today = formatDate(this.today, 'YYYY-MM-dd','en');
+  //           console.log(this.taskFormatData)
+  //           console.log(this.today)
+  //           if(this.taskFormatData == this.today){
+  //             console.log(this.counttodaytask)
+  //             this.counttodaytask++;
+  //             this.isLoading = false;
+  //           }
+  //           if(this.taskFormatData > this.today){
+  //             this.countupcomingtask++;
+  //             this.isLoading = false;
+  //           }
+  //           if(this.taskFormatData < this.today){
+  //             this.countoverduetask++;
+  //             this.isLoading = false;
+  //           }
+  //           if(this.taskFormatData == this.today){
+  //             this.todaysTask.push(task);
+  //             this.isLoading = false;
+            
+  //           }
+  //         }
+  //         this.isLoading = false;
+  //         console.log('todays-task',this.todaysTask)
+  //       },
+  //       err=> {
+  //         this.isLoading = false;
+  //         this.toastr.error("error fetching data",'dashboard')
+  //         console.error('nothing to display');}
+  //       )
+  //     });
+  //     console.log(data);
+      
+  
+  //   });
+  // }
+
+  // addTask(){
+  //   this.service.ontestmethod().subscribe((task) => {
+  //     console.log(task)
+  //     this.service.addTask(task).subscribe((task) => this.tasks.push(task));
+  //   })
+  // }
+
+
+  // addTask(){
+  //   this.service.ontestmethod().subscribe((data)=> {
+  //     this.service.addTask(data).subscribe((data) => {
+  //       this.tasks.push(data);
+  //     this.service.getTasks().subscribe((data) => this.tasks = data)});
+  //   })
+  // }
+
   getTasks(){
     this.isLoading = true;
     this.service.getTasks().subscribe(res => {
       this.tasks = res;
+      console.log(res)
       for (let task of this.tasks){
         this.taskFormatData = formatDate(task.date, 'YYYY-MM-dd', 'en');
         this.today = formatDate(this.today, 'YYYY-MM-dd','en');
