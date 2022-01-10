@@ -50,7 +50,7 @@
     flex-direction: row-reverse;
   }
   .error-message {
-    color: $red;
+    color: $primary-color;
     font-size: 13px;
     line-height: 21px;
     i {
@@ -58,7 +58,7 @@
     }
   }
   .errormsg {
-    color: $red;
+    color: $primary-color;
     font-size: 13px;
     line-height: 21px;
     padding-top: 15px;
