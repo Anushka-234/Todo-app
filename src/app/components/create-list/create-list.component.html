@@ -13,7 +13,7 @@
 
   <div class="row">
     <div class="col">
-      <form [formGroup]="addlist" class="add_list_form">
+      <form [formGroup]="addListForm" class="add_list_form">
         <div class="row">
           <label class="field_label">List name</label><br />
           <mat-form-field appearance="outline" floatLabel="never">
@@ -38,7 +38,7 @@
           <app-button
             text="Add List"
             width="144px"
-            [disabled]="addlist.invalid"
+            [disabled]="addListForm.invalid"
             (btnClick)="addList()"
           ></app-button>
         </div>

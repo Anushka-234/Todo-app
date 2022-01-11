@@ -22,12 +22,11 @@ import { PasswordMatch } from 'src/app/shared/validators/password.validator';
   ]
 })
 export class ResetpasswordComponent implements OnInit {
-  showpassword = false;
+  showPassword = false;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
-  showconfirmpassword = false;
+  showConfirmPassword = false;
   passwordsubmit = false;
-  data:any;
   @Output() passwordSet = new EventEmitter();
 
   constructor(private fb:FormBuilder, private router:Router) { }
@@ -59,17 +58,17 @@ export class ResetpasswordComponent implements OnInit {
 
   }
 
-  showhidePassword(){
-    this.showpassword = !this.showpassword;
-    if(this.showpassword){
+  showHidePassword(){
+    this.showPassword = !this.showPassword;
+    if(this.showPassword){
       document.querySelector('#password')?.setAttribute('type','text');
     }else{
       document.querySelector('#password')?.setAttribute('type','password');
     }
   }
-  showhideconfirmPassword(){
-    this.showconfirmpassword = !this.showconfirmpassword;
-    if(this.showconfirmpassword){
+  showHideconfirmPassword(){
+    this.showConfirmPassword = !this.showConfirmPassword;
+    if(this.showConfirmPassword){
       document.querySelector('#confirmpassword')?.setAttribute('type','text');
     }else{
       document.querySelector('#confirmpassword')?.setAttribute('type','password');

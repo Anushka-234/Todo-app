@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   FormBuilder,
   Validators,
+  Form,
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { forbiddenNameValidator } from 'src/app/shared/validators/username.validator';
@@ -23,9 +24,10 @@ export class SignupComponent implements OnInit {
   submitted = false;
   faUser = faUser;
   arr = [];
-  password:any;
+  password:string;
   passwordsubmit:boolean;
   showsetpassword = false;
+  signupForm !: FormGroup;
   @Output() register = new EventEmitter();
 
   constructor(private fb: FormBuilder,
@@ -33,19 +35,18 @@ export class SignupComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.signupForm = this.fb.group(
+      {
+          username: ['', [Validators.required, forbiddenNameValidator]],
+          gender:['',Validators.required],
+          phone:['',[Validators.required,Validators.pattern("[0-9 ]{10}")]],
+          email:['',[Validators.required, Validators.pattern]],
+          dob:['']
+      });
+    
   }
 
 
-  signupForm = this.fb.group(
-    {
-      username: ['', [Validators.required, forbiddenNameValidator]],
-      gender:['',Validators.required],
-      phone:['',[Validators.required,Validators.pattern("[0-9 ]{10}")]],
-      email:['',[Validators.required, Validators.pattern]],
-      dob:['',Validators.required]
-    }
-    // { Validators: PasswordMatch('password','confirmpassword')}
-  );
 
   get signupformcontrol() {
     return this.signupForm.controls;
@@ -53,25 +54,11 @@ export class SignupComponent implements OnInit {
 
   submitButton(){
     this.showsetpassword = true;
-     const user = {
-       showsetpassword: this.showsetpassword,
-      username : this.signupForm.value.username,
-      gender : this.signupForm.value.gender,
-      dob : this.signupForm.value.dob,
-      email : this.signupForm.value.email,
-      phone : this.signupForm.value.phone
-    }
-    this.register.emit(user);
-    console.log(user)
+    this.service.userData = this.signupForm.value;
     this.router.navigate(['/set-password'])
   }
 
-  setPassword(password:any){
-    this.password = password;
-    this.passwordsubmit = password.passwordsubmit
-   }
-
-   signup(){
+   submit(){
      console.log('submitted')
    }
 

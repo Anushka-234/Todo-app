@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { Register } from '../user';
 
 let registerData = {};
@@ -17,10 +17,22 @@ const httpOptions = {
 })
 export class AuthService {
   isUserLoggedIn: boolean = false;
+  private testSubject: Subject<Task>;
+  userData : any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.testSubject = new Subject<Task>();
+  }
 
   private _url = 'https://61c007e6b25c3a00173f4ffe.mockapi.io/signup-users';
+
+  testmethod(data: any): void {
+    this.testSubject.next(data);
+  }
+  ontestmethod(): Observable<Task> {
+    return this.testSubject;
+  }
+
 
   getUsers(): Observable<Register[]> {
     return this.http.get<Register[]>(this._url);
