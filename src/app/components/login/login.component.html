@@ -61,7 +61,7 @@
             <label class="field_label" htmlFor="password">Password</label><br />
             <i class="material-icons left-icon">key</i>
             <fa-icon
-              [icon]="!showpassword ? faEyeSlash : faEye"
+              [icon]="!showPassword ? faEyeSlash : faEye"
               class="right-icon"
               (click)="showhidePassword()"
             ></fa-icon>
@@ -102,7 +102,7 @@
 
           <div class="new_user">
             <span> Not Registered yet?</span
-            ><span class="create_account" routerLink="/register"
+            ><span class="create_account" routerLink="/signup"
               >Create new account</span
             >
           </div>

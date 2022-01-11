@@ -8,41 +8,37 @@ import { TaskService } from 'src/app/shared/services/task.service';
   styleUrls: ['./listnames.component.scss']
 })
 export class ListnamesComponent implements OnInit {
-  @Input() list:string;
-  collapsed : boolean = true;
-  items:any;
-  tasks:any[];
-  isLoading:boolean = false;
+  @Input() list: string;
+  collapsed: boolean = true;
+  items: any;
+  tasks: any[];
+  isLoading: boolean = false;
 
-  constructor(private service:TaskService, private toastr:ToastrService) { }
+  constructor(private service: TaskService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getTasksofList(this.list);
   }
 
 
-  getTasksofList(listname : string){
+  getTasksofList(listname: string) {
     this.service.getTasks().subscribe(
       res => {
         this.tasks = res;
-        this.tasks = this.tasks.filter((task:any) => task.list == this.list)
-      }
-
-    )
-
+        this.tasks = this.tasks.filter((task: any) => task.list == this.list)
+      })
   }
 
-deleteTask(task:any){
-  this.isLoading = true;
-  this.service
-  .deleteTask(task)
-  .subscribe(
-    () => {(this.tasks = this.tasks.filter((t) => t.id !== task.id))
-    this.isLoading=false;
-    this.toastr.success('Task deleted');
-    
+  deleteTask(task: any) {
+    this.isLoading = true;
+    this.service
+      .deleteTask(task)
+      .subscribe(
+        () => {
+          (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+          this.isLoading = false;
+          this.toastr.success('Task deleted');
+        });
   }
-  );
-}
 
 }

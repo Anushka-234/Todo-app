@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { faPoo } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { TaskService } from 'src/app/shared/services/task.service';
+import { List } from 'src/app/shared/task';
 
 
 @Component({
@@ -11,8 +13,8 @@ import { TaskService } from 'src/app/shared/services/task.service';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
-  lists:any[]= [];
-  tasks:any[]=[];
+  lists:List[]= [];
+  tasks:Task[]=[];
   isLoading:boolean = false;
 
   constructor(public dialogRef: MatDialogRef<AddTaskComponent>,private fb:FormBuilder, 
@@ -23,8 +25,6 @@ export class AddTaskComponent implements OnInit {
     this.service.getList().subscribe((data) => (this.lists = data));
     console.log(this.lists);
   }
-
-  
 
   closeAddTask(){
     this.dialogRef.close()
@@ -41,8 +41,10 @@ export class AddTaskComponent implements OnInit {
     this.isLoading = true;
     const task = this.addtask.value;
     // this.service.testmethod(task);
-    this.service.addTask(task).subscribe((task) => this.tasks.push(task));
-    this.toastr.success('Task added','success')
+    // this.service.addTask(task).subscribe((task) => {
+    //   this.toastr.success('Task added','success');
+    // });
+ 
     this.dialogRef.close(task);
   }
 

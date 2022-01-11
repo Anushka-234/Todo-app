@@ -24,7 +24,7 @@
         <app-button
           text="Create new task"
           width="196px"
-          (btnClick)="openaddTask()"
+          (btnClick)="openAddTask()"
         ></app-button>
       </div>
     </div>
@@ -40,7 +40,7 @@
           <div class="counts">
             <p class="data_header">Today's tasks</p>
             <p class="data_count">
-              {{ counttodaytask }}
+              {{ countTodaysTask }}
             </p>
           </div>
         </div>
@@ -52,7 +52,7 @@
           />
           <div class="counts">
             <p class="data_header">Upcoming tasks</p>
-            <p class="data_count">{{ countupcomingtask }}</p>
+            <p class="data_count">{{ countUpcomingTask }}</p>
           </div>
         </div>
         <div class="data col m-3">
@@ -63,7 +63,7 @@
           />
           <div class="counts">
             <p class="data_header">Overdue tasks</p>
-            <p class="data_count">{{ countoverduetask }}</p>
+            <p class="data_count">{{ countOverdueTask }}</p>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
       <div class="row">
         <div class="col-md-5">
           <p class="task_header">
-            Today's Tasks <span class="task_count">{{ counttodaytask }}</span>
+            Today's Tasks <span class="task_count">{{ countTodaysTask }}</span>
 
             <span *ngIf="isLoading" class="spinner">
               <mat-spinner [diameter]="25"></mat-spinner>
@@ -98,7 +98,7 @@
               <app-button
                 text="Create new list"
                 width="200px"
-                (btnClick)="openaddList()"
+                (btnClick)="openAddList()"
                 background="#fff"
                 color="#BE263B"
                 padding="8px 10px"

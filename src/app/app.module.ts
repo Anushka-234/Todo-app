@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodosComponent } from './components/todos/todos.component';
-import { TodoItemComponent } from './components/todo-item/todo-item.component';
-import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { HighlightPipe } from './shared/pipes/highlight.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -21,11 +18,9 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { HttpClientModule } from '@angular/common/http';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from './components/button/button.component';
@@ -49,12 +44,7 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent,
-    TodoItemComponent,
-    AddTodoComponent,
     HighlightPipe,
-    ContactFormComponent,
-    RegisterComponent,
     LoginComponent,
     ButtonComponent,
     SetPasswordComponent,

@@ -1,7 +1,7 @@
-export interface Register{
+export class Register{
     username : string;
-    password : any;
-    confirmpassword : any;
+    password : string;
+    confirmpassword : string;
     gender:string;
     dob:string;
     phone:string;
