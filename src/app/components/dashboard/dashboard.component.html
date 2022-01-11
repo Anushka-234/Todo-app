@@ -106,12 +106,18 @@
               ></app-button>
             </p>
           </div>
-          <div class="list_names_container mt-2">
-            <app-listnames
-              *ngFor="let list of lists"
-              [list]="list.list"
-            ></app-listnames>
+
+          <div class="message" *ngIf="this.lists.length === 0; else elseBlock">
+            No lists to display
           </div>
+          <ng-template #elseBlock>
+            <div class="list_names_container mt-2">
+              <app-listnames
+                *ngFor="let list of lists"
+                [list]="list.list"
+              ></app-listnames>
+            </div>
+          </ng-template>
         </div>
       </div>
     </section>
