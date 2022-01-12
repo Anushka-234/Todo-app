@@ -14,6 +14,7 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
   current_date = new Date();
   lists: List[] = [];
@@ -25,7 +26,6 @@ export class DashboardComponent implements OnInit {
   taskFormatData: string;
   today: any = Date.now();
   isLoading: boolean = false;
-  test: Task;
 
 
   constructor(public matdialog: MatDialog, private service: TaskService, private auth: AuthService,
@@ -34,9 +34,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.service.getTasks().subscribe((data) => this.tasks = data);
     this.service.getList().subscribe((data) => (this.lists = data));
-    this.getCounts();
-    this.getTodaysTask();
-    console.log(this.lists);
+    this.getTasks();
   }
 
   openAddTask() {
@@ -48,12 +46,21 @@ export class DashboardComponent implements OnInit {
     const modalDialog = this.matdialog.open(AddTaskComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
       console.log(result)
-      this.service.addTask(result).subscribe((task: Task) => {
-        this.tasks.push(task);
-        this.service.getTasks().subscribe((tasks) => this.tasks = tasks);
-        this.toastr.success("task added successfully", "Success")
+      if (result) {
+        this.service.addTask(result).subscribe((data) => {
+          this.isLoading = true;
+          this.todaysTask.push(data);
+          this.countTodaysTask++
+          this.isLoading = false;
+          this.toastr.success("task added successfully", "Success")
+        }, err => {
+          this.toastr.error("something went wrong", "error")
+        })
+      } else {
+        this.toastr.error("Task not added", "Invalid form")
       }
-      )
+    }, err => {
+      this.toastr.error("something went wrong", "error")
     })
   }
 
@@ -66,94 +73,58 @@ export class DashboardComponent implements OnInit {
     const modalDialog = this.matdialog.open(CreateListComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
       console.log(result);
-      this.service.addList(result).subscribe((list: List) => this.lists.push(list));
+      if (result) {
+        this.service.addList(result).subscribe((list: List) => {
+          this.lists.push(list)
+          this.toastr.success("List added", "Success")
+        });
+      } else {
+        this.toastr.error("List not added", "Invalid Form")
+      }
+
     });
   }
 
 
-
-
-  getCounts() {
-    this.service.getTasks().subscribe((res) => {
+  getTasks() {
+    this.isLoading = true;
+    this.service.getTasks().subscribe(res => {
       this.tasks = res;
+      console.log(res)
       for (let task of this.tasks) {
-        console.log(task.task)
         this.taskFormatData = formatDate(task.date, 'YYYY-MM-dd', 'en');
         this.today = formatDate(this.today, 'YYYY-MM-dd', 'en');
         console.log(this.taskFormatData)
         console.log(this.today)
         if (this.taskFormatData == this.today) {
-          this.countTodaysTask++
+          console.log(this.countTodaysTask)
+          this.countTodaysTask++;
+          this.isLoading = false;
         }
         if (this.taskFormatData > this.today) {
-          this.countUpcomingTask++
+          this.countUpcomingTask++;
+          this.isLoading = false;
         }
         if (this.taskFormatData < this.today) {
-          this.countOverdueTask++
+          this.countOverdueTask++;
+          this.isLoading = false;
         }
-      }
-    })
-
-
-  }
-
-  getTodaysTask() {
-    this.service.getTasks().subscribe((res) => {
-      this.tasks = res;
-      for (let task of this.tasks) {
-        this.taskFormatData = formatDate(task.date, 'YYYY-MM-dd', 'en');
-        this.today = formatDate(this.today, 'YYYY-MM-dd', 'en');
-        console.log(this.taskFormatData)
-        console.log(this.today)
         if (this.taskFormatData == this.today) {
-          this.todaysTask.push(task)
+          this.todaysTask.push(task);
+          this.isLoading = false;
+
         }
-
       }
-    })
+      this.isLoading = false;
+      console.log('todays-task', this.todaysTask)
+    },
+      err => {
+        this.isLoading = false;
+        this.toastr.error("error fetching data", 'dashboard')
+        console.error('nothing to display');
+      }
+    )
   }
-
-
-
-  // getTasks(){
-  //   this.isLoading = true;
-  //   this.service.getTasks().subscribe(res => {
-  //     this.tasks = res;
-  //     console.log(res)
-  //     for (let task of this.tasks){
-  //       this.taskFormatData = formatDate(task.date, 'YYYY-MM-dd', 'en');
-  //       this.today = formatDate(this.today, 'YYYY-MM-dd','en');
-  //       console.log(this.taskFormatData)
-  //       console.log(this.today)
-  //       if(this.taskFormatData == this.today){
-  //         console.log(this.counttodaytask)
-  //         this.counttodaytask++;
-  //         this.isLoading = false;
-  //       }
-  //       if(this.taskFormatData > this.today){
-  //         this.countupcomingtask++;
-  //         this.isLoading = false;
-  //       }
-  //       if(this.taskFormatData < this.today){
-  //         this.countoverduetask++;
-  //         this.isLoading = false;
-  //       }
-  //       if(this.taskFormatData == this.today){
-  //         this.todaysTask.push(task);
-  //         this.isLoading = false;
-
-  //       }
-  //     }
-  //     this.isLoading = false;
-  //     console.log('todays-task',this.todaysTask)
-  //   },
-  //   err=> {
-  //     this.isLoading = false;
-  //     this.toastr.error("error fetching data",'dashboard')
-  //     console.error('nothing to display');}
-  //   )
-
-  // }
 
   logout() {
     this.toastr.success('logged out successfully', 'dashboard')

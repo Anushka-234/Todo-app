@@ -40,11 +40,6 @@ export class AddTaskComponent implements OnInit {
   addTask(){
     this.isLoading = true;
     const task = this.addtask.value;
-    // this.service.testmethod(task);
-    // this.service.addTask(task).subscribe((task) => {
-    //   this.toastr.success('Task added','success');
-    // });
- 
     this.dialogRef.close(task);
   }
 
