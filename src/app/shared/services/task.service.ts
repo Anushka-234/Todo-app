@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, switchMap, map } from 'rxjs';
 import { Task } from '../task';
+import { Subscription } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,6 +15,8 @@ const httpOptions = {
 })
 export class TaskService {
   tasks:any[] = [];
+  todaystask:any[] = [];
+  private subscription : Subscription;
   private testSubject : Subject<Task>;
   private _url = 'https://61c007e6b25c3a00173f4ffe.mockapi.io/lists';
   private task_url = 'https://61c007e6b25c3a00173f4ffe.mockapi.io/tasks';
@@ -53,7 +56,25 @@ ontestmethod(): Observable<Task> {
     const url = `${this.task_url}/${task.id}`;
     return this.http.delete<Task>(url);
   }
- 
+
+
+
+  // getTodaysTask(): Subscription{
+  //   let todaysDate = new Date().toDateString();
+  //   console.log(todaysDate)
+  //   return this.getTasks().subscribe((res) => {
+  //     this.tasks = res;
+  //     console.log(this.tasks)
+  //     this.tasks.filter((task:any) => {
+  //       let taskDate = new Date(task.date).toDateString();
+  //       console.log(taskDate);
+  //       if(todaysDate == taskDate){
+  //        return task;
+  //       }
+  //     })
+  //   })
+  // }
+
 
 
 

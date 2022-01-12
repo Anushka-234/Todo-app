@@ -1,51 +1,25 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 login_card">
-      <div class="container_login">
-        <p class="container_login-header">TODO APP</p>
-        <p class="container_login-info">Login to your account</p>
-        <p class="container_login-text">
-          Welcome back !Please login to your account
-        </p>
-        <form
-          class="container_login-form"
-          [formGroup]="loginForm"
-          (ngSubmit)="login()"
-        >
-          <div class="form-group form__group">
-            <label class="field_label" htmlFor="email">Email</label><br />
-            <fa-icon [icon]="faEnvelope" class="left-icon"></fa-icon>
-            <fa-icon
-              [icon]="faTimes"
-              class="right-icon-invalid"
-              *ngIf="form['email'].invalid && form['email'].touched"
-            ></fa-icon>
-            <fa-icon
-              [icon]="faCheck"
-              class="right-icon-success"
-              *ngIf="loginForm.invalid && form['email'].valid"
-            ></fa-icon>
-            <input
-              [class.is-invalid]="
+    <div class="row">
+        <div class="col-md-12 login_card">
+            <div class="container_login">
+                <p class="container_login-header">TODO APP</p>
+                <p class="container_login-info">Login to your account</p>
+                <p class="container_login-text">
+                    Welcome back !Please login to your account
+                </p>
+                <form class="container_login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="form-group form__group">
+                        <label class="field_label" htmlFor="email">Email</label><br />
+                        <fa-icon [icon]="faEnvelope" class="left-icon"></fa-icon>
+                        <fa-icon [icon]="faTimes" class="right-icon-invalid" *ngIf="form['email'].invalid && form['email'].touched"></fa-icon>
+                        <fa-icon [icon]="faCheck" class="right-icon-success" *ngIf="loginForm.invalid && form['email'].valid"></fa-icon>
+                        <input [class.is-invalid]="
                 loginForm.get('email')!.invalid &&
                 loginForm.get('email')!.touched
-              "
-              class="form-control"
-              type="email"
-              name="email"
-              id="email"
-              autoComplete="off"
-              required
-              formControlName="email"
-              pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-              placeholder="example@example.com"
-            />
+              " class="form-control" type="email" name="email" id="email" autoComplete="off" required formControlName="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="example@example.com" />
 
-            <div *ngIf="form['email'].invalid && form['email'].touched">
-              <small
-                class="error-message"
-                *ngIf="form['email'].errors && form['email'].errors['required']"
-              >
+                        <div *ngIf="form['email'].invalid && form['email'].touched">
+                            <small class="error-message" *ngIf="form['email'].errors && form['email'].errors['required']">
                 <i class="fas fa-exclamation-circle"></i>Email is
                 required</small
               >

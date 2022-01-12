@@ -1,6 +1,7 @@
 <div class="task" *ngIf="this.todaysTask.length === 0; else elseBlock">
   <p>No task to display</p>
 </div>
+
 <ng-template #elseBlock>
   <div class="task" *ngFor="let task of todaysTask">
     <div class="task_check">

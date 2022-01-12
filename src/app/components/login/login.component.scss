@@ -1,92 +1,96 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
-
 .login_card {
-  @include card_body;
-  width: 780px;
-  height: 560px;
+    @include card_body;
+    width: 780px;
+    height: 560px;
 }
 
 .container_login {
-  @include side_form;
-
-  &-header {
-    @include fontstyles;
-    @include form_header;
-  }
-
-  &-info {
-    @include form_header_info;
-    @include fontstyles;
-  }
-
-  &-text {
-    @include fontstyles;
-    @include form_header_text;
-  }
-
-  &-form {
-    .form__group {
-      @include form_group;
+    @include side_form;
+    &-header {
+        @include fontstyles;
+        @include form_header;
     }
-
-    .left-icon {
-      position: absolute;
-      padding: 10px;
+    &-info {
+        @include form_header_info;
+        @include fontstyles;
     }
-
-    .right-icon {
-      @include icon-button;
-      color: $text-color;
+    &-text {
+        @include fontstyles;
+        @include form_header_text;
     }
-
-    .right-icon-success {
-      @include icon-button;
-      color: green;
+    &-form {
+        .form__group {
+            @include form_group;
+        }
+        .left-icon {
+            position: absolute;
+            padding: 10px;
+        }
+        .right-icon {
+            @include icon-button;
+            color: $text-color;
+        }
+        .right-icon-success {
+            @include icon-button;
+            color: green;
+        }
+        .right-icon-invalid {
+            @include icon-button;
+            color: red;
+        }
+        .form-control {
+            @include form_control;
+        }
+        .field_label {
+            @include field_label;
+        }
+        .forgot_password {
+            text-align: right;
+            width: 90%;
+            padding: 4px;
+            color: $primary-color;
+            cursor: pointer;
+        }
+        .error-message {
+            color: $primary-color;
+            padding: 7px;
+            font-size: 13px;
+            line-height: 21px;
+            i {
+                padding: 5px;
+            }
+        }
+        .new_user {
+            @include form_query;
+            .create_account {
+                color: $primary-color;
+                padding: 3px;
+                cursor: pointer;
+            }
+        }
     }
-
-    .right-icon-invalid {
-      @include icon-button;
-      color: red;
-    }
-
-    .form-control {
-      @include form_control;
-    }
-
-    .field_label {
-      @include field_label;
-    }
-
-    .forgot_password {
-      text-align: right;
-      width: 90%;
-      padding: 4px;
-      color: $primary-color;
-      cursor: pointer;
-    }
-
-    .error-message {
-      color: $primary-color;
-      padding: 7px;
-      font-size: 13px;
-      line-height: 21px;
-      i {
-        padding: 5px;
-      }
-    }
-    .new_user {
-      @include form_query;
-
-      .create_account {
-        color: $primary-color;
-        padding: 3px;
-        cursor: pointer;
-      }
-    }
-  }
 }
 
 .container_login_image {
-  @include side_image;
+    @include side_image;
+}
+
+@media only screen and (max-width: 767px) {
+    .login_card {
+        flex-direction: column;
+        top: auto;
+        left: auto;
+    }
+    .container_login_image {
+        display: none;
+    }
+    .right-icon {
+        position: absolute;
+        cursor: pointer;
+        padding-left: 720px;
+        padding: 10px;
+        font-size: 18px;
+    }
 }
