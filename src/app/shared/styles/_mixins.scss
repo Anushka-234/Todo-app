@@ -1,14 +1,9 @@
 @import "variables";
 
-@mixin background() {
-  border-radius: 10px;
-  background: $light-beige;
-}
-
 @mixin card_body() {
   position: absolute;
-  left: 400px;
-  top: 200px;
+  left: 200px;
+  top: 50px;
   padding: 24px;
   box-shadow: 0px 16px 16px #e4e3e3, 0px 24px 32px #eceaea;
   border-radius: 10px;

@@ -1,106 +1,101 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
-
 .signup_card {
-  @include card_body;
-  width: 780px;
-  height: 790px;
-  top: 130px;
-  margin-bottom: 50px;
+    @include card_body;
+    width: 780px;
+    min-height: 790px;
+    top: 130px;
+    margin-bottom: 50px;
 }
 
 .container_signup {
-  @include side_form;
-
-  &-header {
-    @include fontstyles;
-    @include form_header;
-  }
-
-  &-info {
-    @include form_header_info;
-    @include fontstyles;
-  }
-
-  &-text {
-    @include fontstyles;
-    @include form_header_text;
-  }
-
-  &-form {
-    .form__group {
-      @include form_group;
+    @include side_form;
+    &-header {
+        @include fontstyles;
+        @include form_header;
     }
-
-    .left-icon {
-      position: absolute;
-      padding: 10px;
-      color: $text-color;
+    &-info {
+        @include form_header_info;
+        @include fontstyles;
     }
-
-    .password-icon {
-      position: absolute;
-      padding: 10px;
+    &-text {
+        @include fontstyles;
+        @include form_header_text;
     }
-
-    .form-control {
-      @include form_control;
+    &-form {
+        .form__group {
+            @include form_group;
+        }
+        .left-icon {
+            position: absolute;
+            padding: 10px;
+            color: $text-color;
+        }
+        .password-icon {
+            position: absolute;
+            padding: 10px;
+        }
+        .form-control {
+            @include form_control;
+        }
+        .gender-option {
+            display: flex;
+            width: 55%;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 2px 2px;
+            font-size: 16px;
+            .form-check-input {
+                color: $primary-color;
+            }
+        }
+        .form-select {
+            margin-top: 16px;
+            margin-right: 10px;
+            margin-left: -4px;
+        }
+        .field_label_phone {
+            font-weight: 500;
+            line-height: 22px;
+            font-size: 16px;
+            padding-left: 12px;
+            margin-top: 2px;
+            margin-bottom: -12px;
+        }
+        .field_label {
+            @include field_label;
+        }
+        .forgot_password {
+            text-align: right;
+            width: 90%;
+            padding: 3px;
+            color: $primary-color;
+        }
+        .phone-field {
+            width: 100%;
+            padding-left: 5px;
+            margin-top: 6px;
+        }
+        .error-message {
+            color: $primary-color;
+            padding: 7px;
+            font-size: 13px;
+            line-height: 21px;
+            i {
+                padding: 5px;
+            }
+        }
+        .registered_user {
+            @include form_query;
+            ._login {
+                color: $primary-color;
+                padding: 3px;
+                cursor: pointer;
+            }
+        }
     }
-
-    .gender-option {
-      display: flex;
-      width: 55%;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 2px 2px;
-      font-size: 16px;
-
-      .form-check-input {
-        color: $primary-color;
-      }
-    }
-
-    .form-select {
-      margin-top: 16px;
-      margin-right: 10px;
-      margin-left: -4px;
-    }
-    .field_label_phone {
-      font-weight: 500;
-      line-height: 22px;
-      font-size: 16px;
-      padding-left: 12px;
-      margin-top: 2px;
-      margin-bottom: -12px;
-    }
-
-    .field_label {
-      @include field_label;
-    }
-
-    .forgot_password {
-      text-align: right;
-      width: 90%;
-      padding: 3px;
-      color: $primary-color;
-    }
-    .phone-field {
-      width: 100%;
-      padding-left: 5px;
-      margin-top: 6px;
-    }
-    .registered_user {
-      @include form_query;
-
-      ._login {
-        color: $primary-color;
-        padding: 3px;
-        cursor: pointer;
-      }
-    }
-  }
 }
 
 .container_signup_image {
-  @include side_image;
+    @include side_image;
 }

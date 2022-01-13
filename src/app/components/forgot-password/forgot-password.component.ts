@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faCheck, faEnvelope, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEnvelope, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SendmailComponent } from './sendmail/sendmail.component';
@@ -14,7 +14,7 @@ import { FaProps } from '@fortawesome/angular-fontawesome';
 })
 export class ForgotPasswordComponent implements OnInit {
   faCheck = faCheck;
-  faTimes = faTimes;
+  faExclamationCircle = faExclamationCircle;
   faEnvelope = faEnvelope;
   forgotPasswordForm !: FormGroup;
 
@@ -27,12 +27,9 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-
-
-  get form() {
+  get emailFormControl() {
     return this.forgotPasswordForm.controls;
   }
-
 
   openDialog() {
     this.dialogRef.open(SendmailComponent, {

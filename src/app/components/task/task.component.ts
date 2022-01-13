@@ -8,23 +8,25 @@ import { TaskService } from 'src/app/shared/services/task.service';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent implements OnInit {
- @Input() todaysTask:any;
- isLoading:boolean = false;
-  constructor(private service : TaskService, private toastr: ToastrService) { }
+  @Input() todaysTask: any;
+  isLoading: boolean = false;
+  constructor(
+    private service: TaskService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
 
-  deleteTask(task:any){
+  deleteTask(task: any) {
     this.isLoading = true;
     this.service
-    .deleteTask(task)
-    .subscribe(
-      () => {(this.todaysTask = this.todaysTask.filter((t:any) => t.id !== task.id))
-      this.isLoading = false
-      this.toastr.success('Task deleted')
-      }
-    );
+      .deleteTask(task)
+      .subscribe(
+        () => {
+          (this.todaysTask = this.todaysTask.filter((t: any) => t.id !== task.id))
+          this.isLoading = false
+          this.toastr.success('Task deleted')
+        });
   }
 
 }
