@@ -10,6 +10,7 @@ import {
   faEye,
   faEyeSlash,
   faCheck,
+  faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   faCheck = faCheck;
+  faExclamationCircle = faExclamationCircle;
   loginForm !: FormGroup;
 
 
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get form() {
+  get loginFormControl() {
     return this.loginForm.controls;
   }
 
@@ -82,10 +84,7 @@ export class LoginComponent implements OnInit {
           alert("Sorry we have no information about you!");
         });
     }
-
   }
-
-
 
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach((field) => {
@@ -96,10 +95,6 @@ export class LoginComponent implements OnInit {
         this.validateAllFormFields(control);
       }
     });
-  }
-
-  token() {
-    console.log(this.auth.gettoken());
   }
 
   submitButton(): void {

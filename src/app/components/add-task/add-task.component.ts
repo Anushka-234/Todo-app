@@ -13,39 +13,39 @@ import { List } from 'src/app/shared/task';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
-  lists:List[]= [];
-  tasks:Task[]=[];
-  isLoading:boolean = false;
+  lists: List[] = [];
+  tasks: Task[] = [];
+  isLoading: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<AddTaskComponent>,private fb:FormBuilder, 
-    private service:TaskService,
-    private toastr:ToastrService) { }
+  constructor(public dialogRef: MatDialogRef<AddTaskComponent>, private fb: FormBuilder,
+    private service: TaskService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.service.getList().subscribe((data) => (this.lists = data));
     console.log(this.lists);
   }
 
-  closeAddTask(){
+  closeAddTask() {
     this.dialogRef.close()
   }
 
-  addtask = this.fb.group({
-    task:['',Validators.required],
-    list:['',Validators.required],
-    priority:['',Validators.required],
-    date:['', Validators.required]
+  addTaskForm = this.fb.group({
+    task: ['', Validators.required],
+    list: ['', Validators.required],
+    priority: ['', Validators.required],
+    date: ['', Validators.required]
   })
 
-  addTask(){
+  addTask() {
     this.isLoading = true;
-    const task = this.addtask.value;
+    const task = this.addTaskForm.value;
     this.dialogRef.close(task);
   }
 
   get addtaskcontrol() {
-    return this.addtask.controls;
+    return this.addTaskForm.controls;
   }
-  
+
 
 }

@@ -7,7 +7,7 @@ import { List, Task } from 'src/app/shared/task';
 import { formatDate } from '@angular/common';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -28,11 +28,13 @@ export class DashboardComponent implements OnInit {
   isLoading: boolean = false;
 
 
-  constructor(public matdialog: MatDialog, private service: TaskService, private auth: AuthService,
+  constructor(
+    public matdialog: MatDialog,
+    private service: TaskService,
+    private auth: AuthService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.service.getTasks().subscribe((data) => this.tasks = data);
     this.service.getList().subscribe((data) => (this.lists = data));
     this.getTasks();
   }
@@ -45,23 +47,29 @@ export class DashboardComponent implements OnInit {
     dialogConfig.width = "768px";
     const modalDialog = this.matdialog.open(AddTaskComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
-      console.log(result)
       if (result) {
         this.service.addTask(result).subscribe((data) => {
+          this.service.getTasks();
           this.isLoading = true;
-          this.todaysTask.push(data);
-          this.countTodaysTask++
-          this.isLoading = false;
-          this.toastr.success("task added successfully", "Success")
+          this.taskFormatData = formatDate(data.date, 'YYYY-MM-dd', 'en');
+          this.today = formatDate(this.today, 'YYYY-MM-dd', 'en');
+          if (this.taskFormatData == this.today) {
+            this.todaysTask.push(data);
+            this.countTodaysTask++
+            this.isLoading = false;
+            this.toastr.success("task added successfully", "Success")
+          } else if (this.taskFormatData > this.today) {
+            this.countUpcomingTask++;
+          } else if (this.taskFormatData < this.today) {
+            this.countOverdueTask++;
+          }
         }, err => {
-          this.toastr.error("something went wrong", "error")
-        })
-      } else {
-        this.toastr.error("Task not added", "Invalid form")
+          this.toastr.error("something went wrong", "error");
+        });
       }
     }, err => {
-      this.toastr.error("something went wrong", "error")
-    })
+      this.toastr.error("something went wrong", "error");
+    });
   }
 
   openAddList() {
@@ -72,16 +80,14 @@ export class DashboardComponent implements OnInit {
     dialogConfig.width = "768px";
     const modalDialog = this.matdialog.open(CreateListComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
         this.service.addList(result).subscribe((list: List) => {
           this.lists.push(list)
-          this.toastr.success("List added", "Success")
+          this.toastr.success("List added", "Success");
         });
       } else {
-        this.toastr.error("List not added", "Invalid Form")
+        this.toastr.error("List not added", "Invalid Form");
       }
-
     });
   }
 
@@ -90,12 +96,9 @@ export class DashboardComponent implements OnInit {
     this.isLoading = true;
     this.service.getTasks().subscribe(res => {
       this.tasks = res;
-      console.log(res)
       for (let task of this.tasks) {
         this.taskFormatData = formatDate(task.date, 'YYYY-MM-dd', 'en');
         this.today = formatDate(this.today, 'YYYY-MM-dd', 'en');
-        console.log(this.taskFormatData)
-        console.log(this.today)
         if (this.taskFormatData == this.today) {
           console.log(this.countTodaysTask)
           this.countTodaysTask++;
@@ -116,12 +119,10 @@ export class DashboardComponent implements OnInit {
         }
       }
       this.isLoading = false;
-      console.log('todays-task', this.todaysTask)
     },
       err => {
         this.isLoading = false;
-        this.toastr.error("error fetching data", 'dashboard')
-        console.error('nothing to display');
+        this.toastr.error("error fetching data", 'dashboard');
       }
     )
   }
@@ -130,10 +131,5 @@ export class DashboardComponent implements OnInit {
     this.toastr.success('logged out successfully', 'dashboard')
     this.auth.logout();
   }
-
-
-
-
-
 
 }

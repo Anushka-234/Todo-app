@@ -35,21 +35,22 @@
               "
             >
               <small
-                class="text-danger"
+                class="error-message"
                 *ngIf="
                   signupformcontrol['username'].errors &&
                   signupformcontrol['username'].errors['required']
                 "
-                >Username is required</small
+                ><i class="fas fa-exclamation-circle"></i>Username is
+                required</small
               >
               <small
-                class="text-danger"
+                class="error-message"
                 *ngIf="
                   signupformcontrol['username'].errors &&
                   signupformcontrol['username'].errors['forbiddenName']
                 "
               >
-                '{{
+                <i class="fas fa-exclamation-circle"></i>'{{
                   signupformcontrol["username"].errors["forbiddenName"].value
                 }}' username not allowed</small
               >
@@ -177,7 +178,7 @@
                     signupformcontrol['phone'].invalid &&
                     signupformcontrol['phone'].touched
                   "
-                  class="invalid-feedback"
+                  class="error-message"
                 >
                   <div
                     *ngIf="
@@ -185,7 +186,7 @@
                       signupformcontrol['phone'].errors['required']
                     "
                   >
-                    Phone is required
+                    <i class="fas fa-exclamation-circle"></i>Phone is required
                   </div>
                   <div
                     *ngIf="
@@ -193,7 +194,8 @@
                       signupformcontrol['phone'].errors['pattern']
                     "
                   >
-                    Please enter a valid phone number.
+                    <i class="fas fa-exclamation-circle"></i>Please enter a
+                    valid phone number.
                   </div>
                 </div>
               </div>
@@ -223,7 +225,7 @@
                 signupformcontrol['email'].invalid &&
                 signupformcontrol['email'].touched
               "
-              class="invalid-feedback"
+              class="error-message"
             >
               <div
                 *ngIf="
@@ -231,7 +233,7 @@
                   signupformcontrol['email'].errors['required']
                 "
               >
-                Email is required
+                <i class="fas fa-exclamation-circle"></i> Email is required
               </div>
               <div
                 *ngIf="
@@ -239,7 +241,7 @@
                   signupformcontrol['email'].errors['pattern']
                 "
               >
-                Invalid Pattern
+                <i class="fas fa-exclamation-circle"></i>Invalid Pattern
               </div>
             </div>
           </div>

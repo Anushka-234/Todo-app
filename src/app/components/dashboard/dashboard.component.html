@@ -86,7 +86,7 @@
             </app-task>
           </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
           <div class="list_menu">
             <p class="list_header">
               List names
@@ -112,10 +112,10 @@
           </div>
           <ng-template #elseBlock>
             <div class="list_names_container mt-2">
-              <app-listnames
+              <app-list
                 *ngFor="let list of lists"
                 [list]="list.list"
-              ></app-listnames>
+              ></app-list>
             </div>
           </ng-template>
         </div>

@@ -3,11 +3,11 @@ import { ToastrService } from 'ngx-toastr';
 import { TaskService } from 'src/app/shared/services/task.service';
 
 @Component({
-  selector: 'app-listnames',
-  templateUrl: './listnames.component.html',
-  styleUrls: ['./listnames.component.scss']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
-export class ListnamesComponent implements OnInit {
+export class ListComponent implements OnInit {
   @Input() list: string;
   collapsed: boolean = true;
   items: any;
@@ -20,13 +20,12 @@ export class ListnamesComponent implements OnInit {
     this.getTasksofList(this.list);
   }
 
-
   getTasksofList(listname: string) {
     this.service.getTasks().subscribe(
       res => {
         this.tasks = res;
         this.tasks = this.tasks.filter((task: any) => task.list == this.list)
-      })
+      });
   }
 
   deleteTask(task: any) {

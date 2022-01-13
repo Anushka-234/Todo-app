@@ -6,14 +6,14 @@
         [ngStyle]="{ color: '#333333;' }"
         style="cursor: pointer"
         (click)="closeAddTask()"
-        >close</mat-icon
-      >
+        >close
+      </mat-icon>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
-      <form [formGroup]="addtask" class="add_task_form">
+      <form [formGroup]="addTaskForm" class="add_task_form">
         <div class="row">
           <label class="field_label">Task name</label><br />
           <mat-form-field appearance="outline" floatLabel="never">
@@ -141,10 +141,11 @@
           <app-button
             text="Add Task"
             width="144px"
-            [disabled]="addtask.invalid"
+            [disabled]="addTaskForm.invalid"
             (btnClick)="addTask()"
-          ></app-button>
-          <span class="errormsg" *ngIf="addtask.invalid">
+          >
+          </app-button>
+          <span class="errormsg" *ngIf="addTaskForm.invalid">
             <sup>*</sup>Fill all fields to activate submit button.
           </span>
         </div>

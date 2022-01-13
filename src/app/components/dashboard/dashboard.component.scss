@@ -1,6 +1,5 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
-
 * {
   padding: 0;
 }
@@ -11,13 +10,11 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   padding: 40px;
-
   .nav-items {
     display: flex;
     align-items: center;
     flex-direction: row;
   }
-
   .logo {
     font-weight: 500;
     font-size: 24px;
@@ -25,7 +22,6 @@ nav {
     letter-spacing: 0.2em;
     color: $primary-color;
   }
-
   .logout {
     @include fontstyles;
     font-size: 20px;
@@ -63,7 +59,6 @@ nav {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-
   .date {
     &_date {
       font-size: 24px;
@@ -73,7 +68,6 @@ nav {
       color: $text-color;
       font-size: 14px;
       line-height: 22px;
-
       i {
         padding: 3px;
       }
@@ -89,7 +83,6 @@ nav {
     line-height: 28px;
     color: #333333;
   }
-
   .data {
     background: #ffffff;
     border: 1px solid #e3e3e3;
@@ -97,18 +90,15 @@ nav {
     padding: 30px;
     display: flex;
     flex-direction: row;
-
     .icon_image {
       margin-right: 22px;
     }
-
     .data_header {
       font-size: 20px;
       line-height: 28px;
       color: #828282;
       margin-bottom: 4px;
     }
-
     .data_count {
       font-weight: 500;
       font-size: 32px;
@@ -120,8 +110,7 @@ nav {
 }
 
 section {
-  padding: 12px 50px;
-
+  padding: 12px 40px;
   .task_header {
     display: flex;
     @include fontstyles;
@@ -129,8 +118,7 @@ section {
     font-size: 24px;
     line-height: 32px;
     color: #333333;
-    padding: 26px 5px;
-
+    padding: 6px 12px;
     .task_count {
       width: 32px;
       height: 32px;
@@ -154,8 +142,8 @@ section {
     width: 471px;
     max-height: 644px;
     overflow-y: auto;
+    margin: 4px 8px;
   }
-
   .list_header {
     display: flex;
     @include fontstyles;
@@ -163,9 +151,8 @@ section {
     font-size: 24px;
     line-height: 32px;
     color: #333333;
-    padding: 22px 4px;
+    padding: 4px 8px;
   }
-
   .list_menu {
     display: flex;
     justify-content: space-between;
@@ -173,21 +160,24 @@ section {
     align-items: center;
     padding: 0;
   }
-
   .list_names_container {
     padding-bottom: 15px;
     border: 1px solid #e3e3e3;
     border-radius: 10px;
   }
-
   .spinner {
     display: inline;
     margin: 2px 12px;
     color: $primary-color;
   }
-
   .spinner ::ng-deep .mat-progress-spinner circle,
   .mat-spinner circle {
     stroke: $primary-color;
+  }
+}
+
+@media only screen and (max-width: 1372px) {
+  .list_header {
+    margin-top: 30px;
   }
 }
