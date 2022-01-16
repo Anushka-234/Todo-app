@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { faPoo } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
@@ -16,10 +16,18 @@ export class AddTaskComponent implements OnInit {
   lists: List[] = [];
   tasks: Task[] = [];
   isLoading: boolean = false;
+  addTaskForm !: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<AddTaskComponent>, private fb: FormBuilder,
     private service: TaskService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService) {
+    this.addTaskForm = this.fb.group({
+      task: ['', Validators.required],
+      list: ['', Validators.required],
+      priority: ['', Validators.required],
+      date: ['', Validators.required]
+    })
+  }
 
   ngOnInit(): void {
     this.service.getList().subscribe((data) => (this.lists = data));
@@ -30,20 +38,13 @@ export class AddTaskComponent implements OnInit {
     this.dialogRef.close()
   }
 
-  addTaskForm = this.fb.group({
-    task: ['', Validators.required],
-    list: ['', Validators.required],
-    priority: ['', Validators.required],
-    date: ['', Validators.required]
-  })
-
   addTask() {
     this.isLoading = true;
     const task = this.addTaskForm.value;
     this.dialogRef.close(task);
   }
 
-  get addtaskcontrol() {
+  get addTaskControl() {
     return this.addTaskForm.controls;
   }
 

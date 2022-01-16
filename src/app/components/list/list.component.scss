@@ -1,109 +1,114 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
+
 .wrapper {
-    padding: 5px 40px;
-    .menu {
+  padding: 5px 40px;
+  .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .list-header {
+      @include fontstyles;
+      color: #333333;
+      font-size: 18px;
+      line-height: 26px;
+
+      span {
+        border-radius: 12px;
+        background: rgba(251, 220, 211, 0.25);
+        color: $primary-color;
+        display: inline-block;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        height: 24px;
+        line-height: 22px;
+        margin-left: 10px;
+        text-align: center;
+        width: 24px;
+      }
+    }
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+  .list-tasks {
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    border-bottom: 1px solid $border-color;
+    .message {
+      border: none;
+      padding: 20px;
+    }
+    .task {
+      align-items: center;
+      border-bottom: 1px solid $border-color;
+      display: grid;
+      grid-template-columns: 5fr 2fr 3fr;
+      padding: 20px;
+
+      .task-title {
+        color: $black;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        .list_header {
-            @include fontstyles;
-            font-size: 18px;
-            line-height: 26px;
-            color: #333333;
-            span {
-                display: inline-block;
-                width: 24px;
-                height: 24px;
-                border-radius: 12px;
-                background: rgba(251, 220, 211, 0.25);
-                margin-left: 10px;
-                text-align: center;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 22px;
-                color: $primary-color;
-            }
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+
+        .text {
+          padding: 6px;
         }
-        mat-icon {
-            cursor: pointer;
+        span {
+          border: 1px solid $primary-color;
+          border-radius: 5px;
+          cursor: pointer;
+          display: inline-block;
+          height: 16px;
+          margin-right: 10px;
+          margin-top: 6px;
+          padding: 10px;
+          width: 16px;
+
+          &:hover {
+            background-color: $primary-color;
+          }
         }
+      }
+      .Medium {
+        background: rgba(33, 150, 83, 0.05);
+        border-radius: 5px;
+        color: $medium-priority;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        padding: 6px 12px;
+        width: fit-content;
+      }
+      .High {
+        background: rgba(235, 87, 87, 0.05);
+        border-radius: 5px;
+        color: $medium-priority;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        padding: 6px 12px;
+        width: fit-content;
+      }
+      .Low {
+        background: rgba(242, 153, 74, 0.05);
+        border-radius: 5px;
+        color: $medium-priority;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        padding: 6px 12px;
+        width: fit-content;
+      }
     }
-    .list_tasks {
-        border: 1px solid #e3e3e3;
-        border-radius: 10px;
-        border-bottom: 1px solid #e0e0e0;
-        .message {
-            border: none;
-            padding: 20px;
-        }
-        .task {
-            display: grid;
-            grid-template-columns: 5fr 2fr 3fr;
-            border-bottom: 1px solid #e3e3e3;
-            align-items: center;
-            padding: 20px;
-            .task_title {
-                display: flex;
-                flex-direction: row;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 16px;
-                color: #333333;
-                .text {
-                    padding: 6px;
-                }
-                span {
-                    display: inline-block;
-                    border: 1px solid $primary-color;
-                    border-radius: 5px;
-                    width: 16px;
-                    height: 16px;
-                    margin-right: 10px;
-                    margin-top: 6px;
-                    padding: 10px;
-                    cursor: pointer;
-                    &:hover {
-                        background-color: $primary-color;
-                    }
-                }
-            }
-            .Medium {
-                font-style: normal;
-                font-weight: normal;
-                font-size: 14px;
-                color: #219653;
-                background: rgba(33, 150, 83, 0.05);
-                border-radius: 5px;
-                padding: 6px 12px;
-                width: fit-content;
-            }
-            .High {
-                font-style: normal;
-                font-weight: normal;
-                font-size: 14px;
-                color: #eb5757;
-                background: rgba(235, 87, 87, 0.05);
-                border-radius: 5px;
-                padding: 6px 12px;
-                width: fit-content;
-            }
-            .Low {
-                font-style: normal;
-                font-weight: normal;
-                font-size: 14px;
-                color: #f2994a;
-                background: rgba(242, 153, 74, 0.05);
-                border-radius: 5px;
-                padding: 6px 12px;
-                width: fit-content;
-            }
-        }
-    }
-    .border_line {
-        width: 100%;
-        border-bottom: 1px solid #e0e0e0;
-        padding-bottom: 12px;
-    }
+  }
+  .border-line {
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 12px;
+    width: 100%;
+  }
 }

@@ -1,6 +1,6 @@
 <div class="main">
-  <div class="main_container">
-    <header class="main_header">
+  <div class="main-container">
+    <header class="main-header">
       <nav class="container">
         <div class="logo">TODO APP</div>
         <div class="nav-items">
@@ -11,10 +11,10 @@
         </div>
       </nav>
     </header>
-    <div class="container menu_overview">
+    <div class="container menu-overview">
       <div class="date">
-        <p class="date_date">{{ current_date | date: "dd MMMM yyyy" }}</p>
-        <p class="date_text">
+        <p class="date-date">{{ current_date | date: "dd MMMM yyyy" }}</p>
+        <p class="date-text">
           You have to keep up the pace to accomplish your task in time<i
             class="far fa-clock"
           ></i>
@@ -28,18 +28,18 @@
         ></app-button>
       </div>
     </div>
-    <div class="container main_overview">
-      <p class="header_text">Overview</p>
+    <div class="container main-overview">
+      <p class="header-text">Overview</p>
       <div class="data-container row row-3">
         <div class="data col m-3">
           <img
             src="../../../assets/images/today.svg"
             alt=""
-            class="icon_image"
+            class="icon-image"
           />
           <div class="counts">
-            <p class="data_header">Today's tasks</p>
-            <p class="data_count">
+            <p class="data-header">Today's tasks</p>
+            <p class="data-count">
               {{ countTodaysTask }}
             </p>
           </div>
@@ -48,22 +48,22 @@
           <img
             src="../../../assets/images/upcoming.svg"
             alt=""
-            class="icon_image"
+            class="icon-image"
           />
           <div class="counts">
-            <p class="data_header">Upcoming tasks</p>
-            <p class="data_count">{{ countUpcomingTask }}</p>
+            <p class="data-header">Upcoming tasks</p>
+            <p class="data-count">{{ countUpcomingTask }}</p>
           </div>
         </div>
         <div class="data col m-3">
           <img
             src="../../../assets/images/overdue.svg"
             alt=""
-            class="icon_image"
+            class="icon-image"
           />
           <div class="counts">
-            <p class="data_header">Overdue tasks</p>
-            <p class="data_count">{{ countOverdueTask }}</p>
+            <p class="data-header">Overdue tasks</p>
+            <p class="data-count">{{ countOverdueTask }}</p>
           </div>
         </div>
       </div>
@@ -71,14 +71,14 @@
     <section class="container">
       <div class="row">
         <div class="col-md-5">
-          <p class="task_header">
-            Today's Tasks <span class="task_count">{{ countTodaysTask }}</span>
+          <p class="task-header">
+            Today's Tasks <span class="task-count">{{ countTodaysTask }}</span>
 
             <span *ngIf="isLoading" class="spinner">
               <mat-spinner [diameter]="25"></mat-spinner>
             </span>
           </p>
-          <div class="list_tasks">
+          <div class="list-tasks">
             <app-task [todaysTask]="todaysTask">
               <span *ngIf="isLoading" class="spinner">
                 <mat-spinner [diameter]="25"></mat-spinner>
@@ -87,8 +87,8 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
-          <div class="list_menu">
-            <p class="list_header">
+          <div class="list-menu">
+            <p class="list-header">
               List names
               <span *ngIf="isLoading" class="spinner">
                 <mat-spinner [diameter]="25"></mat-spinner>
@@ -111,7 +111,7 @@
             No lists to display
           </div>
           <ng-template #elseBlock>
-            <div class="list_names_container mt-2">
+            <div class="list-names-container mt-2">
               <app-list
                 *ngFor="let list of lists"
                 [list]="list.list"

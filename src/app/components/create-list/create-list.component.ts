@@ -21,7 +21,7 @@ export class CreateListComponent implements OnInit {
     this.addListForm = this.fb.group({
       list: ['', Validators.required]
     })
-  
+
   }
 
   addList() {
@@ -31,6 +31,10 @@ export class CreateListComponent implements OnInit {
 
   closeAddList() {
     this.dialogRef.close();
+  }
+
+  get createListControl() {
+    return this.addListForm.controls;
   }
 
 }

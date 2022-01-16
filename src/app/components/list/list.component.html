@@ -1,27 +1,28 @@
 <div class="wrapper">
-    <div class="menu py-2">
-        <p class="list_header">
-            {{ list }}<span>{{ tasks.length }}</span>
-        </p>
-        <mat-icon (click)="collapsed = !collapsed">{{ collapsed ? "expand_more" : "expand_less" }}
-        </mat-icon>
+  <div class="menu py-2">
+    <p class="list-header">
+      {{ list }}<span>{{ tasks.length }}</span>
+    </p>
+    <mat-icon (click)="collapsed = !collapsed"
+      >{{ collapsed ? "expand_more" : "expand_less" }}
+    </mat-icon>
+  </div>
+  <div class="list-tasks" *ngIf="!collapsed">
+    <div class="message" *ngIf="this.tasks.length === 0; else elseBlock">
+      No tasks to display
     </div>
-    <div class="list_tasks" *ngIf="!collapsed">
-        <div class="message" *ngIf="this.tasks.length === 0; else elseBlock">
-            No tasks to display
+    <ng-template #elseBlock>
+      <div class="task" *ngFor="let task of tasks">
+        <div class="task-title">
+          <span (click)="deleteTask(task)"></span>
+          <p class="text">{{ task.task }}</p>
         </div>
-        <ng-template #elseBlock>
-            <div class="task" *ngFor="let task of tasks">
-                <div class="task_title">
-                    <span (click)="deleteTask(task)"></span>
-                    <p class="text">{{ task.task }}</p>
-                </div>
-                <div class="{{ task.priority }}">{{ task.priority }}</div>
-                <div class="date_time">
-                    {{ task.date | date: "dd MMMM yyyy, h:mm a" }}
-                </div>
-            </div>
-        </ng-template>
-    </div>
-    <div class="border_line"></div>
+        <div class="{{ task.priority }}">{{ task.priority }}</div>
+        <div class="date-time">
+          {{ task.date | date: "dd MMMM yyyy, h:mm a" }}
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="border-line"></div>
 </div>

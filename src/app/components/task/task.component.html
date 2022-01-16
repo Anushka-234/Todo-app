@@ -4,11 +4,11 @@
 
 <ng-template #elseBlock>
   <div class="task" *ngFor="let task of todaysTask">
-    <div class="task_check">
+    <div class="task-check">
       <div class="check" (click)="deleteTask(task)">
-        <div class="task_features">
-          <p class="task_header">{{ task.task }}</p>
-          <p class="task_list">{{ task.list }}</p>
+        <div class="task-features">
+          <p class="task-header">{{ task.task }}</p>
+          <p class="task-list">{{ task.list }}</p>
         </div>
       </div>
     </div>
