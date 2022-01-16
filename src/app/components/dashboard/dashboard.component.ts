@@ -60,8 +60,10 @@ export class DashboardComponent implements OnInit {
             this.toastr.success("task added successfully", "Success")
           } else if (this.taskFormatData > this.today) {
             this.countUpcomingTask++;
+            this.isLoading = false;
           } else if (this.taskFormatData < this.today) {
             this.countOverdueTask++;
+            this.isLoading = false;
           }
         }, err => {
           this.toastr.error("something went wrong", "error");
@@ -98,7 +100,6 @@ export class DashboardComponent implements OnInit {
         this.taskFormatData = formatDate(task.date, 'YYYY-MM-dd', 'en');
         this.today = formatDate(this.today, 'YYYY-MM-dd', 'en');
         if (this.taskFormatData == this.today) {
-          console.log(this.countTodaysTask)
           this.countTodaysTask++;
           this.isLoading = false;
         }
