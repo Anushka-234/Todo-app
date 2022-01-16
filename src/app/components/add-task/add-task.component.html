@@ -1,21 +1,16 @@
 <div class="wrapper">
   <div class="row">
-    <div class="col container_header">
+    <div class="col container-header">
       <p>Create task</p>
-      <mat-icon
-        [ngStyle]="{ color: '#333333;' }"
-        style="cursor: pointer"
-        (click)="closeAddTask()"
-        >close
-      </mat-icon>
+      <mat-icon class="close-icon" (click)="closeAddTask()">close</mat-icon>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
-      <form [formGroup]="addTaskForm" class="add_task_form">
+      <form [formGroup]="addTaskForm" class="add-task-form">
         <div class="row">
-          <label class="field_label">Task name</label><br />
+          <label class="field-label">Task name</label><br />
           <mat-form-field appearance="outline" floatLabel="never">
             <input
               matInput
@@ -26,14 +21,14 @@
           </mat-form-field>
           <div
             *ngIf="
-              addtaskcontrol['task'].invalid && addtaskcontrol['task'].touched
+              addTaskControl['task'].invalid && addTaskControl['task'].touched
             "
             class="error-message"
           >
             <div
               *ngIf="
-                addtaskcontrol['task'].errors &&
-                addtaskcontrol['task'].errors['required']
+                addTaskControl['task'].errors &&
+                addTaskControl['task'].errors['required']
               "
             >
               <i class="fas fa-exclamation-circle"></i>Task name is required
@@ -41,9 +36,9 @@
           </div>
         </div>
 
-        <div class="form-group row task_features">
+        <div class="form-group row task-features">
           <div class="col">
-            <label class="field_label">Choose priority</label>
+            <label class="field-label">Choose priority</label>
             <mat-form-field appearance="outline" floatLabel="never">
               <mat-label>Choose list</mat-label>
               <mat-select formControlName="list">
@@ -54,14 +49,14 @@
             </mat-form-field>
             <div
               *ngIf="
-                addtaskcontrol['list'].invalid && addtaskcontrol['list'].touched
+                addTaskControl['list'].invalid && addTaskControl['list'].touched
               "
               class="error-message"
             >
               <div
                 *ngIf="
-                  addtaskcontrol['list'].errors &&
-                  addtaskcontrol['list'].errors['required']
+                  addTaskControl['list'].errors &&
+                  addTaskControl['list'].errors['required']
                 "
               >
                 <i class="fas fa-exclamation-circle"></i>Please choose a list
@@ -70,7 +65,7 @@
           </div>
 
           <div class="col">
-            <label class="field_label">Choose priority</label>
+            <label class="field-label">Choose priority</label>
             <mat-form-field appearance="outline" floatLabel="never">
               <mat-label>Choose priority</mat-label>
               <mat-select formControlName="priority">
@@ -81,15 +76,15 @@
             </mat-form-field>
             <div
               *ngIf="
-                addtaskcontrol['priority'].invalid &&
-                addtaskcontrol['priority'].touched
+                addTaskControl['priority'].invalid &&
+                addTaskControl['priority'].touched
               "
               class="error-message"
             >
               <div
                 *ngIf="
-                  addtaskcontrol['priority'].errors &&
-                  addtaskcontrol['priority'].errors['required']
+                  addTaskControl['priority'].errors &&
+                  addTaskControl['priority'].errors['required']
                 "
               >
                 <i class="fas fa-exclamation-circle"></i>Please choose a
@@ -98,7 +93,7 @@
             </div>
           </div>
           <div class="col">
-            <label class="field_label">Set date and time</label>
+            <label class="field-label">Set date and time</label>
 
             <mat-form-field appearance="outline" floatLabel="never">
               <mat-icon matPrefix>event</mat-icon>
@@ -113,14 +108,14 @@
 
             <div
               *ngIf="
-                addtaskcontrol['date'].invalid && addtaskcontrol['date'].touched
+                addTaskControl['date'].invalid && addTaskControl['date'].touched
               "
               class="error-message"
             >
               <div
                 *ngIf="
-                  addtaskcontrol['date'].errors &&
-                  addtaskcontrol['date'].errors['required']
+                  addTaskControl['date'].errors &&
+                  addTaskControl['date'].errors['required']
                 "
               >
                 <i class="fas fa-exclamation-circle"></i>Please choose a date
@@ -145,7 +140,7 @@
             (btnClick)="addTask()"
           >
           </app-button>
-          <span class="errormsg" *ngIf="addTaskForm.invalid">
+          <span class="warning" *ngIf="addTaskForm.invalid">
             <sup>*</sup>Fill all fields to activate submit button.
           </span>
         </div>

@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="row">
-    <div class="col container_header">
+    <div class="col container-header">
       <p>Create list</p>
       <mat-icon
         [ngStyle]="{ color: '#333333;' }"
@@ -13,9 +13,9 @@
 
   <div class="row">
     <div class="col">
-      <form [formGroup]="addListForm" class="add_list_form">
+      <form [formGroup]="addListForm" class="add-list-form">
         <div class="row">
-          <label class="field_label">List name</label><br />
+          <label class="field-label">List name</label><br />
           <mat-form-field appearance="outline" floatLabel="never">
             <input
               matInput
@@ -24,6 +24,22 @@
               formControlName="list"
             />
           </mat-form-field>
+          <div
+            *ngIf="
+              createListControl['list'].invalid &&
+              createListControl['list'].touched
+            "
+            class="error-message"
+          >
+            <div
+              *ngIf="
+                createListControl['list'].errors &&
+                createListControl['list'].errors['required']
+              "
+            >
+              <i class="fas fa-exclamation-circle"></i>List name is required
+            </div>
+          </div>
         </div>
 
         <div class="buttons">

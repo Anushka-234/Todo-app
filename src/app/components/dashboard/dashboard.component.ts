@@ -85,8 +85,6 @@ export class DashboardComponent implements OnInit {
           this.lists.push(list)
           this.toastr.success("List added", "Success");
         });
-      } else {
-        this.toastr.error("List not added", "Invalid Form");
       }
     });
   }
