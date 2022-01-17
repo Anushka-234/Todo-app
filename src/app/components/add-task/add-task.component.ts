@@ -31,11 +31,10 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getList().subscribe((data) => (this.lists = data));
-    console.log(this.lists);
   }
 
   closeAddTask() {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 
   addTask() {
@@ -47,6 +46,4 @@ export class AddTaskComponent implements OnInit {
   get addTaskControl() {
     return this.addTaskForm.controls;
   }
-
-
 }

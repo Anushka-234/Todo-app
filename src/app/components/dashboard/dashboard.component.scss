@@ -137,16 +137,19 @@ section {
       width: 32px;
     }
   }
+
   .list-tasks {
     background: $white;
     border: 1px solid hsl(0, 0%, 89%);
     border-radius: 10px;
     margin-right: 10px;
     max-height: 644px;
-    margin: 4px 8px;
+    padding-top: 24px;
+    padding-bottom: 16px;
     overflow-y: auto;
     width: 471px;
   }
+
   .list-header {
     @include fontstyles;
     color: $black;
@@ -156,6 +159,7 @@ section {
     line-height: 32px;
     padding: 5px 8px;
   }
+
   .list-menu {
     align-items: center;
     display: flex;
@@ -163,16 +167,19 @@ section {
     justify-content: space-between;
     padding: 0;
   }
+
   .list-names-container {
     padding-bottom: 15px;
     border: 1px solid $border-color;
     border-radius: 10px;
   }
+
   .spinner {
     color: $primary-color;
     display: inline;
     margin: 2px 12px;
   }
+
   .spinner ::ng-deep .mat-progress-spinner circle,
   .mat-spinner circle {
     stroke: $primary-color;
