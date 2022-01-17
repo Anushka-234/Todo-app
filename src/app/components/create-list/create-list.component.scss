@@ -12,6 +12,11 @@
   line-height: 32px;
 }
 
+.close-icon {
+  color: $black;
+  cursor: pointer;
+}
+
 .add-list-form {
   ::ng-deep .mat-form-field-wrapper {
     margin-bottom: -8px;
