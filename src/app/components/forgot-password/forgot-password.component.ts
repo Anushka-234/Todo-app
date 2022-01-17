@@ -23,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
     private router: Router,
     public dialogRef: MatDialog) {
     this.forgotPasswordForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern]]
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 

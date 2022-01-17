@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TaskComponent } from './task.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 describe('TaskComponent', () => {
   let component: TaskComponent;
@@ -8,9 +10,10 @@ describe('TaskComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskComponent ]
+      imports: [HttpClientTestingModule, ToastrModule.forRoot()],
+      declarations: [TaskComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +22,4 @@ describe('TaskComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
