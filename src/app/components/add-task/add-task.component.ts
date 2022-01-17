@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { faPoo } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { TaskService } from 'src/app/shared/services/task.service';
+import { List } from 'src/app/shared/task';
 
 
 @Component({
@@ -11,42 +13,37 @@ import { TaskService } from 'src/app/shared/services/task.service';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
-  lists:any[]= [];
-  tasks:any[]=[];
-  isLoading:boolean = false;
+  lists: List[] = [];
+  tasks: Task[] = [];
+  isLoading: boolean = false;
+  addTaskForm !: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<AddTaskComponent>,private fb:FormBuilder, 
-    private service:TaskService,
-    private toastr:ToastrService) { }
+  constructor(public dialogRef: MatDialogRef<AddTaskComponent>, private fb: FormBuilder,
+    private service: TaskService,
+    private toastr: ToastrService) {
+    this.addTaskForm = this.fb.group({
+      task: ['', Validators.required],
+      list: ['', Validators.required],
+      priority: ['', Validators.required],
+      date: ['', Validators.required]
+    })
+  }
 
   ngOnInit(): void {
     this.service.getList().subscribe((data) => (this.lists = data));
-    console.log(this.lists);
-  }
-  
-
-  closeAddTask(){
-    this.dialogRef.close()
   }
 
-  addtask = this.fb.group({
-    task:['',Validators.required],
-    list:['',Validators.required],
-    priority:['',Validators.required],
-    date:['', Validators.required]
-  })
+  closeAddTask() {
+    this.dialogRef.close();
+  }
 
-  addTask(){
+  addTask() {
     this.isLoading = true;
-    const task = this.addtask.value;
-    this.service.addTask(task).subscribe((task) => this.tasks.push(task));
-    this.toastr.success('Task added','success')
-    this.dialogRef.close()
+    const task = this.addTaskForm.value;
+    this.dialogRef.close(task);
   }
 
-  get addtaskcontrol() {
-    return this.addtask.controls;
+  get addTaskControl() {
+    return this.addTaskForm.controls;
   }
-  
-
 }

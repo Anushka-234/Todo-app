@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TaskService } from 'src/app/shared/services/task.service';
+import { List } from 'src/app/shared/task';
 
 @Component({
   selector: 'app-create-list',
@@ -9,34 +10,31 @@ import { TaskService } from 'src/app/shared/services/task.service';
   styleUrls: ['./create-list.component.scss']
 })
 export class CreateListComponent implements OnInit {
-  lists:any[]= [];
+  lists: List[] = [];
+  addListForm!: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<CreateListComponent>,private fb:FormBuilder, private service: TaskService) { }
+  constructor(public dialogRef: MatDialogRef<CreateListComponent>,
+    private fb: FormBuilder,
+    private service: TaskService) { }
 
   ngOnInit(): void {
-  }
-  addlist= this.fb.group({
-    list:['',Validators.required]
-  })
+    this.addListForm = this.fb.group({
+      list: ['', Validators.required]
+    })
 
-  // addList(){
-  //   if(this.addlist.valid){
-  //     const task = this.addlist.value;
-  //     this.dialogRef.close();
-  //     console.log(task)
-  //   }else{
-  //     alert("Invalid form")
-  //   }
-  // }
-
-  addList(){
-    const list = this.addlist.value;
-    // this.service.addList(list).subscribe((list) => this.lists.push(list));
-    this.dialogRef.close()
   }
 
-  closeAddList(){
+  addList() {
+    const list = this.addListForm.value;
+    this.dialogRef.close(list)
+  }
+
+  closeAddList() {
     this.dialogRef.close();
+  }
+
+  get createListControl() {
+    return this.addListForm.controls;
   }
 
 }

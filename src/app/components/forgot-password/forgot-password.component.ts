@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faCheck, faEnvelope, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEnvelope, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SendmailComponent } from './sendmail/sendmail.component';
+import { FaProps } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,33 +14,33 @@ import { SendmailComponent } from './sendmail/sendmail.component';
 })
 export class ForgotPasswordComponent implements OnInit {
   faCheck = faCheck;
-  faTimes = faTimes;
+  faExclamationCircle = faExclamationCircle;
   faEnvelope = faEnvelope;
+  forgotPasswordForm !: FormGroup;
 
   constructor(private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    public dialogRef: MatDialog) { }
-
-  forgotpasswordForm = this.fb.group({
-    email: ['', [Validators.required,Validators.pattern]]
-  });
-
-  get form() {
-    return this.forgotpasswordForm.controls;
+    public dialogRef: MatDialog) {
+    this.forgotPasswordForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
 
+  get emailFormControl() {
+    return this.forgotPasswordForm.controls;
+  }
 
-  openDialog(){
+  openDialog() {
     this.dialogRef.open(SendmailComponent, {
-      width:'395px',
-      height:'340px',
+      width: '395px',
+      height: '340px',
       panelClass: 'custom-modalbox'
     });
   }
 
-  submit(){
-    console.log(this.forgotpasswordForm.value);
+  submit() {
+    console.log(this.forgotPasswordForm.value);
   }
 
   ngOnInit(): void {

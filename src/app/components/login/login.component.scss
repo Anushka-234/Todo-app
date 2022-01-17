@@ -1,82 +1,100 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
 
-.login_card {
-  @include card_body;
-  width: 780px;
+.login-card {
+  @include card-body;
   height: 560px;
+  width: 780px;
 }
 
-.container_login {
-  @include side_form;
-
+.container-login {
+  @include side-form;
   &-header {
     @include fontstyles;
-    @include form_header;
+    @include form-header;
   }
-
   &-info {
-    @include form_header_info;
+    @include form-header-info;
     @include fontstyles;
   }
-
   &-text {
     @include fontstyles;
-    @include form_header_text;
+    @include form-header-text;
   }
-
   &-form {
-    .form__group {
-      @include form_group;
+    .form-group {
+      @include form-group;
     }
-
     .left-icon {
       position: absolute;
       padding: 10px;
     }
-
     .right-icon {
       @include icon-button;
       color: $text-color;
     }
-
     .right-icon-success {
       @include icon-button;
       color: green;
     }
-
     .right-icon-invalid {
       @include icon-button;
       color: red;
+      padding-left: 20px;
     }
-
     .form-control {
-      @include form_control;
+      @include form-control;
     }
-
-    .field_label {
-      @include field_label;
+    .field-label {
+      @include field-label;
     }
-
-    .forgot_password {
+    .forgot-password {
+      color: $primary-color;
+      cursor: pointer;
+      padding: 4px;
       text-align: right;
       width: 90%;
-      padding: 4px;
-      color: $red;
-      cursor: pointer;
     }
-    .new_user {
-      @include form_query;
+    .error-message {
+      color: $primary-color;
+      font-size: 13px;
+      line-height: 21px;
+      padding: 7px;
 
-      .create_account {
-        color: $red;
-        padding: 3px;
+      i {
+        padding: 5px;
+      }
+    }
+    .new-user {
+      @include form-query;
+      .create-account {
+        color: $primary-color;
+
         cursor: pointer;
+        padding: 3px;
       }
     }
   }
 }
 
-.container_login_image {
-  @include side_image;
+.container-login-image {
+  @include side-image;
+}
+
+@media only screen and (max-width: 767px) {
+  .login-card {
+    flex-direction: column;
+    left: auto;
+    top: auto;
+  }
+  .container-login-image {
+    display: none;
+  }
+  .right-icon {
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    padding-left: 720px;
+    padding: 10px;
+  }
 }

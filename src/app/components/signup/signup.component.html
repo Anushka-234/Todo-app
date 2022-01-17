@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 signup_card">
-      <div class="container_signup">
-        <p class="container_signup-header">TODO APP</p>
-        <p class="container_signup-info">Let's get started</p>
-        <p class="container_signup-text">
+    <div class="col-sm-12 signup-card">
+      <div class="container-signup">
+        <p class="container-signup-header">TODO APP</p>
+        <p class="container-signup-info">Let's get started</p>
+        <p class="container-signup-text">
           Create an account to get started with TODO APP
         </p>
         <form
-          class="container_signup-form"
+          class="container-signup-form"
           [formGroup]="signupForm"
-          (ngSubmit)="signup()"
+          (ngSubmit)="submit()"
         >
-          <div class="form-group form__group">
-            <label class="field_label" for="username">Name</label><br />
+          <div class="form-group form-group">
+            <label class="field-label" for="username">Name</label><br />
             <i class="material-icons left-icon">person</i>
             <input
               type="text"
@@ -35,28 +35,29 @@
               "
             >
               <small
-                class="text-danger"
+                class="error-message"
                 *ngIf="
                   signupformcontrol['username'].errors &&
                   signupformcontrol['username'].errors['required']
                 "
-                >Username is required</small
+                ><i class="fas fa-exclamation-circle"></i>Username is
+                required</small
               >
               <small
-                class="text-danger"
+                class="error-message"
                 *ngIf="
                   signupformcontrol['username'].errors &&
                   signupformcontrol['username'].errors['forbiddenName']
                 "
               >
-                '{{
+                <i class="fas fa-exclamation-circle"></i>'{{
                   signupformcontrol["username"].errors["forbiddenName"].value
                 }}' username not allowed</small
               >
             </div>
           </div>
-          <div class="form-group form__group">
-            <label class="field_label" for="gender">Gender</label>
+          <div class="form-group form-group">
+            <label class="field-label" for="gender">Gender</label>
             <div class="gender-option">
               <div class="form-check">
                 <input
@@ -107,8 +108,8 @@
             </div>
           </div>
 
-          <div class="form-group form__group">
-            <label class="field_label" htmlFor="date">DOB</label><br />
+          <div class="form-group form-group">
+            <label class="field-label" htmlFor="date">DOB</label><br />
             <i class="material-icons left-icon">today</i>
             <input
               [class.is-invalid]="
@@ -143,7 +144,7 @@
             </div>
           </div>
           <div class="row phone-field">
-            <label class="field_label_phone" htmlFor="phone">Phone</label>
+            <label class="field-label-phone" htmlFor="phone">Phone</label>
             <div class="col-4">
               <select class="form-select">
                 <i class="fas fa-flag"></i>
@@ -156,7 +157,7 @@
               </select>
             </div>
             <div class="col-8">
-              <div class="form-group form__group">
+              <div class="form-group form-group">
                 <i class="material-icons left-icon">call</i>
                 <input
                   [class.is-invalid]="
@@ -177,7 +178,7 @@
                     signupformcontrol['phone'].invalid &&
                     signupformcontrol['phone'].touched
                   "
-                  class="invalid-feedback"
+                  class="error-message"
                 >
                   <div
                     *ngIf="
@@ -185,7 +186,7 @@
                       signupformcontrol['phone'].errors['required']
                     "
                   >
-                    Phone is required
+                    <i class="fas fa-exclamation-circle"></i>Phone is required
                   </div>
                   <div
                     *ngIf="
@@ -193,14 +194,15 @@
                       signupformcontrol['phone'].errors['pattern']
                     "
                   >
-                    Please enter a valid phone number.
+                    <i class="fas fa-exclamation-circle"></i>Please enter a
+                    valid phone number.
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="form-group form__group">
-            <label class="field_label" htmlFor="email">Email address</label
+          <div class="form-group form-group">
+            <label class="field-label" htmlFor="email">Email address</label
             ><br />
             <i class="material-icons left-icon">email</i>
             <input
@@ -223,7 +225,7 @@
                 signupformcontrol['email'].invalid &&
                 signupformcontrol['email'].touched
               "
-              class="invalid-feedback"
+              class="error-message"
             >
               <div
                 *ngIf="
@@ -231,7 +233,7 @@
                   signupformcontrol['email'].errors['required']
                 "
               >
-                Email is required
+                <i class="fas fa-exclamation-circle"></i> Email is required
               </div>
               <div
                 *ngIf="
@@ -239,7 +241,7 @@
                   signupformcontrol['email'].errors['pattern']
                 "
               >
-                Invalid Pattern
+                <i class="fas fa-exclamation-circle"></i>Invalid Pattern
               </div>
             </div>
           </div>
@@ -250,18 +252,18 @@
             [disabled]="signupForm.invalid"
           ></app-button>
 
-          <p class="registered_user">
-            Already have an account ?&nbsp;<a class="_login" routerLink="/login"
+          <p class="registered-user">
+            Already have an account ?&nbsp;<a class="-login" routerLink="/login"
               >Login</a
             >
           </p>
         </form>
       </div>
-      <div class="container_signup_image">
+      <div class="container-signup-image">
         <img
           src="../../../assets/images/signup.svg"
           alt="signin-image"
-          class="signup_image"
+          class="signup-image"
         />
       </div>
     </div>

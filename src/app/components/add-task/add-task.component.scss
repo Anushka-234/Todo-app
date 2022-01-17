@@ -3,32 +3,39 @@
 .wrapper {
   padding: 5px 10px;
 }
-.container_header {
+.container-header {
   @include fontstyles;
+  display: flex;
   font-weight: 500;
   font-size: 24px;
-  line-height: 32px;
-  display: flex;
   justify-content: space-between;
+  line-height: 32px;
 }
 
-.add_task_form {
-  .form__group {
-    @include form_group;
+.close-icon {
+  color: $black;
+  cursor: pointer;
+}
+
+.add-task-form {
+  ::ng-deep .mat-form-field-wrapper {
+    margin-bottom: -5px;
   }
 
-  .form_control {
-    @include form_control;
-  }
-
-  .field_label {
-    @include field_label;
+  .field-label {
+    @include field-label;
     padding: 6px;
   }
 
-  .task_features {
+  .task-features {
     display: flex;
     flex-direction: row;
+
+    ::ng-deep .mat-form-field-wrapper {
+      mat-select {
+        margin-bottom: -8px;
+      }
+    }
 
     .form-control {
       text-align: center;
@@ -38,19 +45,21 @@
   .buttons {
     display: flex;
     flex-direction: row-reverse;
+    padding-top: 10px;
   }
   .error-message {
-    color: $red;
+    color: $primary-color;
     font-size: 13px;
     line-height: 21px;
     i {
       padding: 2px;
     }
   }
-  .errormsg {
-    color: $red;
+  .warning {
+    color: $primary-color;
     font-size: 13px;
     line-height: 21px;
+    padding-top: 15px;
     padding-right: 150px;
   }
 }

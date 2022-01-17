@@ -3,36 +3,41 @@
 .wrapper {
   padding: 5px 10px;
 }
-.container_header {
+.container-header {
   @include fontstyles;
+  display: flex;
+  justify-content: space-between;
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
-  display: flex;
-  justify-content: space-between;
 }
 
-.add_list_form {
-  .form__group {
-    @include form_group;
+.close-icon {
+  color: $black;
+  cursor: pointer;
+}
+
+.add-list-form {
+  ::ng-deep .mat-form-field-wrapper {
+    margin-bottom: -8px;
   }
 
-  .form_control {
-    @include form_control;
-    padding: 20px;
-  }
-
-  .field_label {
-    @include field_label;
+  .field-label {
+    @include field-label;
     padding: 10px;
+  }
+
+  .error-message {
+    color: $primary-color;
+    font-size: 13px;
+    line-height: 21px;
+    i {
+      padding: 2px;
+    }
   }
 }
 
 .buttons {
   display: flex;
   flex-direction: row-reverse;
-}
-
-.dropdown-toggle {
-  border: solid grey 2px;
 }

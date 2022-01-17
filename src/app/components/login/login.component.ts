@@ -1,14 +1,16 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Login } from '../../shared/user';
-import {  faEnvelope,
+import { Login, Register } from '../../shared/user';
+import {
+  faEnvelope,
   faLock,
   faTimes,
   faEye,
   faEyeSlash,
   faCheck,
+  faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 
@@ -19,100 +21,71 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   user = '1';
-  authResponse: any;
+  authResponse: Register;
   submitted: boolean = false;
-  showpassword = false;
-  one="hello"
+  showPassword = false;
+  one = "hello"
   faEnvelope = faEnvelope;
   faLock = faLock;
   faTimes = faTimes;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   faCheck = faCheck;
+  faExclamationCircle = faExclamationCircle;
+  loginForm !: FormGroup;
 
 
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toastr:ToastrService
-  ) {}
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.one)
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.pattern]],
+      password: ['', Validators.required],
+    });
   }
 
-  loginForm = this.fb.group({
-    email: ['', [Validators.required,Validators.pattern]],
-    password: ['', Validators.required],
-  });
-
-  get form() {
+  get loginFormControl() {
     return this.loginForm.controls;
   }
 
 
-
-
-
-  login() {
-    this.auth
-      .login(
-        this.loginForm.controls['email'].value,
-        this.loginForm.controls['password'].value
-      )
-      .subscribe(
-        (response) => {
-          this.authResponse = response;
-          if (response.token) {
-            localStorage.setItem('token', response.token);
-            this.toastr.success('Login Successful','message')
-            this.router.navigate(['']);
-          
-            console.log('success')
+  login(): void {
+    if (this.loginForm.valid) {
+      this.submitted = true;
+      this.auth.getUsers().subscribe(
+        (data) => {
+          const user = data.find((a: Register) => {
+            return (
+              a.email === this.loginForm.value.email &&
+              a.password === this.loginForm.value.password
+            );
+          });
+          if (user) {
+            this.toastr.success("Login Successful", "Welcome")
+            this.authResponse = user;
+            localStorage.setItem('SessionUser', this.user);
+            console.log(user);
+            if (user.token) {
+              localStorage.setItem('token', user.token);
+              this.loginForm.reset();
+              this.router.navigate(['/']);
+            }
+          } else {
+            this.toastr.error("User not found", "Error")
           }
         },
         (error) => {
-          this.toastr.error("Invalid Login","Error")
-         
+          this.toastr.error("Invalid login", "Error")
+          alert("Sorry we have no information about you!");
         });
+    }
   }
 
-  // login(): void {
-  //   if(this.loginForm.valid){this.submitted = true;
-  //     this.auth.getUsers().subscribe(
-  //       (data) => {
-  //         const user = data.find((a: any) => {
-  //           return (
-  //             a.email === this.loginForm.value.email &&
-  //             a.password === this.loginForm.value.password
-  //           );
-  //         });
-  //         if (user) {
-  //           alert('login successful');
-  //           this.authResponse = user;
-  //           localStorage.setItem('SessionUser', this.user);
-  //           console.log(user);
-  //           if (user.token) {
-  //             localStorage.setItem('token', user.token);
-  //             this.loginForm.reset();
-  //             this.router.navigate(['/']);
-  //           } else {
-  //             console.log('user not found ');
-  //             alert('user not found');
-  //             this.router.navigate(['/register']);
-  //           }
-  //         }
-  //       },
-  //       (error) => {
-  //         alert("Sorry we have no information about you!");
-  //       });
-  // }
-
-  // }
-
-
- 
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach((field) => {
       const control = formGroup.get(field);
@@ -124,20 +97,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  token() {
-    console.log(this.auth.gettoken());
-  }
-
-  submitButton():void{
+  submitButton(): void {
     console.log("submitted");
   }
 
-  showhidePassword(){
-    this.showpassword = !this.showpassword;
-    if(this.showpassword){
-      document.querySelector('#password')?.setAttribute('type','text');
-    }else{
-      document.querySelector('#password')?.setAttribute('type','password');
+  showhidePassword() {
+    this.showPassword = !this.showPassword;
+    if (this.showPassword) {
+      document.querySelector('#password')?.setAttribute('type', 'text');
+    } else {
+      document.querySelector('#password')?.setAttribute('type', 'password');
     }
   }
 }

@@ -1,79 +1,74 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
-
 * {
   padding: 0;
 }
 
 nav {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 40px;
-
   .nav-items {
-    display: flex;
     align-items: center;
+    display: flex;
     flex-direction: row;
   }
-
   .logo {
+    color: $primary-color;
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.2em;
-    color: $red;
   }
-
   .logout {
     @include fontstyles;
-    font-size: 20px;
-    line-height: 28px;
     color: #4f4f4f;
     cursor: pointer;
+    font-size: 20px;
+    line-height: 28px;
     i {
       padding: 5px;
     }
     &:hover {
-      color: $red;
+      color: $primary-color;
     }
   }
   .profile-icon {
+    align-items: center;
     background: rgba(251, 220, 211, 0.25);
-    width: 48px;
-    height: 48px;
     border-radius: 24px;
+    color: $primary-color;
+    display: flex;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-    line-height: 26px;
-    color: $red;
-    padding: 3px;
-    display: flex;
-    align-items: center;
+    height: 48px;
     justify-content: center;
+    line-height: 26px;
     margin-right: 3px;
+    padding: 3px;
+    width: 48px;
   }
 }
 
-.menu_overview {
-  padding: 24px 40px;
-  display: flex;
+.menu-overview {
   align-items: center;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 24px 40px;
 
   .date {
-    &_date {
+    &-date {
       font-size: 24px;
       line-height: 32px;
     }
-    &_text {
+    &-text {
       color: $text-color;
       font-size: 14px;
       line-height: 22px;
-
       i {
         padding: 3px;
       }
@@ -81,113 +76,118 @@ nav {
   }
 }
 
-.main_overview {
+.main-overview {
   padding: 12px 40px;
-  .header_text {
+  .header-text {
     @include fontstyles;
+    color: $black;
     font-size: 24px;
     line-height: 28px;
-    color: #333333;
   }
-
   .data {
     background: #ffffff;
     border: 1px solid #e3e3e3;
     border-radius: 10px;
-    padding: 30px;
     display: flex;
     flex-direction: row;
+    padding: 30px;
 
-    .icon_image {
+    .icon-image {
       margin-right: 22px;
     }
-
-    .data_header {
+    .data-header {
+      color: $text-color;
       font-size: 20px;
       line-height: 28px;
-      color: #828282;
       margin-bottom: 4px;
     }
-
-    .data_count {
+    .data-count {
+      color: $black;
       font-weight: 500;
       font-size: 32px;
       line-height: 40px;
       margin-bottom: 0px;
-      color: #000000;
     }
   }
 }
 
 section {
-  padding: 12px 50px;
-
-  .task_header {
-    display: flex;
+  padding: 12px 40px;
+  .task-header {
     @include fontstyles;
+    color: $black;
+    display: flex;
     font-weight: normal;
     font-size: 24px;
     line-height: 32px;
-    color: #333333;
-    padding: 26px;
 
-    .task_count {
-      width: 32px;
-      height: 32px;
-      display: inline-block;
-      border-radius: 16px;
+    padding: 9px 12px;
+    .task-count {
       background: rgba(251, 220, 211, 0.25);
-      text-align: center;
+      border-radius: 16px;
+      color: $primary-color;
+      display: inline-block;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
+      height: 32px;
       line-height: 32px;
-      color: $red;
       margin-left: 16px;
+      text-align: center;
+      width: 32px;
     }
   }
-  .list_tasks {
-    background: #ffffff;
+
+  .list-tasks {
+    background: $white;
     border: 1px solid hsl(0, 0%, 89%);
     border-radius: 10px;
     margin-right: 10px;
-    width: 471px;
     max-height: 644px;
+    margin-left: 10px;
+    padding-bottom: 18px;
     overflow-y: auto;
+    width: 471px;
   }
 
-  .list_header {
-    display: flex;
+  .list-header {
     @include fontstyles;
+    color: $black;
+    display: flex;
     font-weight: normal;
     font-size: 24px;
     line-height: 32px;
-    color: #333333;
-    padding: 22px;
+    padding: 5px 8px;
   }
 
-  .list_menu {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+  .list-menu {
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 0;
   }
 
-  .list_names_container {
+  .list-names-container {
     padding-bottom: 15px;
-    border: 1px solid #e3e3e3;
+    border: 1px solid $border-color;
     border-radius: 10px;
   }
 
   .spinner {
+    color: $primary-color;
     display: inline;
     margin: 2px 12px;
-    color: $red;
   }
 
   .spinner ::ng-deep .mat-progress-spinner circle,
   .mat-spinner circle {
-    stroke: $red;
+    stroke: $primary-color;
+  }
+}
+
+@media only screen and (max-width: 1372px) {
+  .list-header {
+    margin-top: 30px;
   }
 }

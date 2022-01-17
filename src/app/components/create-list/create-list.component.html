@@ -1,21 +1,16 @@
 <div class="wrapper">
   <div class="row">
-    <div class="col container_header">
+    <div class="col container-header">
       <p>Create list</p>
-      <mat-icon
-        [ngStyle]="{ color: '#333333;' }"
-        style="cursor: pointer"
-        (click)="closeAddList()"
-        >close</mat-icon
-      >
+      <mat-icon class="close-icon" (click)="closeAddList()">close</mat-icon>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
-      <form [formGroup]="addlist" class="add_list_form">
+      <form [formGroup]="addListForm" class="add-list-form">
         <div class="row">
-          <label class="field_label">List name</label><br />
+          <label class="field-label">List name</label><br />
           <mat-form-field appearance="outline" floatLabel="never">
             <input
               matInput
@@ -24,6 +19,22 @@
               formControlName="list"
             />
           </mat-form-field>
+          <div
+            *ngIf="
+              createListControl['list'].invalid &&
+              createListControl['list'].touched
+            "
+            class="error-message"
+          >
+            <div
+              *ngIf="
+                createListControl['list'].errors &&
+                createListControl['list'].errors['required']
+              "
+            >
+              <i class="fas fa-exclamation-circle"></i>List name is required
+            </div>
+          </div>
         </div>
 
         <div class="buttons">
@@ -38,7 +49,7 @@
           <app-button
             text="Add List"
             width="144px"
-            [disabled]="addlist.invalid"
+            [disabled]="addListForm.invalid"
             (btnClick)="addList()"
           ></app-button>
         </div>

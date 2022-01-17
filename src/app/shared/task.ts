@@ -5,3 +5,7 @@ export class Task {
 	priority:string
 	list : string;
 }
+
+export class List{
+	list : string;
+}

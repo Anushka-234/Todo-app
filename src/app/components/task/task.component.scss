@@ -2,14 +2,13 @@
 @import "../../shared/styles/mixins";
 
 .task {
+  align-items: center;
+  border-bottom: 1px solid $border-color;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 21px 40px;
-
-  border-bottom: 1px solid #e0e0e0;
-
+  margin: 0px 20px;
+  padding: 21px 20px;
   &:last-child {
     animation-name: item-entry-animation;
     animation-duration: 0.3s;
@@ -24,66 +23,67 @@
       transform: scale(1, 1);
     }
   }
-  .task_check {
+
+  .task-check {
     display: flex;
     flex-direction: row;
     padding-bottom: 25px;
     .check {
-      width: 24px;
-      height: 24px;
-      border: 1px solid $red;
+      border: 1px solid $primary-color;
       border-radius: 5px;
       cursor: pointer;
+      height: 24px;
+      width: 24px;
       &:hover {
-        background-color: #eb5757;
+        background-color: $primary-color;
       }
     }
 
-    .task_features {
+    .task-features {
       padding-left: 40px;
 
-      .task_header {
+      .task-header {
+        color: $black;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
         line-height: 24px;
-        color: #333333;
         margin-bottom: 4px;
       }
-      .task_list {
-        margin: 0;
+      .task-list {
+        color: $text-color;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
         line-height: 22px;
-        color: #828282;
+        margin: 0;
       }
     }
   }
 
   .High {
-    font-size: 14px;
-    color: #eb5757;
     @include fontstyles;
     background: rgba(235, 87, 87, 0.05);
     border-radius: 5px;
+    color: $high-priority;
+    font-size: 14px;
     padding: 6px 12px;
   }
 
   .Medium {
-    font-size: 14px;
     @include fontstyles;
-    color: #219653;
     background: rgba(33, 150, 83, 0.05);
     border-radius: 5px;
+    color: $medium-priority;
+    font-size: 14px;
     padding: 6px 12px;
   }
   .Low {
-    font-size: 14px;
     @include fontstyles;
-    color: #f2994a;
     background: rgba(242, 153, 74, 0.05);
     border-radius: 5px;
+    color: $low-priority;
+    font-size: 14px;
     padding: 6px 12px;
   }
 }

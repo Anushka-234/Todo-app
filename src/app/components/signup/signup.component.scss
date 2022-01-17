@@ -1,106 +1,101 @@
 @import "../../shared/styles/variables";
 @import "../../shared/styles/mixins";
-
-.signup_card {
-  @include card_body;
-  width: 780px;
-  height: 790px;
-  top: 130px;
+.signup-card {
+  @include card-body;
+  min-height: 790px;
   margin-bottom: 50px;
+  width: 780px;
 }
 
-.container_signup {
-  @include side_form;
-
+.container-signup {
+  @include side-form;
   &-header {
     @include fontstyles;
-    @include form_header;
+    @include form-header;
   }
-
   &-info {
-    @include form_header_info;
+    @include form-header-info;
     @include fontstyles;
   }
-
   &-text {
     @include fontstyles;
-    @include form_header_text;
+    @include form-header-text;
   }
-
   &-form {
-    .form__group {
-      @include form_group;
+    .form-group {
+      @include form-group;
     }
-
     .left-icon {
+      color: $text-color;
       position: absolute;
       padding: 10px;
-      color: $text-color;
     }
-
     .password-icon {
       position: absolute;
       padding: 10px;
     }
-
     .form-control {
-      @include form_control;
+      @include form-control;
     }
-
     .gender-option {
       display: flex;
-      width: 55%;
       flex-direction: row;
       justify-content: space-between;
-      padding: 2px 2px;
       font-size: 16px;
-
+      padding: 2px 2px;
+      width: 55%;
       .form-check-input {
-        color: $red;
+        color: $primary-color;
       }
     }
-
     .form-select {
       margin-top: 16px;
       margin-right: 10px;
       margin-left: -4px;
     }
-    .field_label_phone {
+    .field-label-phone {
       font-weight: 500;
-      line-height: 22px;
       font-size: 16px;
-      padding-left: 12px;
+      line-height: 22px;
       margin-top: 2px;
       margin-bottom: -12px;
+      padding-left: 12px;
     }
-
-    .field_label {
-      @include field_label;
+    .field-label {
+      @include field-label;
     }
-
-    .forgot_password {
+    .forgot-password {
+      color: $primary-color;
       text-align: right;
-      width: 90%;
       padding: 3px;
-      color: $red;
+      width: 90%;
     }
     .phone-field {
-      width: 100%;
       padding-left: 5px;
       margin-top: 6px;
+      width: 100%;
     }
-    .registered_user {
-      @include form_query;
+    .error-message {
+      color: $primary-color;
+      font-size: 13px;
+      line-height: 21px;
+      padding: 7px;
 
-      ._login {
-        color: $red;
-        padding: 3px;
+      i {
+        padding: 5px;
+      }
+    }
+    .registered-user {
+      @include form-query;
+      .-login {
+        color: $primary-color;
         cursor: pointer;
+        padding: 3px;
       }
     }
   }
 }
 
-.container_signup_image {
-  @include side_image;
+.container-signup-image {
+  @include side-image;
 }
