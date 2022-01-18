@@ -225,13 +225,13 @@
                 signupformcontrol['email'].invalid &&
                 signupformcontrol['email'].touched
               "
-              class="error-message"
             >
               <div
                 *ngIf="
                   signupformcontrol['email'].errors &&
                   signupformcontrol['email'].errors['required']
                 "
+                class="error-message"
               >
                 <i class="fas fa-exclamation-circle"></i> Email is required
               </div>
@@ -240,6 +240,7 @@
                   signupformcontrol['email'].errors &&
                   signupformcontrol['email'].errors['pattern']
                 "
+                class="error-message"
               >
                 <i class="fas fa-exclamation-circle"></i>Invalid Pattern
               </div>

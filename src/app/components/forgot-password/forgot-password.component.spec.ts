@@ -26,4 +26,23 @@ describe('ForgotPasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form invalid when empty', () => {
+    expect(component.forgotPasswordForm.valid).toBeFalsy();
+  });
+
+  it('Form should be invalid', () => {
+    component.forgotPasswordForm.controls['email'].setValue('');
+    expect(component.forgotPasswordForm.valid).toBeFalsy();
+  });
+
+  it('should validate correct email format', () => {
+    const email = component.forgotPasswordForm.get('email');
+    email?.setValue('test@test.com');
+    const errors = email?.errors || {};
+    expect(errors['required']).toBeFalsy();
+    expect(email?.valid).toBeTruthy();
+  });
+
+
 });

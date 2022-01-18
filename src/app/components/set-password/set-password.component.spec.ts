@@ -27,4 +27,31 @@ describe('SetPasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Form should be invalid', () => {
+    component.setpasswordForm.controls['password'].setValue('');
+    component.setpasswordForm.controls['confirmpassword'].setValue('');
+    expect(component.setpasswordForm.valid).toBeFalsy();
+  });
+
+  it('should validate correct password format', () => {
+    const password = component.setpasswordForm.get('password');
+    password?.setValue('1234@Abc');
+    const errors = password?.errors || {};
+    expect(errors['required']).toBeFalsy();
+    expect(password?.valid).toBeTruthy();
+  });
+
+  it('should validate if confirm-password matches password', () => {
+    const password = component.setpasswordForm.get('password')
+    const confirmpassword = component.setpasswordForm.get('confirmpassword');
+    password?.setValue('1234@Abc')
+    confirmpassword?.setValue('1234@Abc');
+    const errors = confirmpassword?.errors || {};
+    expect(errors['mustMatch']).toBeFalsy();
+    expect(confirmpassword?.valid).toBeTruthy();
+  });
+
+
+
 });
