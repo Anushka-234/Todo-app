@@ -71,12 +71,12 @@ describe('SignupComponent', () => {
 
   it('should validate validation messages', () => {
     expect(component.signupformcontrol).toBeDefined();
-  })
+  });
 
   it('should validate error message', () => {
     let error: DebugElement;
     fixture.detectChanges();
     error = fixture.debugElement.query(By.css('.error-message'));
-    expect(error).toBeTruthy();
+    expect(error).toBeFalsy();
   })
 });
