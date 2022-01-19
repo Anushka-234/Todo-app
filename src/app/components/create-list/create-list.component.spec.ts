@@ -37,4 +37,25 @@ describe('CreateListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form invalid when empty', () => {
+    expect(component.addListForm.valid).toBeFalsy();
+  });
+
+  it('Form should be invalid', () => {
+    component.addListForm.controls['list'].setValue('');
+    expect(component.addListForm.valid).toBeFalsy();
+  });
+
+  it('should validate control function', () => {
+    expect(component.createListControl).toBeDefined();
+  });
+
+  it('should validate close list function', () => {
+    expect(component.closeAddList).toBeDefined();
+  });
+
+  it('should validate add list function', () => {
+    expect(component.addList).toBeDefined();
+  });
 });

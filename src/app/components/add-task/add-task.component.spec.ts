@@ -38,4 +38,28 @@ describe('AddTaskComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form invalid when empty', () => {
+    expect(component.addTaskForm.valid).toBeFalsy();
+  });
+
+  it('Form should be invalid', () => {
+    component.addTaskForm.controls['task'].setValue('');
+    component.addTaskForm.controls['list'].setValue('');
+    component.addTaskForm.controls['priority'].setValue('');
+    component.addTaskForm.controls['date'].setValue('');
+    expect(component.addTaskForm.valid).toBeFalsy();
+  });
+
+  it('should validate control function', () => {
+    expect(component.addTaskControl).toBeDefined();
+  });
+
+  it('should validate close task function', () => {
+    expect(component.closeAddTask).toBeDefined();
+  });
+
+  it('should validate add task function', () => {
+    expect(component.addTask).toBeDefined();
+  });
 });

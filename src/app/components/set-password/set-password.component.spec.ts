@@ -51,7 +51,4 @@ describe('SetPasswordComponent', () => {
     expect(errors['mustMatch']).toBeFalsy();
     expect(confirmpassword?.valid).toBeTruthy();
   });
-
-
-
 });
