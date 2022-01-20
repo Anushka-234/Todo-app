@@ -9,6 +9,7 @@ import { List } from 'src/app/shared/task';
   templateUrl: './create-list.component.html',
   styleUrls: ['./create-list.component.scss']
 })
+
 export class CreateListComponent implements OnInit {
   lists: List[] = [];
   addListForm!: FormGroup;
@@ -21,20 +22,18 @@ export class CreateListComponent implements OnInit {
     this.addListForm = this.fb.group({
       list: ['', Validators.required]
     })
-
   }
 
-  addList() {
+  addList(): void {
     const list = this.addListForm.value;
-    this.dialogRef.close(list)
+    this.dialogRef.close(list);
   }
 
-  closeAddList() {
+  closeAddList(): void {
     this.dialogRef.close();
   }
 
   get createListControl() {
     return this.addListForm.controls;
   }
-
 }

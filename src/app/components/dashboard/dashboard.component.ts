@@ -8,7 +8,6 @@ import { formatDate } from '@angular/common';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -27,7 +26,6 @@ export class DashboardComponent implements OnInit {
   today: any = Date.now();
   isLoading: boolean = false;
 
-
   constructor(
     public matdialog: MatDialog,
     private service: TaskService,
@@ -39,7 +37,7 @@ export class DashboardComponent implements OnInit {
     this.getTasks();
   }
 
-  openAddTask() {
+  openAddTask(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = "add-task";
@@ -74,7 +72,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  openAddList() {
+  openAddList(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = "create-list";
@@ -84,15 +82,14 @@ export class DashboardComponent implements OnInit {
     modalDialog.afterClosed().subscribe(result => {
       if (result) {
         this.service.addList(result).subscribe((list: List) => {
-          this.lists.push(list)
+          this.lists.push(list);
           this.toastr.success("List added", "Success");
         });
       }
     });
   }
 
-
-  getTasks() {
+  getTasks(): void {
     this.isLoading = true;
     this.service.getTasks().subscribe(res => {
       this.tasks = res;
@@ -101,20 +98,15 @@ export class DashboardComponent implements OnInit {
         this.today = formatDate(this.today, 'YYYY-MM-dd', 'en');
         if (this.taskFormatData == this.today) {
           this.countTodaysTask++;
-          this.isLoading = false;
         }
         if (this.taskFormatData > this.today) {
           this.countUpcomingTask++;
-          this.isLoading = false;
         }
         if (this.taskFormatData < this.today) {
           this.countOverdueTask++;
-          this.isLoading = false;
         }
         if (this.taskFormatData == this.today) {
           this.todaysTask.push(task);
-          this.isLoading = false;
-
         }
       }
       this.isLoading = false;
@@ -126,9 +118,8 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  logout() {
+  logout(): void {
     this.toastr.success('logged out successfully', 'dashboard')
     this.auth.logout();
   }
-
 }

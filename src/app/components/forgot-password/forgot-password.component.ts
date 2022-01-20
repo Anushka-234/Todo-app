@@ -31,7 +31,7 @@ export class ForgotPasswordComponent implements OnInit {
     return this.forgotPasswordForm.controls;
   }
 
-  openDialog() {
+  openDialog(): void {
     this.dialogRef.open(SendmailComponent, {
       width: '395px',
       height: '340px',
@@ -39,11 +39,10 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  submit() {
+  submit(): void {
     console.log(this.forgotPasswordForm.value);
   }
 
   ngOnInit(): void {
   }
-
 }

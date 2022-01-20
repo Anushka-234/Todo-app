@@ -33,11 +33,11 @@ export class AddTaskComponent implements OnInit {
     this.service.getList().subscribe((data) => (this.lists = data));
   }
 
-  closeAddTask() {
+  closeAddTask(): void {
     this.dialogRef.close();
   }
 
-  addTask() {
+  addTask(): void {
     this.isLoading = true;
     const task = this.addTaskForm.value;
     this.dialogRef.close(task);
