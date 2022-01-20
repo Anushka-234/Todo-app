@@ -10,11 +10,13 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { Register } from 'src/app/shared/user';
 import { Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
+
 export class SignupComponent implements OnInit {
   user: Register;
   users: Register[] = [];
@@ -46,14 +48,13 @@ export class SignupComponent implements OnInit {
     return this.signupForm.controls;
   }
 
-  submitButton() {
+  submitButton(): void {
     this.showsetpassword = true;
     this.service.userData = this.signupForm.value;
-    this.router.navigate(['/set-password'])
+    this.router.navigate(['/set-password']);
   }
 
-  submit() {
-    console.log('submitted')
+  submit(): void {
+    console.log('submitted');
   }
-
 }

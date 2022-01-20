@@ -36,13 +36,11 @@ describe('LoginComponent', () => {
     expect(component.loginForm.valid).toBeFalsy();
   });
 
-
   it('Form should be invalid', () => {
     component.loginForm.controls['email'].setValue('');
     component.loginForm.controls['password'].setValue('');
     expect(component.loginForm.valid).toBeFalsy();
   });
-
 
   it('should validate correct email format', () => {
     const email = component.loginForm.get('email');

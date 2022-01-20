@@ -21,6 +21,7 @@ import { PasswordMatch } from 'src/app/shared/validators/password.validator';
     ])
   ]
 })
+
 export class ResetpasswordComponent implements OnInit {
   showPassword = false;
   faEye = faEye;
@@ -40,17 +41,16 @@ export class ResetpasswordComponent implements OnInit {
       { validators: PasswordMatch('password', 'confirmpassword') });
   }
 
-
-  submitButton() {
-    console.log('submitted')
-    this.router.navigate(['/login'])
+  submitButton(): void {
+    console.log('submitted');
+    this.router.navigate(['/login']);
   }
 
   get form() {
     return this.resetpasswordForm.controls;
   }
 
-  setPassword() {
+  setPassword(): void {
     this.passwordsubmit = true;
     const password = {
       passwordsubmit: this.passwordsubmit,
@@ -60,7 +60,7 @@ export class ResetpasswordComponent implements OnInit {
     this.passwordSet.emit(password);
   }
 
-  showHidePassword() {
+  showHidePassword(): void {
     this.showPassword = !this.showPassword;
     if (this.showPassword) {
       document.querySelector('#password')?.setAttribute('type', 'text');
@@ -68,7 +68,8 @@ export class ResetpasswordComponent implements OnInit {
       document.querySelector('#password')?.setAttribute('type', 'password');
     }
   }
-  showHideconfirmPassword() {
+
+  showHideconfirmPassword(): void {
     this.showConfirmPassword = !this.showConfirmPassword;
     if (this.showConfirmPassword) {
       document.querySelector('#confirmpassword')?.setAttribute('type', 'text');
@@ -76,5 +77,4 @@ export class ResetpasswordComponent implements OnInit {
       document.querySelector('#confirmpassword')?.setAttribute('type', 'password');
     }
   }
-
 }

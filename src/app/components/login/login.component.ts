@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
   faExclamationCircle = faExclamationCircle;
   loginForm !: FormGroup;
 
-
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -69,7 +68,6 @@ export class LoginComponent implements OnInit {
             this.toastr.success("Login Successful", "Welcome")
             this.authResponse = user;
             localStorage.setItem('SessionUser', this.user);
-            console.log(user);
             if (user.token) {
               localStorage.setItem('token', user.token);
               this.loginForm.reset();
@@ -86,7 +84,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  validateAllFormFields(formGroup: FormGroup) {
+  validateAllFormFields(formGroup: FormGroup): void {
     Object.keys(formGroup.controls).forEach((field) => {
       const control = formGroup.get(field);
       if (control instanceof FormControl) {
@@ -101,7 +99,7 @@ export class LoginComponent implements OnInit {
     console.log("submitted");
   }
 
-  showhidePassword() {
+  showhidePassword(): void {
     this.showPassword = !this.showPassword;
     if (this.showPassword) {
       document.querySelector('#password')?.setAttribute('type', 'text');

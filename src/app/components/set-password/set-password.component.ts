@@ -49,8 +49,7 @@ export class SetPasswordComponent implements OnInit {
       { validators: PasswordMatch('password', 'confirmpassword') });
   }
 
-
-  submitButton() {
+  submitButton(): void {
     if (this.setpasswordForm.valid) {
       this.signupData = this.auth.userData;
       this.signupData.username = this.signupData.username;
@@ -61,25 +60,21 @@ export class SetPasswordComponent implements OnInit {
       this.signupData.password = this.setpasswordForm.value.password;
       this.signupData.confirmpassword = this.setpasswordForm.value.confirmpassword;
       this.auth.postregisterData(this.signupData).subscribe((data) => {
-        console.log(data)
-        this.router.navigate(['login'])
-      })
+        this.router.navigate(['login']);
+      });
     }
-
-    this.toastr.success('password set', 'success')
-    console.log('submitted')
+    this.toastr.success('password set', 'success');
   }
 
   get form() {
     return this.setpasswordForm.controls;
   }
 
-  setPassword() {
-    console.log("submitted")
-
+  setPassword(): void {
+    console.log("submitted");
   }
 
-  showhidePassword() {
+  showhidePassword(): void {
     this.showpassword = !this.showpassword;
     if (this.showpassword) {
       document.querySelector('#password')?.setAttribute('type', 'text');
@@ -87,7 +82,8 @@ export class SetPasswordComponent implements OnInit {
       document.querySelector('#password')?.setAttribute('type', 'password');
     }
   }
-  showhideconfirmPassword() {
+
+  showhideconfirmPassword(): void {
     this.showconfirmpassword = !this.showconfirmpassword;
     if (this.showconfirmpassword) {
       document.querySelector('#confirmpassword')?.setAttribute('type', 'text');

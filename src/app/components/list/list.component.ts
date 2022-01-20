@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
     this.getTasksofList(this.list);
   }
 
-  getTasksofList(listname: string) {
+  getTasksofList(listname: string): void {
     this.service.getTasks().subscribe(
       res => {
         this.tasks = res;
@@ -28,7 +28,7 @@ export class ListComponent implements OnInit {
       });
   }
 
-  deleteTask(task: any) {
+  deleteTask(task: any): void {
     this.isLoading = true;
     this.service
       .deleteTask(task)
@@ -39,5 +39,4 @@ export class ListComponent implements OnInit {
           this.toastr.success('Task deleted');
         });
   }
-
 }

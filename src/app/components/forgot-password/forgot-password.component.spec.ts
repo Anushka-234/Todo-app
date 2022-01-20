@@ -43,6 +43,4 @@ describe('ForgotPasswordComponent', () => {
     expect(errors['required']).toBeFalsy();
     expect(email?.valid).toBeTruthy();
   });
-
-
 });

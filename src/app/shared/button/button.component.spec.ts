@@ -8,9 +8,9 @@ describe('ButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ButtonComponent ]
+      declarations: [ButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +22,8 @@ describe('ButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit btnClick', () => {
+    expect(component.btnClick).toBeDefined();
+  })
 });

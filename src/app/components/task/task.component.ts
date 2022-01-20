@@ -7,6 +7,7 @@ import { TaskService } from 'src/app/shared/services/task.service';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
+
 export class TaskComponent implements OnInit {
   @Input() todaysTask: any;
   isLoading: boolean = false;
@@ -17,7 +18,7 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteTask(task: any) {
+  deleteTask(task: any): void {
     this.isLoading = true;
     this.service
       .deleteTask(task)
@@ -28,5 +29,4 @@ export class TaskComponent implements OnInit {
           this.toastr.success('Task deleted')
         });
   }
-
-}
+} 

@@ -9,10 +9,10 @@ export class ButtonComponent implements OnInit {
   @Input() text: string;
   @Input() width: string;
   @Input() disabled: boolean;
-  @Input() background:string;
-  @Input() color:string;
-  @Input() border:string;
-  @Input() padding:string;
+  @Input() background: string;
+  @Input() color: string;
+  @Input() border: string;
+  @Input() padding: string;
   @Output() btnClick = new EventEmitter();
 
   constructor() { }
@@ -20,7 +20,7 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick() {
+  onClick(): void {
     this.btnClick.emit();
   }
 
