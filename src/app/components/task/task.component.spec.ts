@@ -22,4 +22,8 @@ describe('TaskComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should validate add list function', () => {
+    expect(component.deleteTask).toBeDefined();
+  });
+
 });

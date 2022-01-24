@@ -21,7 +21,7 @@ export class CreateListComponent implements OnInit {
   ngOnInit(): void {
     this.addListForm = this.fb.group({
       list: ['', Validators.required]
-    })
+    });
   }
 
   addList(): void {
