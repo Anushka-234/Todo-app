@@ -86,4 +86,10 @@
     font-size: 14px;
     padding: 6px 12px;
   }
+
+  .spinner ::ng-deep .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $primary-color;
+    padding: 12px;
+  }
 }

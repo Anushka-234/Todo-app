@@ -7,6 +7,7 @@ import { List, Task } from 'src/app/shared/task';
 import { formatDate } from '@angular/common';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmLogoutComponent } from '../confirm-logout/confirm-logout.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -53,16 +54,14 @@ export class DashboardComponent implements OnInit {
           this.today = formatDate(this.today, 'YYYY-MM-dd', 'en');
           if (this.taskFormatData == this.today) {
             this.todaysTask.push(data);
-            this.countTodaysTask++
-            this.isLoading = false;
+            this.countTodaysTask++;
             this.toastr.success("task added successfully", "Success")
           } else if (this.taskFormatData > this.today) {
             this.countUpcomingTask++;
-            this.isLoading = false;
           } else if (this.taskFormatData < this.today) {
             this.countOverdueTask++;
-            this.isLoading = false;
           }
+          this.isLoading = false;
         }, err => {
           this.toastr.error("something went wrong", "error");
         });
@@ -119,7 +118,17 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): void {
-    this.toastr.success('logged out successfully', 'dashboard')
-    this.auth.logout();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "confirm-delete";
+    dialogConfig.height = "240px";
+    dialogConfig.width = "550px";
+    const modalDialog = this.matdialog.open(ConfirmLogoutComponent, dialogConfig);
+    modalDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.auth.logout();
+        this.toastr.success("Logged Out Successfully", "Dashboard");
+      }
+    });
   }
 }

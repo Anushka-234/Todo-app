@@ -1,0 +1,41 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+.wrapper {
+  padding: 5px 10px;
+}
+.container-header {
+  @include fontstyles;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.close-icon {
+  color: $black;
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  background-color: rgba(245, 69, 69, 0.062);
+}
+
+.confirm-delete {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+
+  .cancel:hover {
+    opacity: 0.6;
+  }
+
+  .logout:hover {
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col container-header">
+      <p>Confirm Logout</p>
+      <mat-icon class="close-icon" (click)="closeDialog()">close</mat-icon>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col confirm-delete">
+      <p>Are you sure you want to logout?</p>
+      <div class="buttons">
+        <div class="cancel">
+          <app-button
+            text="Cancel"
+            width="144px"
+            background="#fff"
+            color="#BE263B"
+            border="1px solid #BE263B"
+            (btnClick)="cancelLogout()"
+          ></app-button>
+        </div>
+        <div class="logout">
+          <app-button
+            text="Logout"
+            width="144px"
+            (btnClick)="logout()"
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

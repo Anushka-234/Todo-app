@@ -38,6 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { ListComponent } from './components/list/list.component';
 import { TaskComponent } from './components/task/task.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
+import { ConfirmLogoutComponent } from './components/confirm-logout/confirm-logout.component';
 registerLocaleData(en);
 
 
@@ -56,7 +58,9 @@ registerLocaleData(en);
     AddTaskComponent,
     CreateListComponent,
     ListComponent,
-    TaskComponent
+    TaskComponent,
+    ConfirmDeleteComponent,
+    ConfirmLogoutComponent
   ],
   imports: [
     BrowserModule,
