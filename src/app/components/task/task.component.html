@@ -1,11 +1,10 @@
 <div class="task" *ngIf="this.todaysTask.length === 0; else elseBlock">
   <p>No task to display</p>
 </div>
-
 <ng-template #elseBlock>
-  <div class="task" *ngFor="let task of todaysTask">
+  <div class="task" *ngFor="let task of todaysTask; let i = index">
     <div class="task-check">
-      <div class="check" (click)="deleteTask(task)">
+      <div class="check" (click)="deleteTask(task, i)">
         <div class="task-features">
           <p class="task-header">{{ task.task }}</p>
           <p class="task-list">{{ task.list }}</p>
@@ -13,5 +12,8 @@
       </div>
     </div>
     <p class="{{ task.priority }}">{{ task.priority }}</p>
+    <span *ngIf="i == index && flag && isLoading" class="spinner">
+      <mat-spinner [diameter]="25"></mat-spinner>
+    </span>
   </div>
 </ng-template>

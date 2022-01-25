@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col container-header">
+      <p>Confirm Delete</p>
+      <mat-icon class="close-icon" (click)="closeDialog()">close</mat-icon>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col confirm-delete">
+      <p>Are you sure you want to delete the task?</p>
+      <div class="buttons">
+        <div class="cancel">
+          <app-button
+            text="Cancel"
+            width="144px"
+            background="#fff"
+            color="#BE263B"
+            border="1px solid #BE263B"
+            (btnClick)="closeConfirmDelete()"
+          ></app-button>
+        </div>
+        <div class="delete">
+          <app-button
+            text="Delete"
+            width="144px"
+            (btnClick)="delete()"
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
